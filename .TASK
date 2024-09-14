@@ -1,0 +1,37 @@
+# Resumen de la Tarea
+
+## Introducción
+Se busca ofrecer las mejores experiencias de búsqueda a los clientes. Como Ingeniero Móvil, se espera que combines creatividad y habilidades técnicas para crear una interfaz de búsqueda. El código entregado será el punto de partida para una conversación con el equipo.
+
+## Consejos Generales
+
+El código debe ser simple pero no necesariamente fácil.
+Aplicar los principios SOLID.
+Justificar el uso de bibliotecas de terceros.
+Ser consistente en el código.
+Limpiar la estructura del proyecto y eliminar métodos no utilizados.
+Ser reflexivo sobre la arquitectura utilizada.
+El código debe ser de calidad de producción.
+No hay fecha límite para la entrega.
+
+## Descripción del Ejercicio
+
+Crear una aplicación móvil nativa que permita buscar artistas, álbumes y pistas en el catálogo de Spotify usando la API web (no se permite el uso del SDK de Spotify). No hay requisitos específicos en términos de características o estética, pero se fomenta la creatividad.
+
+## Requisitos
+
+Crear vistas personalizadas para la UI.
+Apuntar a una versión mínima de Android 5.0.
+La información debe estar disponible offline.
+Mecanismo de recarga (e.g., botón o SwipeRefreshLayout).
+Punto de sincronización para solicitudes concurrentes.
+La aplicación debe compilar y ejecutarse sin errores.
+Considerar escenarios de error y facilitar su adición.
+
+## Evaluación
+
+La evaluación se basará en cuatro criterios:
+Diseño: Crear experiencias hermosas y accesibles.
+Rendimiento: Considerar el rendimiento para una buena experiencia de usuario.
+Calidad del Código: Código fácil de cambiar, con buenas abstracciones y bien probado.
+Proceso: Resolver el problema en pasos incrementales pequeños, reflejado en el historial de commits.
