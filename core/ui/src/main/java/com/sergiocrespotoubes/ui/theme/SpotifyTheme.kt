@@ -1,4 +1,4 @@
-package com.sergiocrespotoubes.ui
+package com.sergiocrespotoubes.ui.theme
 
 import androidx.compose.runtime.Immutable
 
