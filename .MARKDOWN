@@ -26,6 +26,7 @@ Al complicarse la configuración de los módulos, se optó por no incluirlo.
 - Compose
 - Retrofit
 - Modo claro y oscuro.
+- Guardar datos de manera local
 - Tests
 - Tests de UI ?
 

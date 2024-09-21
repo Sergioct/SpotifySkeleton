@@ -50,12 +50,12 @@ android {
 }
 
 dependencies {
-    //implementation(project(":core:ui"))
-    //implementation(project(":core:navigation"))
-    //implementation(project(":data"))
-    //implementation(project(":domain"))
-    //implementation(project(":presentation:songs"))
-    //implementation(project(":presentation:splash"))
+    implementation(project(":core:ui"))
+    implementation(project(":core:navigation"))
+    implementation(project(":data"))
+    implementation(project(":domain"))
+    implementation(project(":presentation:songs"))
+    implementation(project(":presentation:splash"))
 
     // androidx
     implementation(libs.androidx.core.ktx)
