@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
             SpotifySkeletonTheme {
                 Surface(color = MaterialTheme.colorScheme.background) {
                     val navController = rememberNavController()
-                    NavHost(navController = navController, startDestination = ""){
+                    NavHost(navController = navController, startDestination = "splash"){
                         composable("splash"){
                             SplashScreen()
                         }
