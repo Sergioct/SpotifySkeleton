@@ -22,8 +22,8 @@ dependencyResolutionManagement {
 rootProject.name = "SpotifySkeleton"
 include(":app")
 include(":presentation")
+include(":presentation:splash")
 include(":presentation:songs")
-include(":app:domain")
 include(":domain")
 include(":data")
 include(":core")

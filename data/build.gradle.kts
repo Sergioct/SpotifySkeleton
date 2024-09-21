@@ -6,8 +6,12 @@ plugins {
 android {
     namespace = "com.sergiocrespotoubes.data"
     compileSdk = 34
+    defaultConfig {
+        minSdk = 28
+        targetSdk = 34
+    }
 }
 
 dependencies {
-    implementation(libs.retrofit)
+    //implementation(libs.retrofit)
 }

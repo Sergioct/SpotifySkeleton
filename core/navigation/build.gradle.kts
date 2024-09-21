@@ -6,6 +6,10 @@ plugins {
 android {
     namespace = "com.sergiocrespotoubes.navigation"
     compileSdk = 34
+    defaultConfig {
+        minSdk = 28
+        targetSdk = 34
+    }
 }
 
 dependencies {

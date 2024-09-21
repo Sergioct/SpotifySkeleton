@@ -4,5 +4,35 @@ Este es un proyecto de ejemplo para una aplicación de Spotify utilizando Kotlin
 
 ## Toma de decisiones
 
-### Arquitectura
+### Herramientas
 
+- Android Studio
+- Copilot
+
+### Arquitectura
+MVI (Model-View-Intent) es una arquitectura que se basa en la separación de las capas de la aplicación en tres partes: Model, View y Intent.
+Clean architecture es una arquitectura que se basa en la separación de las capas de la aplicación en tres partes: Domain, Data y Presentation.
+
+### Pasos
+
+Se intentó incluid un módulo `includeBuild("build-logic")` que gestionara la base del proyecto o `convenciones`.
+Al complicarse la configuración de los módulos, se optó por no incluirlo.
+
+- Inclusión de com.android.tools.build:gradle:8.2.2, mirar en que consiste.
+
+### Objetivos
+
+- Splash Screen
+- Compose
+- Retrofit
+- Modo claro y oscuro.
+- Tests
+- Tests de UI ?
+
+### Problemas
+
+- Implementación de módulos desde cero
+
+### Dudas
+
+- ¿Qué tema es el recomendado para un proyecto android de tema claro y oscuro?
