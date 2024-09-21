@@ -29,11 +29,16 @@ Al complicarse la configuración de los módulos, se optó por no incluirlo.
 - Guardar datos de manera local
 - Tests
 - Tests de UI ?
+- SwipeRefreshLayout
 
 ### Problemas
 
 - Implementación de módulos desde cero
+  - Fueron creados como modulos de tipo proyecto y no como android library. La solución fue sustituyendo
+  el plugin de `com.android.application` por `com.android.library` en el archivo `build.gradle.kts`.
+- 
 
 ### Dudas
 
 - ¿Qué tema es el recomendado para un proyecto android de tema claro y oscuro?
+- 

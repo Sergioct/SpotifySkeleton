@@ -2,7 +2,7 @@ package com.sergiocrespotoubes.splash
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import org.w3c.dom.Text
+import androidx.compose.material3.Text
 
 @Composable
 fun SplashScreen() {
