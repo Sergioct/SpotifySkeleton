@@ -1,6 +1,8 @@
-package com.sergiocrespotoubes.spotify.managers
+package com.sergiocrespotoubes.preferences
 
 import android.content.Context
+import com.sergiocrespotoubes.spotify.managers.PreferenceKeys
+import com.sergiocrespotoubes.spotify.managers.PreferencesManager
 import javax.inject.Inject
 
 const val SHARED_PREFERENCE_FILE = "com.sergiocrespotoubes.spotify.preferences"

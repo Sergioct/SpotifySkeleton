@@ -52,12 +52,13 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:ui"))
-    implementation(project(":core:navigation"))
-    implementation(project(":data"))
-    implementation(project(":domain"))
-    implementation(project(":presentation:songs"))
-    implementation(project(":presentation:splash"))
+    api(project(":core:ui"))
+    api(project(":core:navigation"))
+    api(project(":core:preferences"))
+    api(project(":data"))
+    api(project(":domain"))
+    api(project(":presentation:songs"))
+    api(project(":presentation:splash"))
 
     // Debug
     debugImplementation(libs.androidx.ui.tooling)
