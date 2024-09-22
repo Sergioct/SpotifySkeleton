@@ -1,4 +1,5 @@
 package com.sergiocrespotoubes.domain.model
 
-class Song {
-}
+data class Song(
+    val id: String
+)

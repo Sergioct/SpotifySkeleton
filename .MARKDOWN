@@ -30,6 +30,9 @@ Al complicarse la configuración de los módulos, se optó por no incluirlo.
 - Tests
 - Tests de UI ?
 - SwipeRefreshLayout
+- Lint ?
+- Spotless ?
+- CI/CD ?
 
 ### Problemas
 
@@ -41,4 +44,4 @@ Al complicarse la configuración de los módulos, se optó por no incluirlo.
 ### Dudas
 
 - ¿Qué tema es el recomendado para un proyecto android de tema claro y oscuro?
-- 
+- ¿Grafos de navegación?
