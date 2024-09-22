@@ -45,3 +45,4 @@ Al complicarse la configuración de los módulos, se optó por no incluirlo.
 
 - ¿Qué tema es el recomendado para un proyecto android de tema claro y oscuro?
 - ¿Grafos de navegación?
+- ¿Encrypted shared preference?

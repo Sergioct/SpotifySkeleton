@@ -1,4 +1,3 @@
 package com.sergiocrespotoubes.data.entities
 
-class SongEntity {
-}
+class SongEntity
