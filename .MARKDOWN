@@ -47,3 +47,4 @@ Al complicarse la configuración de los módulos, se optó por no incluirlo.
 - ¿Grafos de navegación?
 - ¿Encrypted shared preference?
 - ¿implementation o api?
+- Conventions
