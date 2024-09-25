@@ -21,6 +21,15 @@ android {
             )
         }
     }
+    flavorDimensions.add("version")
+    productFlavors {
+        create("real") {
+            dimension = "version"
+        }
+        create("mock") {
+            dimension = "version"
+        }
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8

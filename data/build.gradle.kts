@@ -20,7 +20,31 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField(
+                "String",
+                "BASE_URL",
+                "\"https://api.spotify.com\"",
+            )
         }
+        debug {
+            buildConfigField(
+                "String",
+                "BASE_URL",
+                "\"https://api.spotify.com\"",
+            )
+        }
+    }
+    flavorDimensions.add("version")
+    productFlavors {
+        create("real") {
+            dimension = "version"
+        }
+        create("mock") {
+            dimension = "version"
+        }
+    }
+    buildFeatures {
+        buildConfig = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -37,9 +61,11 @@ dependencies {
     // Networking
     implementation(libs.retrofit)
     implementation(libs.okhttp)
+    implementation (libs.retrofit.adapters.result)
 
     // Serialization
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.retrofit2.kotlinx.serialization.converter)
 
     // DI - Hilt
     implementation(libs.hilt.android)

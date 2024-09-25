@@ -21,14 +21,23 @@ android {
             useSupportLibrary = true
         }
     }
-
     buildTypes {
         release {
+            isDebuggable = false
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+    }
+    flavorDimensions.add("version")
+    productFlavors {
+        create("real") {
+            dimension = "version"
+        }
+        create("mock") {
+            dimension = "version"
         }
     }
     compileOptions {
@@ -39,6 +48,7 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
+        buildConfig = true
         compose = true
     }
     composeOptions {
@@ -57,7 +67,8 @@ dependencies {
     api(project(":core:preferences"))
     api(project(":data"))
     api(project(":domain"))
-    api(project(":presentation:songs"))
+    api(project(":presentation:trackdetail"))
+    api(project(":presentation:artistsearch"))
     api(project(":presentation:splash"))
 
     // Debug
