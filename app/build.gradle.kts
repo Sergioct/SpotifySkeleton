@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -19,14 +21,23 @@ android {
             useSupportLibrary = true
         }
     }
-
     buildTypes {
         release {
+            isDebuggable = false
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+    }
+    flavorDimensions.add("version")
+    productFlavors {
+        create("real") {
+            dimension = "version"
+        }
+        create("mock") {
+            dimension = "version"
         }
     }
     compileOptions {
@@ -37,6 +48,7 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
+        buildConfig = true
         compose = true
     }
     composeOptions {
@@ -50,21 +62,20 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:ui"))
-    implementation(project(":core:navigation"))
-    implementation(project(":data"))
-    implementation(project(":domain"))
-    implementation(project(":presentation:songs"))
-    implementation(project(":presentation:splash"))
-
-    // Tests
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
+    api(project(":core:ui"))
+    api(project(":core:navigation"))
+    api(project(":core:preferences"))
+    api(project(":data"))
+    api(project(":domain"))
+    api(project(":presentation:trackdetail"))
+    api(project(":presentation:artistsearch"))
+    api(project(":presentation:splash"))
 
     // Debug
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // DI - Hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
 }

@@ -20,6 +20,9 @@ Al complicarse la configuración de los módulos, se optó por no incluirlo.
 
 - Inclusión de com.android.tools.build:gradle:8.2.2, mirar en que consiste.
 
+- Utilización de la librería de `Retrofit Adapters` de `skydoves` para la obtención de un Result. En otros proyectos
+he utilizado `GsonConverterFactory` para posteriormente mapearlo a `Either` con la librería `arrow`.
+
 ### Objetivos
 
 - Splash Screen
@@ -45,3 +48,8 @@ Al complicarse la configuración de los módulos, se optó por no incluirlo.
 
 - ¿Qué tema es el recomendado para un proyecto android de tema claro y oscuro?
 - ¿Grafos de navegación?
+- ¿Encrypted shared preference?
+- ¿implementation o api?
+- Conventions
+- ¿Qué era `isMinifyEnabled`?
+- Flow or Result
