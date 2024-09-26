@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -48,4 +50,8 @@ dependencies {
     api(project(":core:ui"))
     implementation(project(":core:navigation"))
     implementation(project(":data"))
+
+    // DI - Hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
 }
