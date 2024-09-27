@@ -1,9 +1,10 @@
 package com.sergiocrespotoubes.data.repository
 
-import com.sergiocrespotoubes.data.services.TracksServices
+import com.sergiocrespotoubes.data.dto.AuthInfoDto
+import com.sergiocrespotoubes.data.services.UserServices
 
-class UserRepositoryImpl(val tracksServices: TracksServices) : TracksRepository {
-    override fun getTrackById(trackId: String): List<TrackDto> {
-        tracksServices.getTrackById(trackId)
+class UserRepositoryImpl(val userServices: UserServices) : UserRepository {
+    override suspend fun getAuthInfo(): Result<AuthInfoDto> {
+        return userServices.getAuthInfo()
     }
 }
