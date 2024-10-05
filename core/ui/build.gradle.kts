@@ -46,6 +46,7 @@ android {
 }
 
 dependencies {
+    api(project(":core:common"))
     api(libs.androidx.core.ktx)
     api(libs.androidx.appcompat)
     api(libs.material)

@@ -4,13 +4,16 @@ plugins {
 }
 
 android {
-    namespace = "com.sergiocrespotoubes.navigation"
+    namespace = "com.sergiocrespotoubes.common"
     compileSdk = 34
+
     defaultConfig {
         minSdk = 28
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -18,15 +21,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-        }
-    }
-    flavorDimensions.add("version")
-    productFlavors {
-        create("real") {
-            dimension = "version"
-        }
-        create("mock") {
-            dimension = "version"
         }
     }
     compileOptions {
@@ -39,8 +33,6 @@ android {
 }
 
 dependencies {
-    api(libs.androidx.navigation.compose)
-    api(project(":domain"))
+    api(libs.kotlinx.coroutines.core)
 
-    api(libs.androidx.hilt.navigation.compose)
 }

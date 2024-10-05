@@ -65,6 +65,7 @@ dependencies {
     api(project(":core:ui"))
     api(project(":core:navigation"))
     api(project(":core:preferences"))
+    api(project(":core:common"))
     api(project(":data"))
     api(project(":domain"))
     api(project(":presentation:trackdetail"))
@@ -78,4 +79,5 @@ dependencies {
     // DI - Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
 }
