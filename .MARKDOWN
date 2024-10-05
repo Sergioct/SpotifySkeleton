@@ -42,7 +42,7 @@ he utilizado `GsonConverterFactory` para posteriormente mapearlo a `Either` con 
 - Implementación de módulos desde cero
   - Fueron creados como modulos de tipo proyecto y no como android library. La solución fue sustituyendo
   el plugin de `com.android.application` por `com.android.library` en el archivo `build.gradle.kts`.
-- 
+- He intentado utilizar `Kotest` que me gusta utilizarla para con el spec style `BehaviorSpec`(Given, When, Then), por no dedicarle mucho tiempo a solucionarlo he optado por utilizar `JUnit`.
 
 ### Dudas
 

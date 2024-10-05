@@ -66,6 +66,7 @@ dependencies {
     api(project(":core:navigation"))
     api(project(":core:preferences"))
     api(project(":core:common"))
+    api(project(":core:testing"))
     api(project(":data"))
     api(project(":domain"))
     api(project(":presentation:trackdetail"))

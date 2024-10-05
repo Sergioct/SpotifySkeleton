@@ -4,13 +4,16 @@ plugins {
 }
 
 android {
-    namespace = "com.sergiocrespotoubes.trackdetail"
+    namespace = "com.sergiocrespotoubes.testing"
     compileSdk = 34
+
     defaultConfig {
         minSdk = 28
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -20,15 +23,6 @@ android {
             )
         }
     }
-    flavorDimensions.add("version")
-    productFlavors {
-        create("real") {
-            dimension = "version"
-        }
-        create("mock") {
-            dimension = "version"
-        }
-    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -36,19 +30,12 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.0"
-    }
 }
 
 dependencies {
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    testImplementation(libs.junit4)
-    androidTestImplementation(libs.androidx.espresso.core)
+    // Testing
+    runtimeOnly(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.kotlin.test)
+    implementation(libs.junit4)
 }

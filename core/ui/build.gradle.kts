@@ -47,6 +47,7 @@ android {
 
 dependencies {
     api(project(":core:common"))
+    api(libs.kotlinx.coroutines.core)
     api(libs.androidx.core.ktx)
     api(libs.androidx.appcompat)
     api(libs.material)
@@ -60,5 +61,4 @@ dependencies {
     api(libs.androidx.material3)
     api(libs.androidx.runtime)
     api(libs.coil.compose)
-    //api(libs.androidx.hilt.navigation.compose)
 }
