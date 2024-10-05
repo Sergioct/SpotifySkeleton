@@ -6,10 +6,13 @@ import com.sergiocrespotoubes.navigation.Routes
 import com.sergiocrespotoubes.splash.SplashScreen
 
 fun NavGraphBuilder.splashScreen(
+    navigateToArtistSearch: () -> Unit,
 ) {
     composable(
         route = Routes.Splash.route,
     ) {
-        SplashScreen()
+        SplashScreen(
+            navigateToArtistSearch = navigateToArtistSearch
+        )
     }
 }

@@ -1,4 +1,4 @@
-package com.sergiocrespotoubes.splash
+package com.sergiocrespotoubes.artistsearch
 
 import android.content.Context
 import androidx.compose.foundation.layout.Box
@@ -14,41 +14,33 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat.getString
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
-import com.sergiocrespotoubes.ui.R
 import com.sergiocrespotoubes.ui.components.SpotifyTextTitleBold
 import com.sergiocrespotoubes.ui.theme.SpotifyDimen
 import com.sergiocrespotoubes.ui.theme.SpotifyTheme
 
 @Composable
-fun SplashScreen(
-    splashViewModel: SplashViewModel = hiltViewModel(),
-    navigateToArtistSearch: () -> Unit,
+fun ArtistSearchScreen(
+    artistSearchViewModel: ArtistSearchViewModel = hiltViewModel(),
 ) {
-    val context = LocalContext.current
-    Design(context)
+    Design()
     ReadEvents(
-        splashViewModel = splashViewModel,
-        navigateToArtistSearch = navigateToArtistSearch
+        artistSearchViewModel = artistSearchViewModel,
     )
 }
 
 @Composable
-private fun Design(context: Context) {
+private fun Design() {
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier = Modifier
                 .align(Alignment.Center)
                 .padding(horizontal = SpotifyDimen.spaceBig())
         ) {
-            AsyncImage(
-                model = R.drawable.splash_spotify,
-                contentDescription = null,
-            )
             SpotifyTextTitleBold(
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .padding(top = SpotifyDimen.spaceMedium()),
-                text = getString(context, R.string.app_name)
+                text = "ARTISTS WEB"
             )
         }
     }
@@ -56,17 +48,10 @@ private fun Design(context: Context) {
 
 @Composable
 fun ReadEvents(
-    splashViewModel: SplashViewModel,
-    navigateToArtistSearch: () -> Unit,
+    artistSearchViewModel: ArtistSearchViewModel,
 ) {
     LaunchedEffect(Unit) {
-        splashViewModel.event.collect() { event ->
-            when (event) {
-                is SplashViewModel.Event.NavigateToArtistSearch -> {
-                    navigateToArtistSearch()
-                }
-            }
-        }
+
     }
 }
 
@@ -74,8 +59,6 @@ fun ReadEvents(
 @Composable
 fun SplashScreenPreview() {
     SpotifyTheme {
-        SplashScreen(
-            navigateToArtistSearch = {}
-        )
+        ArtistSearchScreen()
     }
 }

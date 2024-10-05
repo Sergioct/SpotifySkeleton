@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.sergiocrespotoubes.navigation.Routes
+import com.sergiocrespotoubes.spotify.navigation.navgraph.artistSearchScreen
 import com.sergiocrespotoubes.spotify.navigation.navgraph.splashScreen
 
 @Composable
@@ -14,6 +15,9 @@ fun SpotifyNavHost(
         navController = mainNavController,
         startDestination = Routes.Splash.route
     ){
-        splashScreen()
+        splashScreen(
+            navigateToArtistSearch = { mainNavController.navigate(Routes.ArtistSearch.route) }
+        )
+        artistSearchScreen()
     }
 }
