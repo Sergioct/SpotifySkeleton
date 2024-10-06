@@ -1,6 +1,5 @@
 package com.sergiocrespotoubes.data.services
 
-import com.sergiocrespotoubes.data.dto.AuthInfoDto
 import com.sergiocrespotoubes.data.dto.TrackDto
 import retrofit2.http.GET
 import retrofit2.http.Query

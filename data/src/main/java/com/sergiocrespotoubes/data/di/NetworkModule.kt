@@ -3,7 +3,7 @@ package com.sergiocrespotoubes.data.di
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.sergiocrespotoubes.data.BuildConfig
 import com.sergiocrespotoubes.data.network.interceptors.AuthTokenInterceptor
-import com.sergiocrespotoubes.spotify.managers.PreferencesManager
+import com.sergiocrespotoubes.preferences.PreferencesManager
 import com.skydoves.retrofit.adapters.result.ResultCallAdapterFactory
 import dagger.Module
 import dagger.Provides

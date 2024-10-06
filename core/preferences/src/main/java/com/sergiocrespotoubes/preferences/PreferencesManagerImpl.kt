@@ -2,12 +2,14 @@ package com.sergiocrespotoubes.preferences
 
 import android.content.Context
 import com.sergiocrespotoubes.spotify.managers.PreferenceKeys
-import com.sergiocrespotoubes.spotify.managers.PreferencesManager
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 const val SHARED_PREFERENCE_FILE = "com.sergiocrespotoubes.spotify.preferences"
 
-class PreferencesManagerImpl @Inject constructor(context: Context): PreferencesManager {
+class PreferencesManagerImpl @Inject constructor(
+    @ApplicationContext context: Context
+): PreferencesManager {
 
     private val sharedPreferences = context.getSharedPreferences(SHARED_PREFERENCE_FILE, Context.MODE_PRIVATE)
 

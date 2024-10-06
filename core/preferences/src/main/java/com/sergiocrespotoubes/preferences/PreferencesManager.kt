@@ -1,4 +1,4 @@
-package com.sergiocrespotoubes.spotify.managers
+package com.sergiocrespotoubes.preferences
 
 interface PreferencesManager {
     fun getAuthToken(): String

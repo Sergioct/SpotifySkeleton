@@ -22,6 +22,5 @@ class SplashViewModelTest {
             advanceTimeBy(2000)
             assertTrue { awaitItem() is SplashViewModel.Event.NavigateToArtistSearch }
         }
-        assertTrue { true }
     }
 }
