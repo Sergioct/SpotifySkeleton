@@ -1,5 +1,8 @@
 package com.sergiocrespotoubes.data.dto
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class TrackDto(
     val id: String,
     val name: String,

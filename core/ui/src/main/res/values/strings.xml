@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Spotify Skeleton</string>
+
+   <!-- Splash -->
+    <string name="splash_retry_button">Reintentar</string>
+
+    <!-- SearchArtist -->
+
+
+    <!-- TracksList -->
+
 </resources>

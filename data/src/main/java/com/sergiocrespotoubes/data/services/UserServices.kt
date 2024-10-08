@@ -3,10 +3,11 @@ package com.sergiocrespotoubes.data.services
 import com.sergiocrespotoubes.data.dto.AuthInfoDto
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface UserServices {
-    @GET(value = "/api/token")
+    @POST(value = "/api/token")
     suspend fun getAuthInfo(
         @Query("grant_type") granType: String = "client_credentials",
         @Query("client_id") clientId: String = "e57a98d00b934c499c102ddfaeafb045",

@@ -16,7 +16,11 @@ fun SpotifyNavHost(
         startDestination = Routes.Splash.route
     ){
         splashScreen(
-            navigateToArtistSearch = { mainNavController.navigate(Routes.ArtistSearch.route) }
+            navigateToArtistSearch = {
+                mainNavController.navigate(Routes.ArtistSearch.route) {
+                    popUpTo(Routes.Splash.route) { inclusive = true }
+                }
+            }
         )
         artistSearchScreen()
     }

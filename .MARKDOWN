@@ -25,17 +25,24 @@ he utilizado `GsonConverterFactory` para posteriormente mapearlo a `Either` con 
 
 ### Objetivos
 
-- Splash Screen
-- Compose
-- Retrofit
-- Modo claro y oscuro.
-- Guardar datos de manera local
-- Tests
+- Splash Screen - DONE
+- Compose navigation - DONE
+- Compose - DONE
+- Retrofit - DONE
+- Guardar token en shared preferences - DONE
+- Guardar datos de manera local (Room)
+- Inyección de dependencias - DONE
+- Remove native splash
+- Mock build - DONE
+- Search Artists Screen
+- Tracks List Screen
+- Tests - DONE
 - Tests de UI ?
 - SwipeRefreshLayout
 - Lint ?
 - Spotless ?
 - CI/CD ?
+- Modo claro y oscuro.
 
 ### Problemas
 
@@ -53,3 +60,4 @@ he utilizado `GsonConverterFactory` para posteriormente mapearlo a `Either` con 
 - Conventions
 - ¿Qué era `isMinifyEnabled`?
 - Flow or Result
+- Donde guardar las keys de las APIs

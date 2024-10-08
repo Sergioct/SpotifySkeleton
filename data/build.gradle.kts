@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("kotlinx-serialization")
 }
 
 android {
@@ -25,12 +26,22 @@ android {
                 "BASE_URL",
                 "\"https://api.spotify.com\"",
             )
+            buildConfigField(
+                "String",
+                "BASE_AUTH_URL",
+                "\"https://accounts.spotify.com\"",
+            )
         }
         debug {
             buildConfigField(
                 "String",
                 "BASE_URL",
                 "\"https://api.spotify.com\"",
+            )
+            buildConfigField(
+                "String",
+                "BASE_AUTH_URL",
+                "\"https://accounts.spotify.com\"",
             )
         }
     }

@@ -8,6 +8,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -15,19 +16,19 @@ import javax.inject.Singleton
 object NetworkServicesModule {
     @Singleton
     @Provides
-    fun provideSearchServices(retrofit: Retrofit): SearchServices {
+    fun provideSearchServices(@Named("LOGGED") retrofit: Retrofit): SearchServices {
         return retrofit.create(SearchServices::class.java)
     }
 
     @Singleton
     @Provides
-    fun provideTracksServices(retrofit: Retrofit): TracksServices {
+    fun provideTracksServices(@Named("LOGGED") retrofit: Retrofit): TracksServices {
         return retrofit.create(TracksServices::class.java)
     }
 
     @Singleton
     @Provides
-    fun provideUserServices(retrofit: Retrofit): UserServices {
+    fun provideUserServices(@Named("AUTH") retrofit: Retrofit): UserServices {
         return retrofit.create(UserServices::class.java)
     }
 }

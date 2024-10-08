@@ -1,6 +1,7 @@
 package com.sergiocrespotoubes.splash
 
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,6 +14,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat.getString
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -63,13 +65,13 @@ private fun Design(
                     .padding(top = SpotifyDimen.spaceMedium()),
                 text = getString(context, R.string.app_name)
             )
-            if(state == SplashViewModel.State.Idle){
+            if(state == SplashViewModel.State.Error){
                 SpotifyButton(
                     modifier = Modifier
                         .align(Alignment.CenterHorizontally)
                         .padding(top = SpotifyDimen.spaceBig())
                         .wrapContentSize(),
-                    text = "Reintentar",
+                    text = stringResource(R.string.splash_retry_button),
                     onCLick = { onRetryClick() }
                 )
             }

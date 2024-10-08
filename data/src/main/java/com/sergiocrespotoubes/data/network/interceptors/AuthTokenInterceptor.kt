@@ -12,12 +12,11 @@ class AuthTokenInterceptor @Inject constructor(
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
         val token = preferencesManager.getAuthToken()
-        if(token.isEmpty()){
-
+        val builder = request.newBuilder()
+        if(token.isNotEmpty()){
+            builder.addHeader("Authorization", "Bearer $token")
         }
-        val requestWithHeaders = request.newBuilder()
-            .addHeader("Authorization", "Bearer $token")
-            .build()
-        return chain.proceed(requestWithHeaders)
+        val requestWithAuthHeader = builder.build()
+        return chain.proceed(requestWithAuthHeader)
     }
 }

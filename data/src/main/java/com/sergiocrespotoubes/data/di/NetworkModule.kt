@@ -15,6 +15,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
+import javax.inject.Named
 import javax.inject.Singleton
 
 private const val READ_TIMEOUT = 30L
@@ -58,6 +59,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
+    @Named("LOGGED")
     fun provideRetrofit(networkJson: Json, okhttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
@@ -69,4 +71,17 @@ object NetworkModule {
             .build()
     }
 
+    @Singleton
+    @Provides
+    @Named("AUTH")
+    fun provideAuthRetrofit(networkJson: Json, okhttpClient: OkHttpClient): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(BuildConfig.BASE_AUTH_URL)
+            .addConverterFactory(
+                networkJson.asConverterFactory("application/json".toMediaType()),
+            )
+            .addCallAdapterFactory(ResultCallAdapterFactory.create())
+            .client(okhttpClient)
+            .build()
+    }
 }
