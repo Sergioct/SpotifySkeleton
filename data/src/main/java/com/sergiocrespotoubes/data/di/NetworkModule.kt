@@ -12,6 +12,7 @@ import dagger.hilt.components.SingletonComponent
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
@@ -44,10 +45,14 @@ object NetworkModule {
     fun provideOkhttp(
         authTokenInterceptor: AuthTokenInterceptor,
     ): OkHttpClient {
+        val httpLoggingInterceptor = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
         return OkHttpClient.Builder()
             .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
             .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
             .addInterceptor(authTokenInterceptor)
+            .addInterceptor(httpLoggingInterceptor)
             .build()
     }
 
