@@ -5,7 +5,6 @@ import com.sergiocrespotoubes.domain.model.AuthInfoModel
 import com.sergiocrespotoubes.domain.usecase.user.GetAuthInfoUseCase
 import com.sergiocrespotoubes.testing.MainCoroutineRule
 import io.mockk.coEvery
-import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.advanceTimeBy
@@ -24,7 +23,6 @@ class SplashViewModelTest {
 
     @Test
     fun `Given count down timer When is finished Then NavigateToArtistSearch`() = runTest {
-
         val authInfoModel = AuthInfoModel(accessToken = "123456")
         coEvery { getAuthInfoUseCase.execute() } returns Result.success(authInfoModel)
 
