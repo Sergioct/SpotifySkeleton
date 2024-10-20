@@ -15,6 +15,7 @@ Clean architecture es una arquitectura que se basa en la separación de las capa
 
 ### Pasos
 
+#### 10-Oct-2024
 Se intentó incluid un módulo `includeBuild("build-logic")` que gestionara la base del proyecto o `convenciones`.
 Al complicarse la configuración de los módulos, se optó por no incluirlo.
 
@@ -23,47 +24,64 @@ Al complicarse la configuración de los módulos, se optó por no incluirlo.
 - Utilización de la librería de `Retrofit Adapters` de `skydoves` para la obtención de un Result. En otros proyectos
 he utilizado `GsonConverterFactory` para posteriormente mapearlo a `Either` con la librería `arrow`.
 
+#### 10-Nov-2024
+- Se empieza a utiliza commit lint para los commits - `20-Oct-2024`
+
 ### Objetivos
 
-- Splash Screen - DONE
-- Compose navigation - DONE
-- Compose - DONE
-- Retrofit - DONE
-- Guardar token en shared preferences - DONE
-- Inyección de dependencias - DONE
+#### 10-Oct-2024
+- Splash Screen - ✅
+- Compose navigation - ✅
+- Compose - ✅
+- Retrofit - ✅
+- Guardar token en shared preferences - ✅
+- Inyección de dependencias - ✅
+- Mock build - ✅
+
+#### 10-Nov-2024
+- Lint
+- Spotless
+- CI/CD all commits
 - Guardar datos de manera local (Room)
 - Remove native splash
-- Mock build - DONE
 - Search Artists Screen
 - Tracks List Screen
 - Tests - DONE
 - Tests de UI ?
 - SwipeRefreshLayout
-- Lint 
-  - Regla orden alfabético .toml
-- Spotless ?
-- CI/CD ?
+- Regla orden alfabético .toml
 - Modo claro y oscuro.
 - Utilizar DataStore
 - Buen convenio de commits
+- Conventions
+- Plugin api o implementation
 
 ### Problemas
 
-- Implementación de módulos desde cero
+#### 10-Oct-2024
+✅ Implementación de módulos desde cero
   - Fueron creados como modulos de tipo proyecto y no como android library. La solución fue sustituyendo
   el plugin de `com.android.application` por `com.android.library` en el archivo `build.gradle.kts`.
-- He intentado utilizar `Kotest` que me gusta utilizarla para con el spec style `BehaviorSpec`(Given, When, Then), por no dedicarle mucho tiempo a solucionarlo he optado por utilizar `JUnit`.
+✅ He intentado utilizar `Kotest` que me gusta utilizarla para con el spec style `BehaviorSpec`(Given, When, Then), por no dedicarle mucho tiempo a solucionarlo he optado por utilizar `JUnit`.
+
+#### 10-Nov-2024
+❓ Github GPG, me decía que era incorrecta mi clave pública. ¿Puede ser porque el correo de git no coincide con la clave generada?
 
 ### Dudas
 
-- ¿Qué tema es el recomendado para un proyecto android de tema claro y oscuro? Theme.Material3
-- ¿Grafos de navegación? No hacen falta.
-- ¿Encrypted shared preference? DataStore
-- ¿implementation o api? - Plugin que te dice dependencia api o implementation
-- Conventions
-- ¿Qué era `isMinifyEnabled`? minifica el código isEnabled -> a
-- Flow or Result - DONE
-- Donde guardar las keys de las APIs -- Local.properties
+#### 10-Oct-2024
+- ¿Qué tema es el recomendado para un proyecto android de tema claro y oscuro? Theme.Material3 ✅
+- ¿Grafos de navegación? No hacen falta. ✅
+- ¿Encrypted shared preference? DataStore ✅
+- ¿implementation o api? - Plugin que te dice dependencia api o implementation ✅
+- Conventions ✅
+- ¿Qué era `isMinifyEnabled`? minifica el código isEnabled -> a ✅
+- Flow or Result - ✅
+- Donde guardar las keys de las APIs -- Local.properties ✅
+
+#### 10-Nov-2024`
+- ¿Instalar `npm` para meter `commitlint`? ❓
+- ratchetFrom("origin/develop") - Spotless - ¿Qué hace?  ❓
 
 ### Información
 
@@ -71,15 +89,15 @@ Github GPG
 Convenciones gradle
 Moshi o kotlin serialization
 DataStore
+
+##### Commits - Lint android
 Huski o commit lint
 https://cbea.ms/git-commit/
-
 https://www.conventionalcommits.org/en/v1.0.0/
-
 https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits
-
 https://commitlint.js.org/
 
+##### Flow
 https://flowmarbles.com/
 
 git hook
@@ -87,7 +105,6 @@ git hook
 https://git-scm.com/book/ms/v2/Customizing-Git-Git-Hooks
 
 ----
-Lint android
 Ktlint, ktfmt (formateo puro de código)
 detekt (tira más a analizar el código)
 Spotless
