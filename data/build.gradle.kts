@@ -86,4 +86,5 @@ dependencies {
     // Database - Room
     implementation(libs.androidx.room.runtime)
     annotationProcessor(libs.androidx.room.compiler)
+    annotationProcessor(libs.androidx.room.ktx)
 }
