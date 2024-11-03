@@ -21,6 +21,7 @@ okhttp = "4.12.0"
 retrofit = "2.11.0"
 retrofit2KotlinxSerializationConverter = "1.0.0"
 retrofitAdaptersResult = "1.0.12"
+room = "2.6.1"
 runtime = "1.7.2"
 turbine = "1.1.0"
 uiToolingPreview = "1.7.2"
@@ -30,6 +31,8 @@ junit = "1.2.1"
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 androidx-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "runtime" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }

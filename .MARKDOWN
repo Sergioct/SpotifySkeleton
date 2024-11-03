@@ -40,7 +40,7 @@ he utilizado `GsonConverterFactory` para posteriormente mapearlo a `Either` con 
 
 #### 10-Nov-2024
 - Lint
-- Spotless
+- Spotless - ✅
 - CI/CD all commits
 - Guardar datos de manera local (Room)
 - Remove native splash
