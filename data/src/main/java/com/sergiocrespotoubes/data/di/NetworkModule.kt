@@ -24,31 +24,28 @@ private const val CONNECT_TIMEOUT = 30L
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-
     @Provides
     @Singleton
-    fun providesNetworkJson(): Json = Json {
-        ignoreUnknownKeys = true
-        coerceInputValues = true
-        explicitNulls = false
-    }
+    fun providesNetworkJson(): Json =
+        Json {
+            ignoreUnknownKeys = true
+            coerceInputValues = true
+            explicitNulls = false
+        }
 
     @Singleton
     @Provides
-    fun provideGenAccessTokenInterceptor(
-        preferencesManager: PreferencesManager,
-    ): AuthTokenInterceptor {
+    fun provideGenAccessTokenInterceptor(preferencesManager: PreferencesManager): AuthTokenInterceptor {
         return AuthTokenInterceptor(preferencesManager)
     }
 
     @Singleton
     @Provides
-    fun provideOkhttp(
-        authTokenInterceptor: AuthTokenInterceptor,
-    ): OkHttpClient {
-        val httpLoggingInterceptor = HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BODY
-        }
+    fun provideOkhttp(authTokenInterceptor: AuthTokenInterceptor): OkHttpClient {
+        val httpLoggingInterceptor =
+            HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            }
         return OkHttpClient.Builder()
             .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
             .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
@@ -60,7 +57,10 @@ object NetworkModule {
     @Singleton
     @Provides
     @Named("LOGGED")
-    fun provideRetrofit(networkJson: Json, okhttpClient: OkHttpClient): Retrofit {
+    fun provideRetrofit(
+        networkJson: Json,
+        okhttpClient: OkHttpClient,
+    ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(
@@ -74,7 +74,10 @@ object NetworkModule {
     @Singleton
     @Provides
     @Named("AUTH")
-    fun provideAuthRetrofit(networkJson: Json, okhttpClient: OkHttpClient): Retrofit {
+    fun provideAuthRetrofit(
+        networkJson: Json,
+        okhttpClient: OkHttpClient,
+    ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_AUTH_URL)
             .addConverterFactory(

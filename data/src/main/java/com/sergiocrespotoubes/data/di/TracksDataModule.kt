@@ -11,7 +11,5 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 interface TracksDataModule {
     @Binds
-    fun bindsTracksRepository(
-        tracksRepositoryImpl: TracksRepositoryImpl,
-    ): TracksRepository
+    fun bindsTracksRepository(tracksRepositoryImpl: TracksRepositoryImpl): TracksRepository
 }

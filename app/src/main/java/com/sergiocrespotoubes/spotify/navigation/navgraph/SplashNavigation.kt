@@ -5,14 +5,12 @@ import androidx.navigation.compose.composable
 import com.sergiocrespotoubes.navigation.Routes
 import com.sergiocrespotoubes.splash.SplashScreen
 
-fun NavGraphBuilder.splashScreen(
-    navigateToArtistSearch: () -> Unit,
-) {
+fun NavGraphBuilder.splashScreen(navigateToArtistSearch: () -> Unit) {
     composable(
         route = Routes.Splash.route,
     ) {
         SplashScreen(
-            navigateToArtistSearch = navigateToArtistSearch
+            navigateToArtistSearch = navigateToArtistSearch,
         )
     }
 }

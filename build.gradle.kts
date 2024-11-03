@@ -12,9 +12,9 @@ plugins {
 }
 
 spotless {
-    //ratchetFrom("origin/develop")
+    // ratchetFrom("origin/develop")
     format("misc") {
-        target ("**/*.gradle", "**/*.md", "**/.gitignore")
+        target("**/*.gradle", "**/*.md", "**/.gitignore")
         indentWithSpaces()
         trimTrailingWhitespace()
         endWithNewline()

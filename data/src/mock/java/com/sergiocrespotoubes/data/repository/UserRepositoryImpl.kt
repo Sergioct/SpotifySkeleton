@@ -6,12 +6,17 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class UserRepositoryImpl @Inject constructor(val userServices: UserServices) : UserRepository {
-    override suspend fun getAuthInfo(): Flow<Result<AuthInfoDto>> = flow {
-        emit(Result.success(
-            AuthInfoDto(
-                accessToken = "1234567890"
-            )
-        ))
+class UserRepositoryImpl
+    @Inject
+    constructor(val userServices: UserServices) : UserRepository {
+        override suspend fun getAuthInfo(): Flow<Result<AuthInfoDto>> =
+            flow {
+                emit(
+                    Result.success(
+                        AuthInfoDto(
+                            accessToken = "1234567890",
+                        ),
+                    ),
+                )
+            }
     }
-}

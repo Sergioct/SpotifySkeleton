@@ -17,13 +17,15 @@ object SpotifyThemeConfig {
     var theme = SpotifyTheme()
 }
 
-private val DarkColorScheme = darkColorScheme(
-    primary = theme.color.teal700,
-)
+private val DarkColorScheme =
+    darkColorScheme(
+        primary = theme.color.teal700,
+    )
 
-private val LightColorScheme = lightColorScheme(
-    primary = theme.color.teal700,
-)
+private val LightColorScheme =
+    lightColorScheme(
+        primary = theme.color.teal700,
+    )
 
 @Composable
 fun SpotifyTheme(
@@ -31,14 +33,15 @@ fun SpotifyTheme(
     dynamicColor: Boolean = false,
     content: @Composable () -> Unit,
 ) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+    val colorScheme =
+        when {
+            dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+                val context = LocalContext.current
+                if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+            }
+            darkTheme -> DarkColorScheme
+            else -> LightColorScheme
         }
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
 
     MaterialTheme(
         colorScheme = colorScheme,

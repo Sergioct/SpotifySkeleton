@@ -8,35 +8,35 @@ import com.sergiocrespotoubes.ui.theme.SpotifyTextStyle
 @Composable
 fun SpotifyTextTitleBold(
     modifier: Modifier = Modifier,
-    text: String
+    text: String,
 ) {
     Text(
         modifier = modifier,
         text = text,
-        style = SpotifyTextStyle.titleBold()
+        style = SpotifyTextStyle.titleBold(),
     )
 }
 
 @Composable
 fun SpotifyTextSubtitleBold(
     modifier: Modifier = Modifier,
-    text: String
+    text: String,
 ) {
     Text(
         modifier = modifier,
         text = text,
-        style = SpotifyTextStyle.subtitleBold()
+        style = SpotifyTextStyle.subtitleBold(),
     )
 }
 
 @Composable
 fun SpotifyTextMedium(
     modifier: Modifier = Modifier,
-    text: String
+    text: String,
 ) {
     Text(
         modifier = modifier,
         text = text,
-        style = SpotifyTextStyle.medium()
+        style = SpotifyTextStyle.medium(),
     )
 }

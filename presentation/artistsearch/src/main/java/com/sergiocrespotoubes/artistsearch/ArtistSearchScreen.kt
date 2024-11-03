@@ -15,9 +15,7 @@ import com.sergiocrespotoubes.ui.theme.SpotifyDimen
 import com.sergiocrespotoubes.ui.theme.SpotifyTheme
 
 @Composable
-fun ArtistSearchScreen(
-    artistSearchViewModel: ArtistSearchViewModel = hiltViewModel(),
-) {
+fun ArtistSearchScreen(artistSearchViewModel: ArtistSearchViewModel = hiltViewModel()) {
     Design()
     ReadEvents(
         artistSearchViewModel = artistSearchViewModel,
@@ -28,26 +26,25 @@ fun ArtistSearchScreen(
 private fun Design() {
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
-            modifier = Modifier
-                .align(Alignment.Center)
-                .padding(horizontal = SpotifyDimen.spaceBig())
+            modifier =
+                Modifier
+                    .align(Alignment.Center)
+                    .padding(horizontal = SpotifyDimen.spaceBig()),
         ) {
             SpotifyTextTitleBold(
-                modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
-                    .padding(top = SpotifyDimen.spaceMedium()),
-                text = "ARTISTS WEB"
+                modifier =
+                    Modifier
+                        .align(Alignment.CenterHorizontally)
+                        .padding(top = SpotifyDimen.spaceMedium()),
+                text = "ARTISTS WEB",
             )
         }
     }
 }
 
 @Composable
-fun ReadEvents(
-    artistSearchViewModel: ArtistSearchViewModel,
-) {
+fun ReadEvents(artistSearchViewModel: ArtistSearchViewModel) {
     LaunchedEffect(Unit) {
-
     }
 }
 

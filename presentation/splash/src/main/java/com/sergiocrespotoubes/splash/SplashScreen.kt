@@ -1,7 +1,6 @@
 package com.sergiocrespotoubes.splash
 
 import android.content.Context
-import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -35,7 +34,7 @@ fun SplashScreen(
     Design(
         context,
         state = state,
-        onRetryClick = { splashViewModel.onRetryClick() }
+        onRetryClick = { splashViewModel.onRetryClick() },
     )
     ReadEvents(
         splashViewModel = splashViewModel,
@@ -47,34 +46,38 @@ fun SplashScreen(
 private fun Design(
     context: Context,
     state: SplashViewModel.State,
-    onRetryClick: () -> Unit
+    onRetryClick: () -> Unit,
 ) {
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
-            modifier = Modifier
-                .align(Alignment.Center)
-                .padding(horizontal = SpotifyDimen.spaceBig())
+            modifier =
+                Modifier
+                    .align(Alignment.Center)
+                    .padding(horizontal = SpotifyDimen.spaceBig()),
         ) {
             AsyncImage(
                 model = R.drawable.splash_spotify,
                 contentDescription = null,
             )
             SpotifyTextTitleBold(
-                modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
-                    .padding(top = SpotifyDimen.spaceMedium()),
-                text = getString(context, R.string.app_name)
-            )
-            if(state == SplashViewModel.State.Error){
-                SpotifyButton(
-                    modifier = Modifier
+                modifier =
+                    Modifier
                         .align(Alignment.CenterHorizontally)
-                        .padding(top = SpotifyDimen.spaceBig())
-                        .wrapContentSize(),
-                    text = stringResource(R.string.splash_retry_button),
-                    onCLick = { onRetryClick() }
-                )
-            }
+                        .padding(top = SpotifyDimen.spaceMedium()),
+                text = getString(context, R.string.app_name),
+            )
+            if (state == SplashViewModel.State.Error)
+                {
+                    SpotifyButton(
+                        modifier =
+                            Modifier
+                                .align(Alignment.CenterHorizontally)
+                                .padding(top = SpotifyDimen.spaceBig())
+                                .wrapContentSize(),
+                        text = stringResource(R.string.splash_retry_button),
+                        onCLick = { onRetryClick() },
+                    )
+                }
         }
     }
 }
@@ -91,11 +94,12 @@ fun ReadEvents(
                 is SplashViewModel.Event.NavigateToArtistSearch -> {
                     navigateToArtistSearch()
                 }
-                SplashViewModel.Event.ShowError -> Toast.makeText(
-                    context,
-                    "Error",
-                    Toast.LENGTH_LONG
-                ).show()
+                SplashViewModel.Event.ShowError ->
+                    Toast.makeText(
+                        context,
+                        "Error",
+                        Toast.LENGTH_LONG,
+                    ).show()
             }
         }
     }
@@ -106,7 +110,7 @@ fun ReadEvents(
 fun SplashScreenPreview() {
     SpotifyTheme {
         SplashScreen(
-            navigateToArtistSearch = {}
+            navigateToArtistSearch = {},
         )
     }
 }

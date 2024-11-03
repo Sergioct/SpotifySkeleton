@@ -11,27 +11,28 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ArtistSearchViewModel @Inject constructor(): ViewModel() {
+class ArtistSearchViewModel
+    @Inject
+    constructor() : ViewModel() {
+        // private val _state: MutableStateFlow<State> = MutableStateFlow(initialState)
+        // val state: StateFlow<State>
+        //    get() = _state.asStateFlow()
 
-    //private val _state: MutableStateFlow<State> = MutableStateFlow(initialState)
-    //val state: StateFlow<State>
-    //    get() = _state.asStateFlow()
+        private val _event: MutableSharedFlow<Event> = MutableSharedFlow()
+        val event: SharedFlow<Event>
+            get() = _event.asSharedFlow()
 
-    private val _event: MutableSharedFlow<Event> = MutableSharedFlow()
-    val event: SharedFlow<Event>
-        get() = _event.asSharedFlow()
+        init {
+            initSplashCountDown()
+        }
 
-    init {
-        initSplashCountDown()
+        private fun initSplashCountDown() =
+            viewModelScope.launch {
+                delay(2000)
+                _event.emit(Event.NavigateToArtistSearch)
+            }
+
+        sealed class Event {
+            data object NavigateToArtistSearch : Event()
+        }
     }
-
-    private fun initSplashCountDown() = viewModelScope.launch {
-        delay(2000)
-        _event.emit(Event.NavigateToArtistSearch)
-    }
-
-    sealed class Event {
-        data object NavigateToArtistSearch: Event()
-    }
-
-}

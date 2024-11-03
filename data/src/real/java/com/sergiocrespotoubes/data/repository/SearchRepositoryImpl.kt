@@ -6,7 +6,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class SearchRepositoryImpl(private val searchServices: SearchServices) : SearchRepository {
-    override suspend fun getSearchArtistSongs(artistName: String): Flow<Result<ArtistDto>> = flow {
-        emit(searchServices.getSearchArtistSongs(artistName = artistName))
-    }
+    override suspend fun getSearchArtistSongs(artistName: String): Flow<Result<ArtistDto>> =
+        flow {
+            emit(searchServices.getSearchArtistSongs(artistName = artistName))
+        }
 }

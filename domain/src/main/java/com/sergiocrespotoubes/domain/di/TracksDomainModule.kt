@@ -13,12 +13,8 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 interface TracksDomainModule {
     @Binds
-    fun bindGetTrackByIdUseCase(
-        getTrackByIdUseCaseImpl: GetTrackByIdUseCaseImpl,
-    ): GetTrackByIdUseCase
+    fun bindGetTrackByIdUseCase(getTrackByIdUseCaseImpl: GetTrackByIdUseCaseImpl): GetTrackByIdUseCase
 
     @Binds
-    fun bindGetTracksByArtistIdUseCase(
-        getTracksByArtistIdUseCaseImpl: GetTracksByArtistIdUseCaseImpl,
-    ): GetTracksByArtistIdUseCase
+    fun bindGetTracksByArtistIdUseCase(getTracksByArtistIdUseCaseImpl: GetTracksByArtistIdUseCaseImpl): GetTracksByArtistIdUseCase
 }

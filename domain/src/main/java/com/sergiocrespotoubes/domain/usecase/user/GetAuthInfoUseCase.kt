@@ -11,13 +11,15 @@ interface GetAuthInfoUseCase {
     suspend fun execute(): Flow<Result<AuthInfoModel>>
 }
 
-class GetAuthInfoUseCaseImpl @Inject constructor(
-    private val userRepository: UserRepository,
-    private val authInfoMapper: AuthInfoMapper,
-): GetAuthInfoUseCase {
-    override suspend fun execute(): Flow<Result<AuthInfoModel>> {
-        return userRepository.getAuthInfo().map { response ->
-            response.map { authDto -> authInfoMapper.toDomainModel(authDto) }
+class GetAuthInfoUseCaseImpl
+    @Inject
+    constructor(
+        private val userRepository: UserRepository,
+        private val authInfoMapper: AuthInfoMapper,
+    ) : GetAuthInfoUseCase {
+        override suspend fun execute(): Flow<Result<AuthInfoModel>> {
+            return userRepository.getAuthInfo().map { response ->
+                response.map { authDto -> authInfoMapper.toDomainModel(authDto) }
+            }
         }
     }
-}

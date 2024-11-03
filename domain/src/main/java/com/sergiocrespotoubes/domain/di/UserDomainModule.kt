@@ -11,7 +11,5 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 interface UserDomainModule {
     @Binds
-    fun bindGetAuthInfoUseCase(
-        getAuthInfoUseCase: GetAuthInfoUseCaseImpl,
-    ): GetAuthInfoUseCase
+    fun bindGetAuthInfoUseCase(getAuthInfoUseCase: GetAuthInfoUseCaseImpl): GetAuthInfoUseCase
 }

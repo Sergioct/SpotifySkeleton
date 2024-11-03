@@ -8,19 +8,17 @@ import com.sergiocrespotoubes.spotify.navigation.navgraph.artistSearchScreen
 import com.sergiocrespotoubes.spotify.navigation.navgraph.splashScreen
 
 @Composable
-fun SpotifyNavHost(
-    mainNavController: NavHostController
-) {
+fun SpotifyNavHost(mainNavController: NavHostController) {
     NavHost(
         navController = mainNavController,
-        startDestination = Routes.Splash.route
-    ){
+        startDestination = Routes.Splash.route,
+    ) {
         splashScreen(
             navigateToArtistSearch = {
                 mainNavController.navigate(Routes.ArtistSearch.route) {
                     popUpTo(Routes.Splash.route) { inclusive = true }
                 }
-            }
+            },
         )
         artistSearchScreen()
     }

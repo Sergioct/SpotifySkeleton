@@ -11,17 +11,19 @@ interface GetTracksByArtistIdUseCase {
     suspend fun execute(artistId: String): Flow<Result<List<TrackModel>>>
 }
 
-class GetTracksByArtistIdUseCaseImpl @Inject constructor(
-    private val tracksRepository: TracksRepository,
-    private val trackMapper: TrackMapper,
-): GetTracksByArtistIdUseCase {
-    override suspend fun execute(artistId: String): Flow<Result<List<TrackModel>>> {
-        return tracksRepository.getTracksByArtistId(artistId).map { response ->
-            response.map { tracksList ->
-                tracksList.map { trackDto ->
-                    trackMapper.toDomainModel(trackDto)
+class GetTracksByArtistIdUseCaseImpl
+    @Inject
+    constructor(
+        private val tracksRepository: TracksRepository,
+        private val trackMapper: TrackMapper,
+    ) : GetTracksByArtistIdUseCase {
+        override suspend fun execute(artistId: String): Flow<Result<List<TrackModel>>> {
+            return tracksRepository.getTracksByArtistId(artistId).map { response ->
+                response.map { tracksList ->
+                    tracksList.map { trackDto ->
+                        trackMapper.toDomainModel(trackDto)
+                    }
                 }
             }
         }
     }
-}

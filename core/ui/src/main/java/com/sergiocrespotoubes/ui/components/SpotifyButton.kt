@@ -8,12 +8,12 @@ import androidx.compose.ui.Modifier
 fun SpotifyButton(
     modifier: Modifier = Modifier,
     text: String,
-    onCLick : () -> Unit,
+    onCLick: () -> Unit,
 ) {
-    Button (
+    Button(
         modifier = modifier,
         onClick = onCLick,
-    ){
+    ) {
         SpotifyTextMedium(text = text)
     }
 }

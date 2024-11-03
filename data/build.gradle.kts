@@ -19,7 +19,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
             buildConfigField(
                 "String",
@@ -72,7 +72,7 @@ dependencies {
     // Networking
     implementation(libs.retrofit)
     implementation(libs.okhttp)
-    implementation (libs.retrofit.adapters.result)
+    implementation(libs.retrofit.adapters.result)
     implementation(libs.logging.interceptor)
 
     // Serialization
