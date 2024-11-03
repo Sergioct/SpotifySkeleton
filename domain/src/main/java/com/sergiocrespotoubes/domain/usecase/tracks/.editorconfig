@@ -1,0 +1,5 @@
+# This configuration is used by ktlint when spotless invokes it
+root = true
+
+[*.{kt,kts}]
+ktlint_function_naming_ignore_when_annotated_with=Composable
