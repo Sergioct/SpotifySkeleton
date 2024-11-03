@@ -41,8 +41,8 @@ class SplashViewModel @Inject constructor(
     }
 
     private fun getAuthInfo() = viewModelScope.launch{
-        getAuthInfoUseCase.execute()
-            .onSuccess {
+        getAuthInfoUseCase.execute().collect({
+            it.onSuccess {
                 tasksCompleted++
                 checkAllTasksAreCompleted()
             }
@@ -50,6 +50,7 @@ class SplashViewModel @Inject constructor(
                 _event.emit(Event.ShowError)
                 _state.value = State.Error
             }
+        })
     }
 
     fun onRetryClick() {
