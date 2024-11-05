@@ -1,4 +1,4 @@
-package com.sergiocrespotoubes.data.dto
+package com.sergiocrespotoubes.data.network.dto
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

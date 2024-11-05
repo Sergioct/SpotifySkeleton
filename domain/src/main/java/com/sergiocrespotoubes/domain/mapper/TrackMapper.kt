@@ -1,6 +1,6 @@
 package com.sergiocrespotoubes.domain.mapper
 
-import com.sergiocrespotoubes.data.dto.TrackDto
+import com.sergiocrespotoubes.data.network.dto.TrackDto
 import com.sergiocrespotoubes.domain.model.TrackModel
 import javax.inject.Inject
 

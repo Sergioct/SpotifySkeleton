@@ -1,6 +1,6 @@
 package com.sergiocrespotoubes.data.repository
 
-import com.sergiocrespotoubes.data.dto.TrackDto
+import com.sergiocrespotoubes.data.network.dto.TrackDto
 import kotlinx.coroutines.flow.Flow
 
 interface TracksRepository {

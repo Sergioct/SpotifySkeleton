@@ -65,7 +65,7 @@ he utilizado `GsonConverterFactory` para posteriormente mapearlo a `Either` con 
   el plugin de `com.android.application` por `com.android.library` en el archivo `build.gradle.kts`.
 ✅ He intentado utilizar `Kotest` que me gusta utilizarla para con el spec style `BehaviorSpec`(Given, When, Then), por no dedicarle mucho tiempo a solucionarlo he optado por utilizar `JUnit`.
 
-#### 20-OCt-2024
+#### 20-Oct-2024
 ❓ Github GPG, me decía que era incorrecta mi clave pública. ¿Puede ser porque el correo de git no coincide con la clave generada?
 
 #### 3-Nov-2024
@@ -84,9 +84,12 @@ he utilizado `GsonConverterFactory` para posteriormente mapearlo a `Either` con 
 - Flow or Result - ✅
 - Donde guardar las keys de las APIs -- Local.properties ✅
 
-#### 10-Nov-2024`
+#### 20-Oct-2024`
 - ¿Instalar `npm` para meter `commitlint`? ❓
 - ratchetFrom("origin/develop") - Spotless - ¿Qué hace?  ❓
+
+#### 3-Nov-2024
+- ¿Cuando utilizar los datasources?¿Hacen falta? ❓
 
 ### Información
 

@@ -1,6 +1,6 @@
 package com.sergiocrespotoubes.data.repository
 
-import com.sergiocrespotoubes.data.dto.ArtistDto
+import com.sergiocrespotoubes.data.network.dto.ArtistDto
 import kotlinx.coroutines.flow.Flow
 
 interface SearchRepository {

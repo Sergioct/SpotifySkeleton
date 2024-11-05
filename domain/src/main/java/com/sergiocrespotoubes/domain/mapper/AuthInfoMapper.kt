@@ -1,6 +1,6 @@
 package com.sergiocrespotoubes.domain.mapper
 
-import com.sergiocrespotoubes.data.dto.AuthInfoDto
+import com.sergiocrespotoubes.data.network.dto.AuthInfoDto
 import com.sergiocrespotoubes.domain.model.AuthInfoModel
 import javax.inject.Inject
 
