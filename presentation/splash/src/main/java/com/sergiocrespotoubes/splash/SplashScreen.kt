@@ -75,7 +75,7 @@ private fun Design(
                                 .padding(top = SpotifyDimen.spaceBig())
                                 .wrapContentSize(),
                         text = stringResource(R.string.splash_retry_button),
-                        onCLick = { onRetryClick() },
+                        onClick = { onRetryClick() },
                     )
                 }
         }

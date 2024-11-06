@@ -18,8 +18,8 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Named
 import javax.inject.Singleton
 
-private const val READ_TIMEOUT = 30L
-private const val CONNECT_TIMEOUT = 30L
+private const val READ_TIMEOUT_SEC = 30L
+private const val CONNECT_TIMEOUT_SEC = 30L
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -35,7 +35,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideGenAccessTokenInterceptor(preferencesManager: PreferencesManager): AuthTokenInterceptor {
+    fun provideAccessTokenInterceptor(preferencesManager: PreferencesManager): AuthTokenInterceptor {
         return AuthTokenInterceptor(preferencesManager)
     }
 
@@ -47,8 +47,8 @@ object NetworkModule {
                 level = HttpLoggingInterceptor.Level.BODY
             }
         return OkHttpClient.Builder()
-            .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
-            .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
+            .readTimeout(READ_TIMEOUT_SEC, TimeUnit.SECONDS)
+            .connectTimeout(CONNECT_TIMEOUT_SEC, TimeUnit.SECONDS)
             .addInterceptor(authTokenInterceptor)
             .addInterceptor(httpLoggingInterceptor)
             .build()

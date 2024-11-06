@@ -13,6 +13,9 @@ Este es un proyecto de ejemplo para una aplicación de Spotify utilizando Kotlin
 MVI (Model-View-Intent) es una arquitectura que se basa en la separación de las capas de la aplicación en tres partes: Model, View y Intent.
 Clean architecture es una arquitectura que se basa en la separación de las capas de la aplicación en tres partes: Domain, Data y Presentation.
 
+### Metodología de trabajo
+git flow
+
 ### Pasos
 
 #### 10-Oct-2024
@@ -24,7 +27,7 @@ Al complicarse la configuración de los módulos, se optó por no incluirlo.
 - Utilización de la librería de `Retrofit Adapters` de `skydoves` para la obtención de un Result. En otros proyectos
 he utilizado `GsonConverterFactory` para posteriormente mapearlo a `Either` con la librería `arrow`.
 
-#### 10-Nov-2024
+#### 20-Oct-2024
 - Se empieza a utiliza commit lint para los commits - `20-Oct-2024`
 
 ### Objetivos
@@ -38,7 +41,7 @@ he utilizado `GsonConverterFactory` para posteriormente mapearlo a `Either` con 
 - Inyección de dependencias - ✅
 - Mock build - ✅
 
-#### 10-Nov-2024
+#### 20-Oct-2024
 - Lint
 - Spotless - ✅
 - CI/CD all commits
@@ -50,12 +53,27 @@ he utilizado `GsonConverterFactory` para posteriormente mapearlo a `Either` con 
 - Tests de UI ?
 - SwipeRefreshLayout
 - Ordenar .toml - Usado AS para la ordenación(Edit > Sort lines) ✅
-- Regla orden alfabético .toml
+- Regla orden alfabético .toml ✅
 - Modo claro y oscuro.
 - Utilizar DataStore
 - Buen convenio de commits
 - Conventions
 - Plugin api o implementation
+
+#### 6-Nov-2024
+- GitHook (Huski)
+- Workflow
+- Github Actions
+  - Spotless
+  - Tests
+- Plugins cambiarlo de `id` a `alias` llevarlo al toml
+- Convenciones
+  - Convention plugin
+- Ordenar múltiples .toml
+- READ_TIMEOUT to READ_TIMEOUT_SEC
+- Rendimiento
+- Seguridad (OWASP, Dependency check)
+  - https://jeremylong.github.io/DependencyCheck/dependency-check-gradle/index.html
 
 ### Problemas
 
@@ -117,3 +135,6 @@ Ktlint, ktfmt (formateo puro de código)
 detekt (tira más a analizar el código)
 Spotless
 ----
+
+Trunk Based Development - https://trunkbaseddevelopment.com/
+Github flow - https://githubflow.github.io/
