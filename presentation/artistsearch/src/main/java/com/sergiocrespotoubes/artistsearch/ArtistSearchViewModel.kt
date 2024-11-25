@@ -43,7 +43,7 @@ class ArtistSearchViewModel @Inject constructor(
         }
     }
 
-    private suspend fun showLoading(){
+    private fun showLoading(){
         _state.value = _state.value.copy(
             loading = false
         )

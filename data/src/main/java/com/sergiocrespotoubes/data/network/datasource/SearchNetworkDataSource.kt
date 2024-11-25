@@ -5,13 +5,13 @@ import com.sergiocrespotoubes.data.services.SearchServices
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-interface ArtistsNetworkDatasource {
+interface SearchNetworkDataSource {
     suspend fun getSearchArtistSongs(artistName: String): Flow<SearchDto>
 }
 
-class ArtistsNetworkDatasourceImpl(
+class SearchNetworkDataSourceImpl(
     private val searchServices: SearchServices,
-) : ArtistsNetworkDatasource {
+) : SearchNetworkDataSource {
     override suspend fun getSearchArtistSongs(artistName: String): Flow<SearchDto> = flow {
         searchServices.getSearchArtistSongs(artistName = artistName)
     }

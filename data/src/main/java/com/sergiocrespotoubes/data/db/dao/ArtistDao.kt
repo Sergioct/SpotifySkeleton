@@ -16,6 +16,9 @@ interface ArtistDao {
     @Insert
     fun insertArtist(artist: ArtistEntity)
 
+    @Insert
+    fun insertArtists(artists: List<ArtistEntity>)
+
     @Update
     fun updateArtist(artist: ArtistEntity)
 

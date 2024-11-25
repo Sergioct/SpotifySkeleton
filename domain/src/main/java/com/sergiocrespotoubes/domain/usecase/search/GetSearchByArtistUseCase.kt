@@ -11,17 +11,15 @@ interface GetSearchByArtistUseCase {
     suspend fun execute(artist: String): Flow<Result<List<ArtistModel>>>
 }
 
-class GetSearchByArtistUseCaseImpl
-    @Inject
-    constructor(
-        private val searchRepository: SearchRepository,
-        private val artistMapper: ArtistMapper,
-    ) : GetSearchByArtistUseCase {
-        override suspend fun execute(artist: String): Flow<Result<List<ArtistModel>>> {
-            return searchRepository.getSearchByArtist(artist).map { response ->
-                response.map { artistDto ->
-                    artistMapper.toDomainModel(artistDto)
-                }
+class GetSearchByArtistUseCaseImpl @Inject constructor(
+    private val searchRepository: SearchRepository,
+    private val artistMapper: ArtistMapper,
+) : GetSearchByArtistUseCase {
+    override suspend fun execute(artist: String): Flow<Result<List<ArtistModel>>> {
+        return searchRepository.getSearchByArtist(artist).map { response ->
+            response.map { artistDto ->
+                artistMapper.toDomainModel(artistDto)
             }
         }
     }
+}

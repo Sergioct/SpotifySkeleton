@@ -4,15 +4,14 @@ import com.sergiocrespotoubes.data.db.dao.TrackDao
 import com.sergiocrespotoubes.data.db.entities.TrackEntity
 import kotlinx.coroutines.flow.Flow
 
-interface TracksDbDataSource {
+interface TracksNetworkDataSource {
     suspend fun getTracks(): Flow<List<TrackEntity>>
 }
 
-class TracksDbDataSourceImpl(
+class TracksNetworkDataSourceImpl(
     private val tracksDao: TrackDao,
-) : TracksDbDataSource {
+) : TracksNetworkDataSource {
     override suspend fun getTracks(): Flow<List<TrackEntity>> {
         return tracksDao.getTracks()
     }
-
 }
