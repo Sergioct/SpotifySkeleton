@@ -1,5 +1,6 @@
 package com.sergiocrespotoubes.data.network.interceptors
 
+import com.sergiocrespotoubes.common.SpotifyLog
 import com.sergiocrespotoubes.preferences.PreferencesManager
 import okhttp3.Interceptor
 import okhttp3.Response
@@ -14,6 +15,7 @@ class AuthTokenInterceptor
             val request = chain.request()
             val token = preferencesManager.getAuthToken()
             val builder = request.newBuilder()
+            SpotifyLog.i("AuthTokenInterceptor Token: $token")
             if (token.isNotEmpty())
                 {
                     builder.addHeader("Authorization", "Bearer $token")

@@ -1,8 +1,8 @@
 package com.sergiocrespotoubes.data.repository
 
-import com.sergiocrespotoubes.data.network.dto.ArtistDto
+import com.sergiocrespotoubes.data.network.dto.SearchDto
 import kotlinx.coroutines.flow.Flow
 
 interface SearchRepository {
-    suspend fun getSearchArtistSongs(artistName: String): Flow<Result<ArtistDto>>
+    suspend fun getSearchByArtist(artistName: String): Flow<Result<List<SearchDto>>>
 }

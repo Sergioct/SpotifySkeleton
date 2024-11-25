@@ -3,9 +3,10 @@
 
    <!-- Splash -->
     <string name="splash_retry_button">Reintentar</string>
+    <string name="splash_error_message">Error</string>
 
-    <!-- SearchArtist -->
-
+    <!-- Search -->
+    <string name="search_error_message">Error</string>
 
     <!-- TracksList -->
 

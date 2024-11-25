@@ -95,14 +95,18 @@ fun ReadEvents(
                     navigateToArtistSearch()
                 }
                 SplashViewModel.Event.ShowError ->
-                    Toast.makeText(
-                        context,
-                        "Error",
-                        Toast.LENGTH_LONG,
-                    ).show()
+                    showToastError(context)
             }
         }
     }
+}
+
+private fun showToastError(context: Context) {
+    Toast.makeText(
+        context,
+        context.getString(R.string.splash_error_message),
+        Toast.LENGTH_LONG,
+    ).show()
 }
 
 @Preview(showBackground = true)

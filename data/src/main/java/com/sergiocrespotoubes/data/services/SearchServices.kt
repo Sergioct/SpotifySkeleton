@@ -1,6 +1,7 @@
 package com.sergiocrespotoubes.data.services
 
 import com.sergiocrespotoubes.data.network.dto.ArtistDto
+import com.sergiocrespotoubes.data.network.dto.SearchDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -9,6 +10,6 @@ interface SearchServices {
     suspend fun getSearchArtistSongs(
         @Query("type") type: String = "artist",
         @Query("limit") limit: Int = 1,
-        @Query("artist_name") artistName: String,
-    ): Result<ArtistDto>
+        @Query("q") artistName: String,
+    ): Result<SearchDto>
 }

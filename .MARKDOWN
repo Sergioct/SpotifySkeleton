@@ -92,9 +92,6 @@ he utilizado `GsonConverterFactory` para posteriormente mapearlo a `Either` con 
 
 ### Dudas
 
-❓ gradlePlugin-spotless y gradlePlugin-kotlin del fichero toml se encuentran 
-en [libraries] y no en [plugins]
-
 #### 10-Oct-2024
 - ¿Qué tema es el recomendado para un proyecto android de tema claro y oscuro? Theme.Material3 ✅
 - ¿Grafos de navegación? No hacen falta. ✅
@@ -110,7 +107,12 @@ en [libraries] y no en [plugins]
 - ratchetFrom("origin/develop") - Spotless - ¿Qué hace?  ❓
 
 #### 3-Nov-2024
-- ¿Cuando utilizar los datasources?¿Hacen falta? ❓
+- ¿Cuando utilizar los datasources?¿Hacen falta? ✅
+
+#### 24-Nov-2024
+❓ gradlePlugin-spotless y gradlePlugin-kotlin del fichero toml se encuentran
+en [libraries] y no en [plugins]
+❓ debounce
 
 ### Información
 
