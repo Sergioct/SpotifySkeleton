@@ -143,3 +143,5 @@ Spotless
 
 Trunk Based Development - https://trunkbaseddevelopment.com/
 Github flow - https://githubflow.github.io/
+
+https://perfetto.dev/ - Rendimiento

@@ -3,6 +3,7 @@ package com.sergiocrespotoubes.splash
 import app.cash.turbine.test
 import com.sergiocrespotoubes.domain.model.AuthInfoModel
 import com.sergiocrespotoubes.domain.usecase.user.GetAuthInfoUseCase
+import com.sergiocrespotoubes.preferences.PreferencesManager
 import com.sergiocrespotoubes.testing.MainCoroutineRule
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -19,6 +20,7 @@ class SplashViewModelTest {
     val mainCoroutineRule = MainCoroutineRule()
 
     private val getAuthInfoUseCase = mockk<GetAuthInfoUseCase>()
+    private val preferencesManager = mockk<PreferencesManager>()
 
     @Test
     fun `Given count down timer When is finished Then NavigateToArtistSearch`() =
@@ -26,7 +28,7 @@ class SplashViewModelTest {
             val authInfoModel = AuthInfoModel(accessToken = "123456")
             coEvery { getAuthInfoUseCase.execute() } returns Result.success(authInfoModel)
 
-            val viewModel = SplashViewModel(getAuthInfoUseCase)
+            val viewModel = SplashViewModel(getAuthInfoUseCase, preferencesManager)
             viewModel.event.test {
                 advanceTimeBy(2000)
                 assertTrue { awaitItem() is SplashViewModel.Event.NavigateToArtistSearch }
@@ -38,7 +40,7 @@ class SplashViewModelTest {
         runTest {
             coEvery { getAuthInfoUseCase.execute() } returns Result.failure(Throwable())
 
-            val viewModel = SplashViewModel(getAuthInfoUseCase)
+            val viewModel = SplashViewModel(getAuthInfoUseCase, preferencesManager)
             viewModel.event.test {
                 assertTrue { awaitItem() is SplashViewModel.Event.ShowError }
             }

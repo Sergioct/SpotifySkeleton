@@ -1,6 +1,6 @@
 package com.sergiocrespotoubes.data.di
 
-import com.sergiocrespotoubes.data.repository.TracksRepository
+import com.sergiocrespotoubes.domain.repository.TracksRepository
 import com.sergiocrespotoubes.data.repository.TracksRepositoryImpl
 import dagger.Binds
 import dagger.Module

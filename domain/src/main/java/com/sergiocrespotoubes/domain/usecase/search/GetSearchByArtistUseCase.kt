@@ -1,10 +1,8 @@
 package com.sergiocrespotoubes.domain.usecase.search
 
-import com.sergiocrespotoubes.data.repository.SearchRepository
-import com.sergiocrespotoubes.domain.mapper.ArtistMapper
 import com.sergiocrespotoubes.domain.model.ArtistModel
+import com.sergiocrespotoubes.domain.repository.SearchRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 interface GetSearchByArtistUseCase {
@@ -13,13 +11,8 @@ interface GetSearchByArtistUseCase {
 
 class GetSearchByArtistUseCaseImpl @Inject constructor(
     private val searchRepository: SearchRepository,
-    private val artistMapper: ArtistMapper,
 ) : GetSearchByArtistUseCase {
     override suspend fun execute(artist: String): Flow<Result<List<ArtistModel>>> {
-        return searchRepository.getSearchByArtist(artist).map { response ->
-            response.map { artistDto ->
-                artistMapper.toDomainModel(artistDto)
-            }
-        }
+        return searchRepository.getSearchByArtist(artist)
     }
 }

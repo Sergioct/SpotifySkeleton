@@ -69,6 +69,7 @@ android {
 dependencies {
     api(project(":core:preferences"))
     api(project(":core:common"))
+    api(project(":domain"))
 
     // Networking
     implementation(libs.retrofit)
