@@ -49,7 +49,7 @@ android {
 dependencies {
     api(project(":core:ui"))
     implementation(project(":core:navigation"))
-    implementation(project(":data"))
+    implementation(project(":domain"))
 
     // DI - Hilt
     implementation(libs.hilt.android)
