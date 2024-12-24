@@ -4,6 +4,7 @@ import com.sergiocrespotoubes.data.network.dto.ArtistDto
 import com.sergiocrespotoubes.data.network.dto.ArtistsListDto
 import com.sergiocrespotoubes.data.network.dto.SearchDto
 import com.sergiocrespotoubes.data.services.SearchServices
+import com.sergiocrespotoubes.domain.repository.SearchRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

@@ -4,6 +4,8 @@ plugins {
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
     id("kotlinx-serialization")
+    alias(libs.plugins.ksp)
+
 }
 
 android {
@@ -87,6 +89,7 @@ dependencies {
 
     // Database - Room
     implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
     annotationProcessor(libs.androidx.room.compiler)
-    annotationProcessor(libs.androidx.room.ktx)
 }
