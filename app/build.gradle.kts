@@ -70,7 +70,7 @@ dependencies {
     api(project(":data"))
     api(project(":domain"))
     api(project(":presentation:trackdetail"))
-    api(project(":presentation:artistsearch"))
+    api(project(":presentation:search"))
     api(project(":presentation:splash"))
 
     // Debug

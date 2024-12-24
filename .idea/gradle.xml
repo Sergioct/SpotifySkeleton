@@ -34,7 +34,7 @@
             <option value="$PROJECT_DIR$/data" />
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/presentation" />
-            <option value="$PROJECT_DIR$/presentation/artistsearch" />
+            <option value="$PROJECT_DIR$/presentation/search" />
             <option value="$PROJECT_DIR$/presentation/splash" />
             <option value="$PROJECT_DIR$/presentation/trackdetail" />
           </set>

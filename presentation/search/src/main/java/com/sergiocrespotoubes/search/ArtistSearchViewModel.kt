@@ -1,11 +1,11 @@
-package com.sergiocrespotoubes.artistsearch
+package com.sergiocrespotoubes.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.sergiocrespotoubes.common.SpotifyLog
 import com.sergiocrespotoubes.domain.model.ArtistModel
 import com.sergiocrespotoubes.domain.usecase.search.GetSearchByArtistUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -28,7 +28,9 @@ class ArtistSearchViewModel @Inject constructor(
         get() = _event.asSharedFlow()
 
     fun onInputTextUpdate(inputText: String) = viewModelScope.launch {
+        _state.emit(_state.value.copy(inputText = inputText))
         showLoading()
+        SpotifyLog.i("onInputTextUpdate($inputText)")
         getSearchByArtistUseCase.execute(inputText).collect { searchResult ->
             searchResult.onSuccess { artists ->
                 _state.value = _state.value.copy(

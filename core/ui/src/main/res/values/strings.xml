@@ -1,12 +1,15 @@
 <resources>
     <string name="app_name">Spotify Skeleton</string>
 
-   <!-- Splash -->
+    <!-- Common -->
+    <string name="search_error_message">Error</string>
+
+    <!-- Splash -->
     <string name="splash_retry_button">Reintentar</string>
     <string name="splash_error_message">Error</string>
 
     <!-- Search -->
-    <string name="search_error_message">Error</string>
+    <string name="search_filter_label">Search for an artist</string>
 
     <!-- TracksList -->
 

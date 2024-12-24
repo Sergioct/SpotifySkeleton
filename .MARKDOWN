@@ -113,6 +113,7 @@ en [libraries] y no en [plugins]
 
 #### Diciembre 
 ❓ ¿Se puede migrar todo de kapt a ksp?
+❓ ¿Mostrar Toolbar desde setContent o por pantalla?
 
 ### Información
 

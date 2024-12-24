@@ -33,10 +33,12 @@ fun SpotifyTextSubtitleBold(
 fun SpotifyTextMedium(
     modifier: Modifier = Modifier,
     text: String,
+    maxLines: Int = Int.MAX_VALUE,
 ) {
     Text(
         modifier = modifier,
         text = text,
         style = SpotifyTextStyle.medium(),
+        maxLines = maxLines,
     )
 }

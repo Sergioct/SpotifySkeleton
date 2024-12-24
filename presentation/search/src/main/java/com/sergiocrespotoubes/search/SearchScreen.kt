@@ -1,4 +1,4 @@
-package com.sergiocrespotoubes.artistsearch
+package com.sergiocrespotoubes.search
 
 import android.content.Context
 import android.widget.Toast
@@ -16,16 +16,19 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.sergiocrespotoubes.domain.model.ArtistModel
 import com.sergiocrespotoubes.ui.R
+import com.sergiocrespotoubes.ui.components.SpotifyHorizontalProgressBar
 import com.sergiocrespotoubes.ui.components.SpotifyTextField
+import com.sergiocrespotoubes.ui.components.SpotifyToolbar
 import com.sergiocrespotoubes.ui.theme.SpotifyDimen
 import com.sergiocrespotoubes.ui.theme.SpotifyTheme
 
 @Composable
-fun ArtistSearchScreen(
+fun SearchScreen(
     artistSearchViewModel: ArtistSearchViewModel = hiltViewModel()
 ) {
     Design(artistSearchViewModel)
@@ -37,23 +40,29 @@ private fun Design(artistSearchViewModel: ArtistSearchViewModel) {
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier =
-                Modifier
-                    .align(Alignment.Center)
-                    .padding(horizontal = SpotifyDimen.spaceBig()),
+            Modifier
+                .align(Alignment.TopCenter),
         ) {
-            val state = artistSearchViewModel.state.collectAsState()
+            SpotifyToolbar(stringResource(R.string.app_name))
+
+            val state = artistSearchViewModel.state.collectAsState().value
             SpotifyTextField(
-                label = "Search for an artist",
+                modifier = Modifier
+                    .padding(horizontal = SpotifyDimen.spaceBig()),
+                label = stringResource(R.string.search_filter_label),
                 leadingIcon = Icons.Default.Search,
-                text = state.value.inputText,
+                text = state.inputText,
                 onValueChange = {
                     artistSearchViewModel.onInputTextUpdate(it)
                 },
             )
-            ArtistsList(state.value.artists)
+            SpotifyHorizontalProgressBar(state.loading)
+            ArtistsList(state.artists)
         }
     }
 }
+
+
 
 @Composable
 fun ReadEvents(artistSearchViewModel: ArtistSearchViewModel) {
@@ -94,6 +103,6 @@ fun ArtistsList(artists: List<ArtistModel>) {
 @Composable
 fun SplashScreenPreview() {
     SpotifyTheme {
-        ArtistSearchScreen()
+        SearchScreen()
     }
 }
