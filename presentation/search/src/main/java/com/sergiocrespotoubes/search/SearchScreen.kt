@@ -29,14 +29,14 @@ import com.sergiocrespotoubes.ui.theme.SpotifyTheme
 
 @Composable
 fun SearchScreen(
-    artistSearchViewModel: ArtistSearchViewModel = hiltViewModel()
+    searchViewModel: SearchViewModel = hiltViewModel()
 ) {
-    Design(artistSearchViewModel)
-    ReadEvents(artistSearchViewModel)
+    Design(searchViewModel)
+    ReadEvents(searchViewModel)
 }
 
 @Composable
-private fun Design(artistSearchViewModel: ArtistSearchViewModel) {
+private fun Design(searchViewModel: SearchViewModel) {
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier =
@@ -45,7 +45,7 @@ private fun Design(artistSearchViewModel: ArtistSearchViewModel) {
         ) {
             SpotifyToolbar(stringResource(R.string.app_name))
 
-            val state = artistSearchViewModel.state.collectAsState().value
+            val state = searchViewModel.state.collectAsState().value
             SpotifyTextField(
                 modifier = Modifier
                     .padding(horizontal = SpotifyDimen.spaceBig()),
@@ -53,7 +53,7 @@ private fun Design(artistSearchViewModel: ArtistSearchViewModel) {
                 leadingIcon = Icons.Default.Search,
                 text = state.inputText,
                 onValueChange = {
-                    artistSearchViewModel.onInputTextUpdate(it)
+                    searchViewModel.onInputTextUpdate(it)
                 },
             )
             SpotifyHorizontalProgressBar(state.loading)
@@ -65,13 +65,13 @@ private fun Design(artistSearchViewModel: ArtistSearchViewModel) {
 
 
 @Composable
-fun ReadEvents(artistSearchViewModel: ArtistSearchViewModel) {
+fun ReadEvents(searchViewModel: SearchViewModel) {
     val context = LocalContext.current
     LaunchedEffect(Unit) {
-        artistSearchViewModel.event.collect { event ->
+        searchViewModel.event.collect { event ->
             when(event) {
-                is ArtistSearchViewModel.Event.NavigateToArtistSearch -> {}
-                is ArtistSearchViewModel.Event.ShowError -> {
+                is SearchViewModel.Event.NavigateToArtistSearch -> {}
+                is SearchViewModel.Event.ShowError -> {
                     showToastError(context)
                 }
             }

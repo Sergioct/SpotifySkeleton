@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sergiocrespotoubes.common.SpotifyLog
 import com.sergiocrespotoubes.domain.model.ArtistModel
+import com.sergiocrespotoubes.domain.usecase.artist.GetArtistsFromDbUseCase
 import com.sergiocrespotoubes.domain.usecase.search.GetSearchByArtistUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -16,8 +17,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ArtistSearchViewModel @Inject constructor(
-    val getSearchByArtistUseCase: GetSearchByArtistUseCase
+class SearchViewModel @Inject constructor(
+    private val getSearchByArtistUseCase: GetSearchByArtistUseCase,
+    private val getArtistsFromDbUseCase: GetArtistsFromDbUseCase,
 ) : ViewModel() {
     private val _state: MutableStateFlow<State> = MutableStateFlow(State())
     val state: StateFlow<State>
@@ -27,11 +29,32 @@ class ArtistSearchViewModel @Inject constructor(
     val event: SharedFlow<Event>
         get() = _event.asSharedFlow()
 
+    init {
+        viewModelScope.launch {
+            getArtistsFromDb()
+        }
+    }
+
     fun onInputTextUpdate(inputText: String) = viewModelScope.launch {
         _state.emit(_state.value.copy(inputText = inputText))
+        getSearchByArtist(artistName = inputText)
+    }
+
+    private suspend fun getArtistsFromDb() {
+        SpotifyLog.i("getSearchByArtist()")
+        getArtistsFromDbUseCase.execute().collect { searchResult ->
+            searchResult.onSuccess { artists ->
+                _state.value = _state.value.copy(
+                    artists = artists
+                )
+            }
+        }
+    }
+
+    private suspend fun getSearchByArtist(artistName: String) {
         showLoading()
-        SpotifyLog.i("onInputTextUpdate($inputText)")
-        getSearchByArtistUseCase.execute(inputText).collect { searchResult ->
+        SpotifyLog.i("onInputTextUpdate($artistName)")
+        getSearchByArtistUseCase.execute(artistName).collect { searchResult ->
             searchResult.onSuccess { artists ->
                 _state.value = _state.value.copy(
                     artists = artists,
