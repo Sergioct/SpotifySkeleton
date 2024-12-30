@@ -9,12 +9,11 @@ import com.sergiocrespotoubes.domain.model.ArtistModel
 import com.sergiocrespotoubes.domain.repository.SearchRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.merge
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -29,31 +28,29 @@ class SearchRepositoryImpl @Inject constructor(
             readArtistsFromDb(),
             readArtistsFromNetwork(artistName)
         ).collect { result ->
-            emitAll(result)
+            emit(result)
         }
     }
 
-    private suspend fun FlowCollector<Result<List<ArtistModel>>>.readArtistsFromNetwork(
+    private fun readArtistsFromNetwork(
         artistName: String
-    ) {
+    ) = flow {
         SpotifyLog.i("readArtistsFromNetwork $artistName")
-        withContext(Dispatchers.IO) {
-            searchNetworkDataSource.getSearchArtistSongs(artistName)
-                .map { searchDto ->
-                    SpotifyLog.i("readArtistsFromNetwork result $searchDto")
-                    searchDto.artists.items.map { artistDto ->
-                        artistDto.toArtistEntity()
-                    }
-                }.map { artistsEntity ->
-                    SpotifyLog.i("readArtistsFromNetwork saveArtists $artistsEntity")
-                    artistsDbDatasource.clearAll()
-                    artistsDbDatasource.saveArtists(artistsEntity)
-                    emitAll(readArtistsFromDb())
+        searchNetworkDataSource.getSearchArtists(artistName)
+            .map { searchDto ->
+                SpotifyLog.i("readArtistsFromNetwork result $searchDto ${searchDto.artists.items.size}")
+                searchDto.artists.items.map { artistDto ->
+                    artistDto.toArtistEntity()
                 }
-        }
-    }
+            }.map { artistsEntity ->
+                SpotifyLog.i("readArtistsFromNetwork saveArtists $artistsEntity")
+                artistsDbDatasource.clearAll()
+                artistsDbDatasource.saveArtists(artistsEntity)
+                emitAll(readArtistsFromDb())
+            }
+    }.flowOn(Dispatchers.IO)
 
-    private suspend fun FlowCollector<Result<List<ArtistModel>>>.readArtistsFromDb() {
+    private fun readArtistsFromDb() = flow {
         SpotifyLog.i("readArtistsFromDb")
         val artistsFlow = artistsDbDatasource.getArtists().map {
             Result.success(it.map { artistsEntity ->
@@ -61,5 +58,5 @@ class SearchRepositoryImpl @Inject constructor(
             })
         }
         emitAll(artistsFlow)
-    }
+    }.flowOn(Dispatchers.IO)
 }
