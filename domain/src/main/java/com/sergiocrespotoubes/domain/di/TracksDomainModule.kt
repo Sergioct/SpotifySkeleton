@@ -4,6 +4,8 @@ import com.sergiocrespotoubes.domain.usecase.tracks.GetTrackByIdUseCase
 import com.sergiocrespotoubes.domain.usecase.tracks.GetTrackByIdUseCaseImpl
 import com.sergiocrespotoubes.domain.usecase.tracks.GetTracksByArtistIdUseCase
 import com.sergiocrespotoubes.domain.usecase.tracks.GetTracksByArtistIdUseCaseImpl
+import com.sergiocrespotoubes.domain.usecase.tracks.GetTracksFromDbUseCase
+import com.sergiocrespotoubes.domain.usecase.tracks.GetTracksFromDbUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -17,4 +19,7 @@ interface TracksDomainModule {
 
     @Binds
     fun bindGetTracksByArtistIdUseCase(getTracksByArtistIdUseCaseImpl: GetTracksByArtistIdUseCaseImpl): GetTracksByArtistIdUseCase
+
+    @Binds
+    fun bindGetTracksFromDbUseCase(getTracksFromDbUseCaseImpl: GetTracksFromDbUseCaseImpl): GetTracksFromDbUseCase
 }

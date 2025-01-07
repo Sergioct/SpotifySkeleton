@@ -11,4 +11,11 @@ interface SearchServices {
         @Query("limit") limit: Int = 20,
         @Query("q") artistName: String,
     ): Result<SearchDto>
+
+    @GET(value = "/v1/search")
+    suspend fun getSearchTracks(
+        @Query("type") type: String = "track",
+        @Query("limit") limit: Int = 20,
+        @Query("q") artistName: String,
+    ): Result<SearchDto>
 }

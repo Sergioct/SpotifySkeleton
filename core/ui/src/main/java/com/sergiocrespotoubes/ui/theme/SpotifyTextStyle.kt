@@ -30,4 +30,12 @@ object SpotifyTextStyle {
             fontSize = 14.sp,
             fontWeight = FontWeight.Bold,
         )
+
+    @Composable
+    @ReadOnlyComposable
+    fun small() =
+        TextStyle(
+            fontSize = 12.sp,
+            fontWeight = FontWeight.Thin,
+        )
 }

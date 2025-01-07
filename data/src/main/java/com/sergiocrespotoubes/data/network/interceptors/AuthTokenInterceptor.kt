@@ -15,7 +15,6 @@ class AuthTokenInterceptor
             val request = chain.request()
             val token = preferencesManager.getAuthToken()
             val builder = request.newBuilder()
-            SpotifyLog.i("AuthTokenInterceptor Token: $token")
             if (
                 token.isNotEmpty() &&
                 !request.url.toUrl().toString().contains("/api/token")

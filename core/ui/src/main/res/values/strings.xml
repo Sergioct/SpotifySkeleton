@@ -10,6 +10,8 @@
 
     <!-- Search -->
     <string name="search_filter_label">Search for an artist</string>
+    <string name="search_subtitle_artists">Artists</string>
+    <string name="search_subtitle_tracks">Tracks</string>
 
     <!-- TracksList -->
 

@@ -3,8 +3,6 @@ package com.sergiocrespotoubes.data.network.dto
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class SearchDto(
-    val artists: ArtistsListDto?,
-    val tracks: TracksListDto?,
-) {
-}
+data class TracksListDto(
+    val items: List<TrackDto> = emptyList()
+)

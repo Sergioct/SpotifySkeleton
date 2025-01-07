@@ -42,3 +42,17 @@ fun SpotifyTextMedium(
         maxLines = maxLines,
     )
 }
+
+@Composable
+fun SpotifyTextSmall(
+    modifier: Modifier = Modifier,
+    text: String,
+    maxLines: Int = Int.MAX_VALUE,
+) {
+    Text(
+        modifier = modifier,
+        text = text,
+        style = SpotifyTextStyle.small(),
+        maxLines = maxLines,
+    )
+}

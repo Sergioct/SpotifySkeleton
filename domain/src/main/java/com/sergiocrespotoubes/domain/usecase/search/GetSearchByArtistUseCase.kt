@@ -14,7 +14,6 @@ class GetSearchByArtistUseCaseImpl @Inject constructor(
     private val searchRepository: SearchRepository,
 ) : GetSearchByArtistUseCase {
     override suspend fun execute(artist: String): Flow<Result<List<ArtistModel>>> {
-        SpotifyLog.i("GetSearchByArtistUseCaseImpl.execute($artist)")
         return searchRepository.getSearchByArtist(artist)
     }
 }

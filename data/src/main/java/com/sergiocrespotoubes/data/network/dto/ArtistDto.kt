@@ -8,5 +8,4 @@ data class ArtistDto(
     val name: String,
     val popularity: Int,
     val images: List<ImageDto> = emptyList()
-) {
-}
+)

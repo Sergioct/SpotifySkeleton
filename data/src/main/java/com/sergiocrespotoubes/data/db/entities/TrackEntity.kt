@@ -8,10 +8,6 @@ data class TrackEntity(
     @PrimaryKey
     val id: String,
     val name: String,
-    val duration: Int,
-    val artistId: String,
-    val albumId: String,
-    val previewUrl: String,
-    val imageUrl: String,
-    val isFavorite: Boolean,
+    val image: String,
+    val popularity: Int,
 )
