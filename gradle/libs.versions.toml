@@ -83,4 +83,4 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 ksp = { id= "com.google.devtools.ksp", version.ref = "ksp" }
 room = { id = "androidx.room", version.ref = "room" }
-dependency-check = { id = "org.owasp.dependencycheck", version = "dependencyCheck" }
+dependency-check = { id = "org.owasp.dependencycheck", version.ref = "dependencyCheck" }

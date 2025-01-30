@@ -13,7 +13,7 @@ plugins {
     alias(libs.plugins.spotless) apply false
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.room) apply false
-    //alias(libs.plugins.dependency.check)
+    alias(libs.plugins.dependency.check)
     id("com.spotifyskeleton.root")
 }
 
