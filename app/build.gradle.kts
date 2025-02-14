@@ -3,6 +3,11 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("com.spotifyskeleton.root")
+    id("com.spotifyskeleton.android.application")
+    id("com.spotifyskeleton.android.library")
+    id("com.spotifyskeleton.android.test")
+    id("com.spotifyskeleton.android.compose")
 }
 
 android {

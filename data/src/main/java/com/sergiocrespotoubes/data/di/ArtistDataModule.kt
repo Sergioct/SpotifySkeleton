@@ -11,5 +11,5 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 interface ArtistDataModule {
     @Binds
-    fun bindsArtistRepository(artistRepositoryImpl: ArtistRepositoryImpl): ArtistRepository
+    fun bindsArtistRepository(artistRepository: ArtistRepositoryImpl): ArtistRepository
 }

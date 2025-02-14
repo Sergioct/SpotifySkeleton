@@ -43,7 +43,7 @@ class SearchViewModel @Inject constructor(
     fun onInputTextUpdate(inputText: String) = viewModelScope.launch {
         _state.emit(_state.value.copy(inputText = inputText))
         getSearchByArtist(artistName = inputText)
-        //getSearchByTrack(trackName = inputText)
+        getSearchByTrack(trackName = inputText)
     }
 
     private suspend fun getArtistsFromDb() {

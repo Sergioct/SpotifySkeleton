@@ -1,5 +1,6 @@
 package com.sergiocrespotoubes.convention
 
+import com.sergiocrespotoubes.convention.settings.configureSpotless
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 

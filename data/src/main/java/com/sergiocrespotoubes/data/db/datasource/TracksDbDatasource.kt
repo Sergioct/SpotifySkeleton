@@ -1,7 +1,6 @@
 package com.sergiocrespotoubes.data.db.datasource
 
 import com.sergiocrespotoubes.data.db.dao.TrackDao
-import com.sergiocrespotoubes.data.db.entities.ArtistEntity
 import com.sergiocrespotoubes.data.db.entities.TrackEntity
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

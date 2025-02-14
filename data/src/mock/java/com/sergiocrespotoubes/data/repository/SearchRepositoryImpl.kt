@@ -4,6 +4,8 @@ import com.sergiocrespotoubes.data.network.dto.ArtistDto
 import com.sergiocrespotoubes.data.network.dto.ArtistsListDto
 import com.sergiocrespotoubes.data.network.dto.SearchDto
 import com.sergiocrespotoubes.data.services.SearchServices
+import com.sergiocrespotoubes.domain.model.ArtistModel
+import com.sergiocrespotoubes.domain.model.TrackModel
 import com.sergiocrespotoubes.domain.repository.SearchRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -14,29 +16,36 @@ import javax.inject.Singleton
 class SearchRepositoryImpl @Inject constructor(
     private val searchServices: SearchServices
 ) : SearchRepository {
-    override suspend fun getSearchByArtist(artistName: String): Flow<Result<SearchDto>> =
+    override suspend fun getSearchByArtist(artistName: String): Flow<Result<List<ArtistModel>>> =
         flow {
             emit(
                 Result.success(
-                    SearchDto(
-                        artists = ArtistsListDto(
-                            items = listOf(
-                                ArtistDto(
-                                    id = "1",
-                                    name = "Artist 1",
-                                    images = emptyList(),
-                                    popularity = 0,
-                                ),
-                                ArtistDto(
-                                    id = "2",
-                                    name = "Artist 2",
-                                    images = emptyList(),
-                                    popularity = 1,
-                                ),
-                            ),
-                        ),
+                    listOf(
+                        ArtistModel(
+                            id = "1",
+                            name = "Artist 1",
+                            popularity = 0,
+                            urlPicture = "",
+                        )
                     )
                 ),
             )
         }
+
+    override suspend fun getSearchByTrack(trackName: String): Flow<Result<List<TrackModel>>> =
+        flow {
+            emit(
+                Result.success(
+                    listOf(
+                        TrackModel(
+                            id = "1",
+                            name = "Artist 1",
+                            popularity = 0,
+                            urlPicture = "",
+                        )
+                    )
+                ),
+            )
+        }
+
 }

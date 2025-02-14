@@ -1,4 +1,4 @@
-package com.sergiocrespotoubes.convention
+package com.sergiocrespotoubes.convention.settings
 
 import com.diffplug.gradle.spotless.SpotlessExtension
 import org.gradle.api.Project

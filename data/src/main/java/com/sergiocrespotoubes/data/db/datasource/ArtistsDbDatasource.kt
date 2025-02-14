@@ -1,6 +1,5 @@
 package com.sergiocrespotoubes.data.db.datasource
 
-import com.sergiocrespotoubes.common.SpotifyLog
 import com.sergiocrespotoubes.data.db.dao.ArtistDao
 import com.sergiocrespotoubes.data.db.entities.ArtistEntity
 import kotlinx.coroutines.flow.Flow
