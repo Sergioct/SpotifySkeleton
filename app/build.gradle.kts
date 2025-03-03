@@ -7,7 +7,6 @@ plugins {
     id("com.spotifyskeleton.android.application")
     id("com.spotifyskeleton.android.library")
     id("com.spotifyskeleton.android.test")
-    id("com.spotifyskeleton.android.compose")
 }
 
 android {
@@ -75,6 +74,7 @@ dependencies {
     api(project(":data"))
     api(project(":domain"))
     api(project(":presentation:trackdetail"))
+    api(project(":presentation:artistdetail"))
     api(project(":presentation:search"))
     api(project(":presentation:splash"))
 
