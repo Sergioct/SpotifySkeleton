@@ -96,6 +96,10 @@ he utilizado `GsonConverterFactory` para posteriormente mapearlo a `Either` con 
 #### Dic-2024
 ✅ Problema en la generación de la base de datos, no podía encontrarla en tiempo de ejecución
 
+#### Feb-2025
+Execution failed for task ':app:validateSigningMockDebug'.
+> org/bouncycastle/asn1/edec/EdECObjectIdentifiers
+
 ### Dudas
 
 #### Oct-2024
