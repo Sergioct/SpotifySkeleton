@@ -1,11 +1,10 @@
 package com.sergiocrespotoubes.data.repository
 
-import com.sergiocrespotoubes.common.SpotifyLog
 import com.sergiocrespotoubes.data.db.datasource.ArtistsDbDatasource
 import com.sergiocrespotoubes.data.db.datasource.TracksDbDataSource
 import com.sergiocrespotoubes.data.mapper.toArtistEntity
+import com.sergiocrespotoubes.data.mapper.toArtistModel
 import com.sergiocrespotoubes.data.mapper.toTrackEntity
-import com.sergiocrespotoubes.data.mapper.toTrackModel
 import com.sergiocrespotoubes.data.network.datasource.SearchNetworkDataSource
 import com.sergiocrespotoubes.domain.model.ArtistModel
 import com.sergiocrespotoubes.domain.model.TrackModel
@@ -40,14 +39,12 @@ class SearchRepositoryImpl
 
         private fun readArtistsFromNetwork(artistName: String) =
             flow {
-                SpotifyLog.i("readArtistsFromNetwork $artistName")
                 searchNetworkDataSource.getSearchArtists(artistName)
                     .map { searchDto ->
                         searchDto.artists?.items?.map { artistDto ->
                             artistDto.toArtistEntity()
                         }
                     }.map { artistsEntity ->
-                        SpotifyLog.i("readArtistsFromNetwork saveArtists $artistsEntity")
                         artistsEntity?.let {
                             artistsDbDatasource.clearAll()
                             artistsDbDatasource.saveArtists(artistsEntity)
@@ -58,12 +55,11 @@ class SearchRepositoryImpl
 
         private fun readArtistsFromDb() =
             flow {
-                SpotifyLog.i("readArtistsFromDb")
                 val artistsFlow =
                     artistsDbDatasource.getArtists().map {
                         Result.success(
                             it.map { artistsEntity ->
-                                artistsEntity.toTrackModel()
+                                artistsEntity.toArtistModel()
                             },
                         )
                     }
@@ -72,7 +68,6 @@ class SearchRepositoryImpl
 
         override suspend fun getSearchByTrack(trackName: String): Flow<Result<List<TrackModel>>> =
             flow {
-                SpotifyLog.i("SearchRepositoryImpl getSearchByTrack")
                 merge(
                     readTracksFromDb(),
                     readTracksFromNetwork(trackName),
@@ -83,14 +78,12 @@ class SearchRepositoryImpl
 
         private fun readTracksFromNetwork(tracksName: String) =
             flow {
-                SpotifyLog.i("readTracksFromNetwork $tracksName")
                 searchNetworkDataSource.getSearchTracks(tracksName)
                     .map { searchDto ->
                         searchDto.tracks?.items?.map { trackDto ->
                             trackDto.toTrackEntity()
                         }
                     }.map { tracksEntity ->
-                        SpotifyLog.i("readTracksFromNetwork saveTracks $tracksEntity")
                         tracksEntity?.let {
                             tracksDbDatasource.saveTracks(tracksEntity)
                             tracksDbDatasource.clearAll()
@@ -101,12 +94,11 @@ class SearchRepositoryImpl
 
         private fun readTracksFromDb() =
             flow {
-                SpotifyLog.i("readTracksFromDb")
                 val artistsFlow =
                     tracksDbDatasource.getTracks().map {
                         Result.success(
                             it.map { artistsEntity ->
-                                artistsEntity.toTrackModel()
+                                artistsEntity.toArtistModel()
                             },
                         )
                     }

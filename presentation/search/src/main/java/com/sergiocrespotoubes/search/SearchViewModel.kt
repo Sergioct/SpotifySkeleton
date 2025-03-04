@@ -54,7 +54,7 @@ class SearchViewModel
                 searchResult.onSuccess { artists ->
                     _state.value =
                         _state.value.copy(
-                            artists = artists,
+                            artists = artists.sortedByDescending { it.popularity },
                         )
                 }
             }
@@ -65,7 +65,7 @@ class SearchViewModel
                 searchResult.onSuccess { tracks ->
                     _state.value =
                         _state.value.copy(
-                            tracks = tracks,
+                            tracks = tracks.sortedByDescending { it.popularity },
                         )
                 }
             }
@@ -80,7 +80,7 @@ class SearchViewModel
                 searchResult.onSuccess { artists ->
                     _state.value =
                         _state.value.copy(
-                            artists = artists,
+                            artists = artists.sortedByDescending { it.popularity },
                             artistLoading = false,
                         )
                 }.onFailure {
@@ -101,7 +101,7 @@ class SearchViewModel
                 searchResult.onSuccess { tracks ->
                     _state.value =
                         _state.value.copy(
-                            tracks = tracks,
+                            tracks = tracks.sortedByDescending { it.popularity },
                             trackLoading = false,
                         )
                 }.onFailure {

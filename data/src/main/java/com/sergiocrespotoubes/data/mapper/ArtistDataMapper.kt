@@ -13,7 +13,7 @@ fun ArtistDto.toArtistEntity(): ArtistEntity {
     )
 }
 
-fun ArtistEntity.toTrackModel(): ArtistModel {
+fun ArtistEntity.toArtistModel(): ArtistModel {
     return ArtistModel(
         id = this.id,
         name = this.name,
@@ -22,7 +22,7 @@ fun ArtistEntity.toTrackModel(): ArtistModel {
     )
 }
 
-fun ArtistDto.toTrackModel(): ArtistModel {
+fun ArtistDto.toArtistModel(): ArtistModel {
     return ArtistModel(
         id = this.id,
         name = this.name,

@@ -116,6 +116,9 @@ en [libraries] y no en [plugins]
 ❓ ¿Se puede migrar todo de kapt a ksp?
 ❓ ¿Mostrar Toolbar desde setContent o por pantalla?
 
+#### Feb-2025
+❓ Github actions, se ejecutan dos pipelines pero quiero un pipeline con dos acciones
+
 ### Información
 
 Github GPG

@@ -9,11 +9,13 @@ import com.sergiocrespotoubes.ui.theme.SpotifyTextStyle
 fun SpotifyTextTitleBold(
     modifier: Modifier = Modifier,
     text: String,
+    maxLines: Int = Int.MAX_VALUE,
 ) {
     Text(
         modifier = modifier,
         text = text,
         style = SpotifyTextStyle.titleBold(),
+        maxLines = maxLines,
     )
 }
 
@@ -21,11 +23,13 @@ fun SpotifyTextTitleBold(
 fun SpotifyTextSubtitleBold(
     modifier: Modifier = Modifier,
     text: String,
+    maxLines: Int = Int.MAX_VALUE,
 ) {
     Text(
         modifier = modifier,
         text = text,
         style = SpotifyTextStyle.subtitleBold(),
+        maxLines = maxLines,
     )
 }
 

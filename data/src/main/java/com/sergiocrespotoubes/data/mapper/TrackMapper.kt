@@ -13,7 +13,7 @@ fun TrackDto.toTrackEntity(): TrackEntity {
     )
 }
 
-fun TrackEntity.toTrackModel(): TrackModel {
+fun TrackEntity.toArtistModel(): TrackModel {
     return TrackModel(
         id = this.id,
         name = this.name,
@@ -22,7 +22,7 @@ fun TrackEntity.toTrackModel(): TrackModel {
     )
 }
 
-fun TrackDto.toTrackModel(): TrackModel {
+fun TrackDto.toArtistModel(): TrackModel {
     return TrackModel(
         id = this.id,
         name = this.name,

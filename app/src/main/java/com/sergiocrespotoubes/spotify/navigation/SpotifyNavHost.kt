@@ -24,14 +24,10 @@ fun SpotifyNavHost(mainNavController: NavHostController) {
         )
         artistSearchScreen(
             navigateToArtistDetail = { artistId ->
-                mainNavController.navigate(Routes.ArtistDetail(artistId = artistId)) {
-                    popUpTo(Routes.ArtistSearch) { inclusive = true }
-                }
+                mainNavController.navigate(Routes.ArtistDetail(artistId = artistId))
             },
             navigateToTrackDetail = { trackId ->
-                mainNavController.navigate(Routes.TrackDetail(trackId = trackId)) {
-                    popUpTo(Routes.ArtistSearch) { inclusive = true }
-                }
+                mainNavController.navigate(Routes.TrackDetail(trackId = trackId))
             },
         )
         artistDetailScreen()

@@ -1,5 +1,6 @@
 package com.sergiocrespotoubes.data.di
 
+import com.sergiocrespotoubes.data.services.ArtistServices
 import com.sergiocrespotoubes.data.services.SearchServices
 import com.sergiocrespotoubes.data.services.TracksServices
 import com.sergiocrespotoubes.data.services.UserServices
@@ -20,6 +21,14 @@ object NetworkServicesModule {
         @Named("LOGGED") retrofit: Retrofit,
     ): SearchServices {
         return retrofit.create(SearchServices::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideArtistServices(
+        @Named("LOGGED") retrofit: Retrofit,
+    ): ArtistServices {
+        return retrofit.create(ArtistServices::class.java)
     }
 
     @Singleton

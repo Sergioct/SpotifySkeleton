@@ -11,6 +11,8 @@ interface ArtistsDbDatasource {
 
     suspend fun saveArtists(artists: List<ArtistEntity>)
 
+    suspend fun insertArtist(artist: ArtistEntity)
+
     suspend fun clearAll()
 }
 
@@ -26,6 +28,10 @@ class ArtistsDbDatasourceImpl
 
         override suspend fun saveArtists(artists: List<ArtistEntity>) {
             artistDao.insertArtists(artists)
+        }
+
+        override suspend fun insertArtist(artist: ArtistEntity) {
+            artistDao.insertArtist(artist)
         }
 
         override suspend fun clearAll() {
