@@ -41,11 +41,12 @@ he utilizado `GsonConverterFactory` para posteriormente mapearlo a `Either` con 
 - Mock build - ✅
 - Lint
 - Spotless - ✅
-- CI/CD all commits
-- Guardar datos de manera local (Room)
+- CI/CD all commits  - ✅
+- Guardar datos de manera local (Room) ✅
 - Remove native splash
-- Search Artists Screen
-- Tracks List Screen
+- Search Screen - ✅
+- Artist Detail Screen - ✅
+- Track Detail Screen
 - Tests - ✅
 - Tests de UI ?
 - SwipeRefreshLayout
@@ -53,9 +54,9 @@ he utilizado `GsonConverterFactory` para posteriormente mapearlo a `Either` con 
 - Regla orden alfabético .toml ✅
 - Modo claro y oscuro.
 - Utilizar DataStore
-- Buen convenio de commits
-- Conventions
-- Plugin api o implementation
+- Buen convenio de commits ✅
+- Conventions ✅
+- Plugin api o implementation ✅
 
 #### Nov-2024
 - GitHook (Huski)
@@ -72,9 +73,12 @@ he utilizado `GsonConverterFactory` para posteriormente mapearlo a `Either` con 
 - Seguridad (OWASP, Dependency check)
   - https://jeremylong.github.io/DependencyCheck/dependency-check-gradle/index.html
 
-#### Ene-2024
+#### Ene-2025
 - Dar prioridad resultado de network
-- 
+
+#### Feb-2025
+- Mejorar CI/CD
+- Mejorar conventions
 
 ### Problemas
 
