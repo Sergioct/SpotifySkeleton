@@ -4,22 +4,37 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.sergiocrespotoubes.navigation.Routes
+import com.sergiocrespotoubes.spotify.navigation.navgraph.artistDetailScreen
 import com.sergiocrespotoubes.spotify.navigation.navgraph.artistSearchScreen
 import com.sergiocrespotoubes.spotify.navigation.navgraph.splashScreen
+import com.sergiocrespotoubes.spotify.navigation.navgraph.trackDetailScreen
 
 @Composable
 fun SpotifyNavHost(mainNavController: NavHostController) {
     NavHost(
         navController = mainNavController,
-        startDestination = Routes.Splash.route,
+        startDestination = Routes.Splash,
     ) {
         splashScreen(
             navigateToArtistSearch = {
-                mainNavController.navigate(Routes.ArtistSearch.route) {
-                    popUpTo(Routes.Splash.route) { inclusive = true }
+                mainNavController.navigate(Routes.ArtistSearch) {
+                    popUpTo(Routes.Splash) { inclusive = true }
                 }
             },
         )
-        artistSearchScreen()
+        artistSearchScreen(
+            navigateToArtistDetail = { artistId ->
+                mainNavController.navigate(Routes.ArtistDetail(artistId = artistId)) {
+                    popUpTo(Routes.ArtistSearch) { inclusive = true }
+                }
+            },
+            navigateToTrackDetail = { trackId ->
+                mainNavController.navigate(Routes.TrackDetail(trackId = trackId)) {
+                    popUpTo(Routes.ArtistSearch) { inclusive = true }
+                }
+            },
+        )
+        artistDetailScreen()
+        trackDetailScreen()
     }
 }

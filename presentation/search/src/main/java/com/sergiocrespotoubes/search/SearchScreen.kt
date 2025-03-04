@@ -2,6 +2,7 @@ package com.sergiocrespotoubes.search
 
 import android.content.Context
 import android.widget.Toast
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -37,9 +38,17 @@ import com.sergiocrespotoubes.ui.theme.SpotifyDimen
 import com.sergiocrespotoubes.ui.theme.SpotifyTheme
 
 @Composable
-fun SearchScreen(searchViewModel: SearchViewModel = hiltViewModel()) {
+fun SearchScreen(
+    searchViewModel: SearchViewModel = hiltViewModel(),
+    navigateToArtistDetail: (String) -> Unit,
+    navigateToTrackDetail: (String) -> Unit,
+) {
     Design(searchViewModel)
-    ReadEvents(searchViewModel)
+    ReadEvents(
+        searchViewModel,
+        navigateToArtistDetail = navigateToArtistDetail,
+        navigateToTrackDetail = navigateToTrackDetail,
+    )
 }
 
 @Composable
@@ -73,7 +82,10 @@ private fun Design(searchViewModel: SearchViewModel) {
                 SpotifySpinnerLoading(state.artistLoading)
             }
             item {
-                ArtistsList(state.artists)
+                ArtistsList(
+                    searchViewModel = searchViewModel,
+                    state.artists,
+                )
             }
             item {
                 SpotifySpinnerLoading(state.trackLoading)
@@ -86,12 +98,21 @@ private fun Design(searchViewModel: SearchViewModel) {
 }
 
 @Composable
-fun ReadEvents(searchViewModel: SearchViewModel) {
+fun ReadEvents(
+    searchViewModel: SearchViewModel,
+    navigateToArtistDetail: (String) -> Unit,
+    navigateToTrackDetail: (String) -> Unit,
+) {
     val context = LocalContext.current
     LaunchedEffect(Unit) {
         searchViewModel.event.collect { event ->
             when (event) {
-                is SearchViewModel.Event.NavigateToArtistSearch -> {}
+                is SearchViewModel.Event.NavigateToArtistDetail -> {
+                    navigateToArtistDetail(event.artistId)
+                }
+                is SearchViewModel.Event.NavigateToTrackDetail -> {
+                    navigateToTrackDetail(event.trackId)
+                }
                 is SearchViewModel.Event.ShowError -> {
                     showToastError(context)
                 }
@@ -109,75 +130,82 @@ private fun showToastError(context: Context) {
 }
 
 @Composable
-fun ArtistsList(artists: List<ArtistModel>) {
-    if (artists.isNotEmpty())
-        {
-            SpotifyTextMedium(
-                modifier =
-                    Modifier
-                        .fillMaxWidth()
-                        .padding(all = SpotifyDimen.spaceMedium()),
-                text = stringResource(R.string.search_subtitle_artists),
-            )
-            LazyRow {
-                artists.forEach { artist ->
-                    item {
-                        Column(
+fun ArtistsList(
+    searchViewModel: SearchViewModel,
+    artists: List<ArtistModel>,
+) {
+    if (artists.isNotEmpty()) {
+        SpotifyTextMedium(
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(all = SpotifyDimen.spaceMedium()),
+            text = stringResource(R.string.search_subtitle_artists),
+        )
+        LazyRow {
+            artists.forEach { artist ->
+                item {
+                    Column(
+                        modifier =
+                            Modifier
+                                .padding(horizontal = SpotifyDimen.spaceMedium())
+                                .clickable {
+                                    searchViewModel.onArtistClick(artist.id)
+                                },
+                    ) {
+                        AsyncImage(
                             modifier =
                                 Modifier
-                                    .padding(horizontal = SpotifyDimen.spaceMedium()),
-                        ) {
-                            AsyncImage(
-                                modifier =
-                                    Modifier
-                                        .width(96.dp)
-                                        .height(96.dp),
-                                model = artist.urlPicture,
-                                placeholder = painterResource(R.drawable.placeholder),
-                                contentDescription = null,
-                                contentScale = ContentScale.Crop,
-                                error = painterResource(R.drawable.placeholder),
-                            )
-                            SpotifyTextSmall(
-                                modifier =
-                                    Modifier
-                                        .width(96.dp)
-                                        .padding(top = SpotifyDimen.spaceSmall()),
-                                text = artist.name,
-                                maxLines = 1,
-                            )
-                        }
+                                    .width(96.dp)
+                                    .height(96.dp),
+                            model = artist.urlPicture,
+                            placeholder = painterResource(R.drawable.placeholder),
+                            contentDescription = null,
+                            contentScale = ContentScale.Crop,
+                            error = painterResource(R.drawable.placeholder),
+                        )
+                        SpotifyTextSmall(
+                            modifier =
+                                Modifier
+                                    .width(96.dp)
+                                    .padding(top = SpotifyDimen.spaceSmall()),
+                            text = artist.name,
+                            maxLines = 1,
+                        )
                     }
                 }
             }
         }
+    }
 }
 
 @Composable
 fun TracksList(tracks: List<TrackModel>) {
-    if (tracks.isNotEmpty())
-        {
+    if (tracks.isNotEmpty()) {
+        Text(
+            modifier =
+                Modifier
+                    .fillMaxWidth(),
+            text = stringResource(R.string.search_subtitle_tracks),
+        )
+        tracks.forEach { track ->
             Text(
                 modifier =
                     Modifier
                         .fillMaxWidth(),
-                text = stringResource(R.string.search_subtitle_tracks),
+                text = track.name,
             )
-            tracks.forEach { track ->
-                Text(
-                    modifier =
-                        Modifier
-                            .fillMaxWidth(),
-                    text = track.name,
-                )
-            }
         }
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun SplashScreenPreview() {
+fun SearchScreenPreview() {
     SpotifyTheme {
-        SearchScreen()
+        SearchScreen(
+            navigateToArtistDetail = {},
+            navigateToTrackDetail = {},
+        )
     }
 }

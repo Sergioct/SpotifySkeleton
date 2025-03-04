@@ -38,7 +38,7 @@ class SearchViewModel
         init {
             viewModelScope.launch {
                 getArtistsFromDb()
-                // getTracksFromDb()
+                getTracksFromDb()
             }
         }
 
@@ -113,9 +113,19 @@ class SearchViewModel
             }
         }
 
-        sealed class Event {
-            data object NavigateToArtistSearch : Event()
+        fun onArtistClick(artistId: String) =
+            viewModelScope.launch {
+                _event.emit(Event.NavigateToArtistDetail(artistId))
+            }
 
+        fun onTrackClick(trackId: String) =
+            viewModelScope.launch {
+                _event.emit(Event.NavigateToTrackDetail(trackId))
+            }
+
+        sealed class Event {
+            data class NavigateToArtistDetail(val artistId: String) : Event()
+            data class NavigateToTrackDetail(val trackId: String) : Event()
             data object ShowError : Event()
         }
 

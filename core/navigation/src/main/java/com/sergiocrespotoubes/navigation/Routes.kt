@@ -1,11 +1,21 @@
 package com.sergiocrespotoubes.navigation
 
-sealed class Routes(val route: String) {
-    data object Splash : Routes("splash")
+import kotlinx.serialization.Serializable
 
-    data object ArtistSearch : Routes("artist_search")
+sealed class Routes {
+    @Serializable
+    object Splash
 
-    data object TrackDetail : Routes("track_detail/{trackDetail}") {
-        fun createRoute(trackDetail: TrackDetail): String = "track_detail/$trackDetail"
-    }
+    @Serializable
+    object ArtistSearch
+
+    @Serializable
+    data class TrackDetail(
+        val trackId: String
+    )
+
+    @Serializable
+    data class ArtistDetail(
+        val artistId: String
+    )
 }

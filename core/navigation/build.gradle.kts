@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -40,6 +41,7 @@ android {
 
 dependencies {
     api(libs.androidx.navigation.compose)
+    implementation(libs.kotlinx.serialization.json)
     api(project(":domain"))
 
     api(libs.androidx.hilt.navigation.compose)

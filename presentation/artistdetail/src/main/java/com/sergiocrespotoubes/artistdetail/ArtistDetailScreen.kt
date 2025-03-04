@@ -10,7 +10,10 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.sergiocrespotoubes.ui.theme.SpotifyTheme
 
 @Composable
-fun ArtistDetailScreen(artistDetailViewModel: ArtistDetailViewModel = hiltViewModel()) {
+fun ArtistDetailScreen(
+    artistId: String,
+    artistDetailViewModel: ArtistDetailViewModel = hiltViewModel()
+) {
     Design(artistDetailViewModel)
     ReadEvents(artistDetailViewModel)
 }
@@ -45,8 +48,8 @@ fun ReadEvents(artistDetailViewModel: ArtistDetailViewModel) {
 
 @Preview(showBackground = true)
 @Composable
-fun SplashScreenPreview() {
+fun ArtistDetailScreenPreview() {
     SpotifyTheme {
-        ArtistDetailScreen()
+        ArtistDetailScreen("artistId")
     }
 }

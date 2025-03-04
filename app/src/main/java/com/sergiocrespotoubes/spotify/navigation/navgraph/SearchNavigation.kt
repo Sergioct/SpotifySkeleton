@@ -5,10 +5,14 @@ import androidx.navigation.compose.composable
 import com.sergiocrespotoubes.navigation.Routes
 import com.sergiocrespotoubes.search.SearchScreen
 
-fun NavGraphBuilder.artistSearchScreen() {
-    composable(
-        route = Routes.ArtistSearch.route,
-    ) {
-        SearchScreen()
+fun NavGraphBuilder.artistSearchScreen(
+    navigateToArtistDetail: (String) -> Unit,
+    navigateToTrackDetail: (String) -> Unit,
+) {
+    composable<Routes.ArtistSearch> {
+        SearchScreen(
+            navigateToArtistDetail = navigateToArtistDetail,
+            navigateToTrackDetail = navigateToTrackDetail,
+        )
     }
 }
