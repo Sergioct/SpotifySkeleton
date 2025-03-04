@@ -12,7 +12,7 @@ import com.sergiocrespotoubes.ui.theme.SpotifyTheme
 @Composable
 fun ArtistDetailScreen(
     artistId: String,
-    artistDetailViewModel: ArtistDetailViewModel = hiltViewModel()
+    artistDetailViewModel: ArtistDetailViewModel = hiltViewModel(),
 ) {
     Design(artistDetailViewModel)
     ReadEvents(artistDetailViewModel)

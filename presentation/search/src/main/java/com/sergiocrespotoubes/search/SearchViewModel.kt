@@ -125,7 +125,9 @@ class SearchViewModel
 
         sealed class Event {
             data class NavigateToArtistDetail(val artistId: String) : Event()
+
             data class NavigateToTrackDetail(val trackId: String) : Event()
+
             data object ShowError : Event()
         }
 

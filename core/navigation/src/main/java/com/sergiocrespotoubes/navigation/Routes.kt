@@ -11,11 +11,11 @@ sealed class Routes {
 
     @Serializable
     data class TrackDetail(
-        val trackId: String
+        val trackId: String,
     )
 
     @Serializable
     data class ArtistDetail(
-        val artistId: String
+        val artistId: String,
     )
 }

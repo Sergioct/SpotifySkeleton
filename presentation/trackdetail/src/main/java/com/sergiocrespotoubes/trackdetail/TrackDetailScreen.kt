@@ -12,7 +12,7 @@ import com.sergiocrespotoubes.ui.theme.SpotifyTheme
 @Composable
 fun TrackDetailScreen(
     trackId: String,
-    trackDetailViewModel: TrackDetailViewModel = hiltViewModel()
+    trackDetailViewModel: TrackDetailViewModel = hiltViewModel(),
 ) {
     Design(trackDetailViewModel)
     ReadEvents(trackDetailViewModel)
