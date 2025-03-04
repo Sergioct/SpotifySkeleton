@@ -13,28 +13,36 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class TracksRepositoryImpl @Inject constructor(
-    private val tracksServices: TracksServices,
-    private val tracksDbDatasource: TracksDbDataSource,
-) : TracksRepository {
-    override suspend fun getTracksByArtistId(artistId: String): Flow<Result<List<TrackModel>>> =
-        flow {
-            emit(tracksServices.getTracksByArtistId(artistId).map { tracksDto ->
-                tracksDto.map { it.toTrackModel() }
-            })
-        }
+class TracksRepositoryImpl
+    @Inject
+    constructor(
+        private val tracksServices: TracksServices,
+        private val tracksDbDatasource: TracksDbDataSource,
+    ) : TracksRepository {
+        override suspend fun getTracksByArtistId(artistId: String): Flow<Result<List<TrackModel>>> =
+            flow {
+                emit(
+                    tracksServices.getTracksByArtistId(artistId).map { tracksDto ->
+                        tracksDto.map { it.toTrackModel() }
+                    },
+                )
+            }
 
-    override suspend fun getTrackById(trackId: String): Flow<Result<TrackModel>> =
-        flow {
-            emit(tracksServices.getTrackById(trackId).map { trackDto ->
-                trackDto.toTrackModel()
-            })
-        }
+        override suspend fun getTrackById(trackId: String): Flow<Result<TrackModel>> =
+            flow {
+                emit(
+                    tracksServices.getTrackById(trackId).map { trackDto ->
+                        trackDto.toTrackModel()
+                    },
+                )
+            }
 
-    override suspend fun getTracksFromDb(): Flow<Result<List<TrackModel>>> = flow {
-        val tracksFlow = tracksDbDatasource.getTracks().map { artists ->
-            Result.success(artists.map { it.toTrackModel() })
-        }
-        emitAll(tracksFlow)
+        override suspend fun getTracksFromDb(): Flow<Result<List<TrackModel>>> =
+            flow {
+                val tracksFlow =
+                    tracksDbDatasource.getTracks().map { artists ->
+                        Result.success(artists.map { it.toTrackModel() })
+                    }
+                emitAll(tracksFlow)
+            }
     }
-}

@@ -6,8 +6,6 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -28,24 +26,24 @@ fun SpotifyTextField(
         },
         modifier = modifier.fillMaxWidth(),
         label = { Text(label) },
-        leadingIcon = { leadingIcon?.let {
+        leadingIcon = {
+            leadingIcon?.let {
                 Icon(
                     imageVector = leadingIcon,
                     contentDescription = "Search",
                 )
             }
-        }
+        },
     )
 }
 
 @Composable
 @Preview
-fun SpotifyTextFieldPreview(
-    modifier: Modifier = Modifier,
-) {
+fun SpotifyTextFieldPreview(modifier: Modifier = Modifier) {
     SpotifyTextField(
-        modifier = modifier
-            .fillMaxWidth(),
-        onValueChange = {}
+        modifier =
+            modifier
+                .fillMaxWidth(),
+        onValueChange = {},
     )
 }

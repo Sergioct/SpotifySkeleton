@@ -26,7 +26,7 @@ gradlePlugin {
             id = "com.spotifyskeleton.android.compose"
             implementationClass = "com.sergiocrespotoubes.convention.AndroidComposeConventionPlugin"
         }
-        register("root"){
+        register("root") {
             id = "com.spotifyskeleton.root"
             implementationClass = "com.sergiocrespotoubes.convention.RootConventionPlugin"
         }

@@ -1,6 +1,5 @@
 package com.sergiocrespotoubes.data.network.interceptors
 
-import com.sergiocrespotoubes.common.SpotifyLog
 import com.sergiocrespotoubes.preferences.PreferencesManager
 import okhttp3.Interceptor
 import okhttp3.Response
@@ -18,10 +17,9 @@ class AuthTokenInterceptor
             if (
                 token.isNotEmpty() &&
                 !request.url.toUrl().toString().contains("/api/token")
-                )
-                {
-                    builder.addHeader("Authorization", "Bearer $token")
-                }
+            ) {
+                builder.addHeader("Authorization", "Bearer $token")
+            }
             val requestWithAuthHeader = builder.build()
             return chain.proceed(requestWithAuthHeader)
         }

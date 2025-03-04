@@ -10,11 +10,13 @@ interface GetSearchByTrackUseCase {
     suspend fun execute(trackName: String): Flow<Result<List<TrackModel>>>
 }
 
-class GetSearchByTrackUseCaseImpl @Inject constructor(
-    private val searchRepository: SearchRepository,
-) : GetSearchByTrackUseCase {
-    override suspend fun execute(trackName: String): Flow<Result<List<TrackModel>>> {
-        SpotifyLog.i("GetSearchByTrackUseCaseImpl.execute")
-        return searchRepository.getSearchByTrack(trackName)
+class GetSearchByTrackUseCaseImpl
+    @Inject
+    constructor(
+        private val searchRepository: SearchRepository,
+    ) : GetSearchByTrackUseCase {
+        override suspend fun execute(trackName: String): Flow<Result<List<TrackModel>>> {
+            SpotifyLog.i("GetSearchByTrackUseCaseImpl.execute")
+            return searchRepository.getSearchByTrack(trackName)
+        }
     }
-}

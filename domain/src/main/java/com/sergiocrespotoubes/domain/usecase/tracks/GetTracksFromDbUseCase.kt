@@ -9,10 +9,12 @@ interface GetTracksFromDbUseCase {
     suspend fun execute(): Flow<Result<List<TrackModel>>>
 }
 
-class GetTracksFromDbUseCaseImpl @Inject constructor(
-    private val tracksRepository: TracksRepository,
-) : GetTracksFromDbUseCase {
-    override suspend fun execute(): Flow<Result<List<TrackModel>>> {
-        return tracksRepository.getTracksFromDb()
+class GetTracksFromDbUseCaseImpl
+    @Inject
+    constructor(
+        private val tracksRepository: TracksRepository,
+    ) : GetTracksFromDbUseCase {
+        override suspend fun execute(): Flow<Result<List<TrackModel>>> {
+            return tracksRepository.getTracksFromDb()
+        }
     }
-}

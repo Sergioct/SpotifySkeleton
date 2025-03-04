@@ -4,5 +4,5 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class AlbumDto(
-    val images: List<ImageDto> = emptyList()
+    val images: List<ImageDto> = emptyList(),
 )

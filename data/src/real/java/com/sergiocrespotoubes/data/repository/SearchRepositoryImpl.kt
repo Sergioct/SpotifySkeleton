@@ -4,8 +4,8 @@ import com.sergiocrespotoubes.common.SpotifyLog
 import com.sergiocrespotoubes.data.db.datasource.ArtistsDbDatasource
 import com.sergiocrespotoubes.data.db.datasource.TracksDbDataSource
 import com.sergiocrespotoubes.data.mapper.toArtistEntity
-import com.sergiocrespotoubes.data.mapper.toTrackModel
 import com.sergiocrespotoubes.data.mapper.toTrackEntity
+import com.sergiocrespotoubes.data.mapper.toTrackModel
 import com.sergiocrespotoubes.data.network.datasource.SearchNetworkDataSource
 import com.sergiocrespotoubes.domain.model.ArtistModel
 import com.sergiocrespotoubes.domain.model.TrackModel
@@ -21,86 +21,95 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class SearchRepositoryImpl @Inject constructor(
-    private val artistsDbDatasource: ArtistsDbDatasource,
-    private val tracksDbDatasource: TracksDbDataSource,
-    private val searchNetworkDataSource: SearchNetworkDataSource,
-) : SearchRepository {
-
-    override suspend fun getSearchByArtist(artistName: String): Flow<Result<List<ArtistModel>>> = flow {
-        merge(
-            readArtistsFromDb(),
-            readArtistsFromNetwork(artistName)
-        ).collect { result ->
-            emit(result)
-        }
-    }
-
-    private fun readArtistsFromNetwork(
-        artistName: String
-    ) = flow {
-        SpotifyLog.i("readArtistsFromNetwork $artistName")
-        searchNetworkDataSource.getSearchArtists(artistName)
-            .map { searchDto ->
-                searchDto.artists?.items?.map { artistDto ->
-                    artistDto.toArtistEntity()
+class SearchRepositoryImpl
+    @Inject
+    constructor(
+        private val artistsDbDatasource: ArtistsDbDatasource,
+        private val tracksDbDatasource: TracksDbDataSource,
+        private val searchNetworkDataSource: SearchNetworkDataSource,
+    ) : SearchRepository {
+        override suspend fun getSearchByArtist(artistName: String): Flow<Result<List<ArtistModel>>> =
+            flow {
+                merge(
+                    readArtistsFromDb(),
+                    readArtistsFromNetwork(artistName),
+                ).collect { result ->
+                    emit(result)
                 }
-            }.map { artistsEntity ->
-                SpotifyLog.i("readArtistsFromNetwork saveArtists $artistsEntity")
-                artistsEntity?.let {
-                    artistsDbDatasource.clearAll()
-                    artistsDbDatasource.saveArtists(artistsEntity)
-                }
-                emitAll(readArtistsFromDb())
             }
-    }.flowOn(Dispatchers.IO)
 
-    private fun readArtistsFromDb() = flow {
-        SpotifyLog.i("readArtistsFromDb")
-        val artistsFlow = artistsDbDatasource.getArtists().map {
-            Result.success(it.map { artistsEntity ->
-                artistsEntity.toTrackModel()
-            })
-        }
-        emitAll(artistsFlow)
-    }.flowOn(Dispatchers.IO)
+        private fun readArtistsFromNetwork(artistName: String) =
+            flow {
+                SpotifyLog.i("readArtistsFromNetwork $artistName")
+                searchNetworkDataSource.getSearchArtists(artistName)
+                    .map { searchDto ->
+                        searchDto.artists?.items?.map { artistDto ->
+                            artistDto.toArtistEntity()
+                        }
+                    }.map { artistsEntity ->
+                        SpotifyLog.i("readArtistsFromNetwork saveArtists $artistsEntity")
+                        artistsEntity?.let {
+                            artistsDbDatasource.clearAll()
+                            artistsDbDatasource.saveArtists(artistsEntity)
+                        }
+                        emitAll(readArtistsFromDb())
+                    }
+            }.flowOn(Dispatchers.IO)
 
-    override suspend fun getSearchByTrack(trackName: String): Flow<Result<List<TrackModel>>> = flow {
-        SpotifyLog.i("SearchRepositoryImpl getSearchByTrack")
-        merge(
-            readTracksFromDb(),
-            readTracksFromNetwork(trackName)
-        ).collect { result ->
-            emit(result)
-        }
-    }
+        private fun readArtistsFromDb() =
+            flow {
+                SpotifyLog.i("readArtistsFromDb")
+                val artistsFlow =
+                    artistsDbDatasource.getArtists().map {
+                        Result.success(
+                            it.map { artistsEntity ->
+                                artistsEntity.toTrackModel()
+                            },
+                        )
+                    }
+                emitAll(artistsFlow)
+            }.flowOn(Dispatchers.IO)
 
-    private fun readTracksFromNetwork(
-        tracksName: String
-    ) = flow {
-        SpotifyLog.i("readTracksFromNetwork $tracksName")
-        searchNetworkDataSource.getSearchTracks(tracksName)
-            .map { searchDto ->
-                searchDto.tracks?.items?.map { trackDto ->
-                    trackDto.toTrackEntity()
+        override suspend fun getSearchByTrack(trackName: String): Flow<Result<List<TrackModel>>> =
+            flow {
+                SpotifyLog.i("SearchRepositoryImpl getSearchByTrack")
+                merge(
+                    readTracksFromDb(),
+                    readTracksFromNetwork(trackName),
+                ).collect { result ->
+                    emit(result)
                 }
-            }.map { tracksEntity ->
-                SpotifyLog.i("readTracksFromNetwork saveTracks $tracksEntity")
-                tracksEntity?.let {
-                    tracksDbDatasource.saveTracks(tracksEntity)
-                    tracksDbDatasource.clearAll()
-                }
-                emitAll(readTracksFromDb())
             }
-    }.flowOn(Dispatchers.IO)
 
-    private fun readTracksFromDb() = flow {
-        SpotifyLog.i("readTracksFromDb")
-        val artistsFlow = tracksDbDatasource.getTracks().map {
-            Result.success(it.map { artistsEntity ->
-                artistsEntity.toTrackModel()
-            })
-        }
-        emitAll(artistsFlow)
-    }.flowOn(Dispatchers.IO)
-}
+        private fun readTracksFromNetwork(tracksName: String) =
+            flow {
+                SpotifyLog.i("readTracksFromNetwork $tracksName")
+                searchNetworkDataSource.getSearchTracks(tracksName)
+                    .map { searchDto ->
+                        searchDto.tracks?.items?.map { trackDto ->
+                            trackDto.toTrackEntity()
+                        }
+                    }.map { tracksEntity ->
+                        SpotifyLog.i("readTracksFromNetwork saveTracks $tracksEntity")
+                        tracksEntity?.let {
+                            tracksDbDatasource.saveTracks(tracksEntity)
+                            tracksDbDatasource.clearAll()
+                        }
+                        emitAll(readTracksFromDb())
+                    }
+            }.flowOn(Dispatchers.IO)
+
+        private fun readTracksFromDb() =
+            flow {
+                SpotifyLog.i("readTracksFromDb")
+                val artistsFlow =
+                    tracksDbDatasource.getTracks().map {
+                        Result.success(
+                            it.map { artistsEntity ->
+                                artistsEntity.toTrackModel()
+                            },
+                        )
+                    }
+                emitAll(artistsFlow)
+            }.flowOn(Dispatchers.IO)
+    }

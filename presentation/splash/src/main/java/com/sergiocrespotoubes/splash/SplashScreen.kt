@@ -66,18 +66,17 @@ private fun Design(
                         .padding(top = SpotifyDimen.spaceMedium()),
                 text = getString(context, R.string.app_name),
             )
-            if (state == SplashViewModel.State.Error)
-                {
-                    SpotifyButton(
-                        modifier =
-                            Modifier
-                                .align(Alignment.CenterHorizontally)
-                                .padding(top = SpotifyDimen.spaceBig())
-                                .wrapContentSize(),
-                        text = stringResource(R.string.splash_retry_button),
-                        onClick = { onRetryClick() },
-                    )
-                }
+            if (state == SplashViewModel.State.Error) {
+                SpotifyButton(
+                    modifier =
+                        Modifier
+                            .align(Alignment.CenterHorizontally)
+                            .padding(top = SpotifyDimen.spaceBig())
+                            .wrapContentSize(),
+                    text = stringResource(R.string.splash_retry_button),
+                    onClick = { onRetryClick() },
+                )
+            }
         }
     }
 }

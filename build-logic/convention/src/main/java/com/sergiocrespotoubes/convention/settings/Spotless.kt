@@ -1,16 +1,18 @@
 package com.sergiocrespotoubes.convention.settings
 
 import com.diffplug.gradle.spotless.SpotlessExtension
+import com.diffplug.spotless.LineEnding.PLATFORM_NATIVE
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 
 fun Project.configureSpotless() {
-
     with(pluginManager) {
         apply("com.diffplug.spotless")
     }
 
     spotless {
+        lineEndings = PLATFORM_NATIVE
+
         // ratchetFrom("origin/develop")
         format("misc") {
             target("**/*.gradle", "**/*.md", "**/.gitignore")
@@ -39,18 +41,6 @@ fun Project.configureSpotless() {
             endWithNewline()
         }
     }
-    //spotless {
-    //    kotlin {
-    //        target("src/**/*.kt")
-    //        targetExclude("**/build/**")
-//
-    //        ktlint()
-    //        trimTrailingWhitespace()
-    //        indentWithSpaces()
-    //        endWithNewline()
-    //    }
-    //}
 }
 
-private fun Project.spotless(action: SpotlessExtension.() -> Unit) =
-    extensions.configure<SpotlessExtension>(action)
+private fun Project.spotless(action: SpotlessExtension.() -> Unit) = extensions.configure<SpotlessExtension>(action)

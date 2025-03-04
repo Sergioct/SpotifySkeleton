@@ -10,9 +10,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.sergiocrespotoubes.ui.theme.SpotifyTheme
 
 @Composable
-fun TrackDetailScreen(
-    trackDetailViewModel: TrackDetailViewModel = hiltViewModel()
-) {
+fun TrackDetailScreen(trackDetailViewModel: TrackDetailViewModel = hiltViewModel()) {
     Design(trackDetailViewModel)
     ReadEvents(trackDetailViewModel)
 }
@@ -21,12 +19,11 @@ fun TrackDetailScreen(
 private fun Design(trackDetailViewModel: TrackDetailViewModel) {
     Column(
         modifier =
-        Modifier
-            .fillMaxSize(),
+            Modifier
+                .fillMaxSize(),
     ) {
-        //SpotifyToolbar(stringResource(R.string.app_name))
+        // SpotifyToolbar(stringResource(R.string.app_name))
         Column {
-
         }
     }
 }
@@ -34,7 +31,7 @@ private fun Design(trackDetailViewModel: TrackDetailViewModel) {
 @Composable
 fun ReadEvents(trackDetailViewModel: TrackDetailViewModel) {
     val context = LocalContext.current
-    //LaunchedEffect(Unit) {
+    // LaunchedEffect(Unit) {
     //    trackDetailViewModel.event.collect { event ->
     //        when(event) {
     //            is SearchViewModel.Event.NavigateToArtistSearch -> {}
@@ -43,7 +40,7 @@ fun ReadEvents(trackDetailViewModel: TrackDetailViewModel) {
     //            }
     //        }
     //    }
-    //}
+    // }
 }
 
 @Preview(showBackground = true)

@@ -10,11 +10,12 @@ import androidx.compose.ui.graphics.graphicsLayer
 @Composable
 fun SpotifyHorizontalProgressBar(isVisible: Boolean) {
     LinearProgressIndicator(
-        modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentHeight()
-            .graphicsLayer {
-                alpha = if (isVisible) 1f else 0f
-            },
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .wrapContentHeight()
+                .graphicsLayer {
+                    alpha = if (isVisible) 1f else 0f
+                },
     )
 }

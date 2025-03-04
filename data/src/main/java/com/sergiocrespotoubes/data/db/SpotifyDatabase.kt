@@ -12,7 +12,8 @@ import com.sergiocrespotoubes.data.db.entities.TrackEntity
     entities = [TrackEntity::class, ArtistEntity::class],
     exportSchema = false,
 )
-abstract class SpotifyDatabase: RoomDatabase() {
+abstract class SpotifyDatabase : RoomDatabase() {
     abstract fun trackDao(): TrackDao
+
     abstract fun artistDao(): ArtistDao
 }

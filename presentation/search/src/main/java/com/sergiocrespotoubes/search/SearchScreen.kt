@@ -37,9 +37,7 @@ import com.sergiocrespotoubes.ui.theme.SpotifyDimen
 import com.sergiocrespotoubes.ui.theme.SpotifyTheme
 
 @Composable
-fun SearchScreen(
-    searchViewModel: SearchViewModel = hiltViewModel()
-) {
+fun SearchScreen(searchViewModel: SearchViewModel = hiltViewModel()) {
     Design(searchViewModel)
     ReadEvents(searchViewModel)
 }
@@ -48,15 +46,16 @@ fun SearchScreen(
 private fun Design(searchViewModel: SearchViewModel) {
     Column(
         modifier =
-        Modifier
-            .fillMaxSize(),
+            Modifier
+                .fillMaxSize(),
     ) {
         SpotifyToolbar(stringResource(R.string.app_name))
 
         val state = searchViewModel.state.collectAsState().value
         SpotifyTextField(
-            modifier = Modifier
-                .padding(horizontal = SpotifyDimen.spaceBig()),
+            modifier =
+                Modifier
+                    .padding(horizontal = SpotifyDimen.spaceBig()),
             label = stringResource(R.string.search_filter_label),
             leadingIcon = Icons.Default.Search,
             text = state.inputText,
@@ -65,9 +64,10 @@ private fun Design(searchViewModel: SearchViewModel) {
             },
         )
         LazyColumn(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = SpotifyDimen.spaceMedium()),
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = SpotifyDimen.spaceMedium()),
         ) {
             item {
                 SpotifySpinnerLoading(state.artistLoading)
@@ -90,7 +90,7 @@ fun ReadEvents(searchViewModel: SearchViewModel) {
     val context = LocalContext.current
     LaunchedEffect(Unit) {
         searchViewModel.event.collect { event ->
-            when(event) {
+            when (event) {
                 is SearchViewModel.Event.NavigateToArtistSearch -> {}
                 is SearchViewModel.Event.ShowError -> {
                     showToastError(context)
@@ -110,60 +110,68 @@ private fun showToastError(context: Context) {
 
 @Composable
 fun ArtistsList(artists: List<ArtistModel>) {
-    if(artists.isNotEmpty()){
-        SpotifyTextMedium(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(all = SpotifyDimen.spaceMedium()),
-            text = stringResource(R.string.search_subtitle_artists)
-        )
-        LazyRow {
-            artists.forEach { artist ->
-                item {
-                    Column(
-                        modifier = Modifier
-                            .padding(horizontal = SpotifyDimen.spaceMedium())
-                    ) {
-                        AsyncImage(
-                            modifier = Modifier
-                                .width(96.dp)
-                                .height(96.dp),
-                            model = artist.urlPicture,
-                            placeholder = painterResource(R.drawable.placeholder),
-                            contentDescription = null,
-                            contentScale = ContentScale.Crop,
-                            error = painterResource(R.drawable.placeholder),
-                        )
-                        SpotifyTextSmall(
-                            modifier = Modifier
-                                .width(96.dp)
-                                .padding(top = SpotifyDimen.spaceSmall()),
-                            text = artist.name,
-                            maxLines = 1,
-                        )
+    if (artists.isNotEmpty())
+        {
+            SpotifyTextMedium(
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(all = SpotifyDimen.spaceMedium()),
+                text = stringResource(R.string.search_subtitle_artists),
+            )
+            LazyRow {
+                artists.forEach { artist ->
+                    item {
+                        Column(
+                            modifier =
+                                Modifier
+                                    .padding(horizontal = SpotifyDimen.spaceMedium()),
+                        ) {
+                            AsyncImage(
+                                modifier =
+                                    Modifier
+                                        .width(96.dp)
+                                        .height(96.dp),
+                                model = artist.urlPicture,
+                                placeholder = painterResource(R.drawable.placeholder),
+                                contentDescription = null,
+                                contentScale = ContentScale.Crop,
+                                error = painterResource(R.drawable.placeholder),
+                            )
+                            SpotifyTextSmall(
+                                modifier =
+                                    Modifier
+                                        .width(96.dp)
+                                        .padding(top = SpotifyDimen.spaceSmall()),
+                                text = artist.name,
+                                maxLines = 1,
+                            )
+                        }
                     }
                 }
             }
         }
-    }
 }
 
 @Composable
 fun TracksList(tracks: List<TrackModel>) {
-    if(tracks.isNotEmpty()){
-        Text(
-            modifier = Modifier
-                .fillMaxWidth(),
-            text = stringResource(R.string.search_subtitle_tracks)
-        )
-        tracks.forEach { track ->
+    if (tracks.isNotEmpty())
+        {
             Text(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                text = track.name
+                modifier =
+                    Modifier
+                        .fillMaxWidth(),
+                text = stringResource(R.string.search_subtitle_tracks),
             )
+            tracks.forEach { track ->
+                Text(
+                    modifier =
+                        Modifier
+                            .fillMaxWidth(),
+                    text = track.name,
+                )
+            }
         }
-    }
 }
 
 @Preview(showBackground = true)

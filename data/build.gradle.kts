@@ -5,7 +5,6 @@ plugins {
     id("com.google.dagger.hilt.android")
     id("kotlinx-serialization")
     alias(libs.plugins.ksp)
-
 }
 
 android {

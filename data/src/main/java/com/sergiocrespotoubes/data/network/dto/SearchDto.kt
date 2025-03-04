@@ -6,5 +6,4 @@ import kotlinx.serialization.Serializable
 data class SearchDto(
     val artists: ArtistsListDto? = null,
     val tracks: TracksListDto? = null,
-) {
-}
+)

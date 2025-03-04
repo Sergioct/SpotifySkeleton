@@ -1,6 +1,5 @@
-import org.jetbrains.kotlin.builtins.StandardNames.FqNames.target
-import java.util.Properties
 import java.io.FileInputStream
+import java.util.Properties
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
@@ -17,9 +16,10 @@ plugins {
     id("com.spotifyskeleton.root")
 }
 
-val prop = Properties().apply {
-    load(FileInputStream(rootProject.file("gradle.properties")))
-}
+val prop =
+    Properties().apply {
+        load(FileInputStream(rootProject.file("gradle.properties")))
+    }
 
 dependencyCheck {
     nvd {

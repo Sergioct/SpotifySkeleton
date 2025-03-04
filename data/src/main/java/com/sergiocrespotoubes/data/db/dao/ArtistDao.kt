@@ -1,11 +1,11 @@
 package com.sergiocrespotoubes.data.db.dao
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import androidx.room.Delete
-import androidx.room.OnConflictStrategy
 import com.sergiocrespotoubes.data.db.entities.ArtistEntity
 import kotlinx.coroutines.flow.Flow
 

@@ -12,13 +12,17 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ArtistRepositoryImpl @Inject constructor(
-    private val artistsDbDatasource: ArtistsDbDatasource,
-) : ArtistRepository {
-    override suspend fun getArtistsFromDb(): Flow<Result<List<ArtistModel>>> = flow {
-        val artistsFlow = artistsDbDatasource.getArtists().map { artists ->
-            Result.success(artists.map { it.toTrackModel() })
-        }
-        emitAll(artistsFlow)
+class ArtistRepositoryImpl
+    @Inject
+    constructor(
+        private val artistsDbDatasource: ArtistsDbDatasource,
+    ) : ArtistRepository {
+        override suspend fun getArtistsFromDb(): Flow<Result<List<ArtistModel>>> =
+            flow {
+                val artistsFlow =
+                    artistsDbDatasource.getArtists().map { artists ->
+                        Result.success(artists.map { it.toTrackModel() })
+                    }
+                emitAll(artistsFlow)
+            }
     }
-}

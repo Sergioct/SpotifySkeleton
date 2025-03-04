@@ -8,23 +8,27 @@ import javax.inject.Singleton
 
 interface ArtistsDbDatasource {
     fun getArtists(): Flow<List<ArtistEntity>>
+
     suspend fun saveArtists(artists: List<ArtistEntity>)
+
     suspend fun clearAll()
 }
 
 @Singleton
-class ArtistsDbDatasourceImpl @Inject constructor(
-    private val artistDao: ArtistDao,
-) : ArtistsDbDatasource {
-    override fun getArtists(): Flow<List<ArtistEntity>> {
-        return artistDao.getArtists()
-    }
+class ArtistsDbDatasourceImpl
+    @Inject
+    constructor(
+        private val artistDao: ArtistDao,
+    ) : ArtistsDbDatasource {
+        override fun getArtists(): Flow<List<ArtistEntity>> {
+            return artistDao.getArtists()
+        }
 
-    override suspend fun saveArtists(artists: List<ArtistEntity>) {
-        artistDao.insertArtists(artists)
-    }
+        override suspend fun saveArtists(artists: List<ArtistEntity>) {
+            artistDao.insertArtists(artists)
+        }
 
-    override suspend fun clearAll() {
-        artistDao.clearAll()
+        override suspend fun clearAll() {
+            artistDao.clearAll()
+        }
     }
-}

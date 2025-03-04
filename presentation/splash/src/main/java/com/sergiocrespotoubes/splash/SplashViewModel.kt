@@ -44,30 +44,32 @@ class SplashViewModel
                 checkAllTasksAreCompleted()
             }
 
-        private fun getAuthInfo() = viewModelScope.launch {
-            getAuthInfoUseCase.execute().collect {
-                it.onSuccess { authInfo ->
-                    preferencesManager.setAuthToken(authInfo.accessToken)
-                    tasksCompleted++
-                    checkAllTasksAreCompleted()
-                }
-                .onFailure {
-                    _event.emit(Event.ShowError)
-                    _state.value = State.Error
+        private fun getAuthInfo() =
+            viewModelScope.launch {
+                getAuthInfoUseCase.execute().collect {
+                    it.onSuccess { authInfo ->
+                        preferencesManager.setAuthToken(authInfo.accessToken)
+                        tasksCompleted++
+                        checkAllTasksAreCompleted()
+                    }
+                        .onFailure {
+                            _event.emit(Event.ShowError)
+                            _state.value = State.Error
+                        }
                 }
             }
-        }
 
         fun onRetryClick() {
             _state.value = State.Idle
             getAuthInfo()
         }
 
-        private fun checkAllTasksAreCompleted() = viewModelScope.launch {
-            if (tasksCompleted >= NUMBER_OF_TASKS) {
-                _event.emit(Event.NavigateToArtistSearch)
+        private fun checkAllTasksAreCompleted() =
+            viewModelScope.launch {
+                if (tasksCompleted >= NUMBER_OF_TASKS) {
+                    _event.emit(Event.NavigateToArtistSearch)
+                }
             }
-        }
 
         sealed interface State {
             data object Idle : State

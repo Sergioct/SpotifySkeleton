@@ -13,14 +13,16 @@ import com.sergiocrespotoubes.ui.theme.SpotifyTheme
 @Composable
 fun SpotifyToolbar(title: String) {
     TopAppBar(
-        modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentHeight()
-            .background(color = SpotifyTheme().color.teal200),
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .wrapContentHeight()
+                .background(color = SpotifyTheme().color.teal200),
         title = {
-        SpotifyTextMedium(
-            text = title,
-            maxLines = 1,
-        )
-    })
+            SpotifyTextMedium(
+                text = title,
+                maxLines = 1,
+            )
+        },
+    )
 }

@@ -11,10 +11,12 @@ interface TracksNetworkDataSource {
 }
 
 @Singleton
-class TracksNetworkDataSourceImpl @Inject constructor(
-    private val tracksDao: TrackDao,
-) : TracksNetworkDataSource {
-    override suspend fun getTracks(): Flow<List<TrackEntity>> {
-        return tracksDao.getTracks()
+class TracksNetworkDataSourceImpl
+    @Inject
+    constructor(
+        private val tracksDao: TrackDao,
+    ) : TracksNetworkDataSource {
+        override suspend fun getTracks(): Flow<List<TrackEntity>> {
+            return tracksDao.getTracks()
+        }
     }
-}

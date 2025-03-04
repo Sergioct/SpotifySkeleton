@@ -9,16 +9,19 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class UserRepositoryImpl @Inject constructor(
-    val userServices: UserServices
-) : UserRepository {
-    override suspend fun getAuthInfo(): Flow<Result<AuthInfoModel>> = flow {
-        emit(
-            Result.success(
-                AuthInfoModel(
-                    accessToken = "1234567890",
-                ),
-            ),
-        )
+class UserRepositoryImpl
+    @Inject
+    constructor(
+        val userServices: UserServices,
+    ) : UserRepository {
+        override suspend fun getAuthInfo(): Flow<Result<AuthInfoModel>> =
+            flow {
+                emit(
+                    Result.success(
+                        AuthInfoModel(
+                            accessToken = "1234567890",
+                        ),
+                    ),
+                )
+            }
     }
-}

@@ -9,10 +9,12 @@ interface GetArtistsFromDbUseCase {
     suspend fun execute(): Flow<Result<List<ArtistModel>>>
 }
 
-class GetArtistsFromDbUseCaseImpl @Inject constructor(
-    private val artistRepository: ArtistRepository,
-) : GetArtistsFromDbUseCase {
-    override suspend fun execute(): Flow<Result<List<ArtistModel>>> {
-        return artistRepository.getArtistsFromDb()
+class GetArtistsFromDbUseCaseImpl
+    @Inject
+    constructor(
+        private val artistRepository: ArtistRepository,
+    ) : GetArtistsFromDbUseCase {
+        override suspend fun execute(): Flow<Result<List<ArtistModel>>> {
+            return artistRepository.getArtistsFromDb()
+        }
     }
-}
