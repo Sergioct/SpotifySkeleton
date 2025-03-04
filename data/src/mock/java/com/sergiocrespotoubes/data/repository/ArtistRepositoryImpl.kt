@@ -29,4 +29,18 @@ class ArtistRepositoryImpl
                     ),
                 )
             }
-    }
+
+    override suspend fun getArtistByArtistId(artistId: String): Flow<Result<ArtistModel>> =
+        flow {
+            emit(
+                Result.success(
+                    ArtistModel(
+                        id = "1",
+                        name = "Artist 1",
+                        popularity = 0,
+                        urlPicture = "",
+                    ),
+                ),
+            )
+        }
+}
