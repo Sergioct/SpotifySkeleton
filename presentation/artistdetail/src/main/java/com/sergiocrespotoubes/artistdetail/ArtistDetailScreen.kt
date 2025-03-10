@@ -32,18 +32,18 @@ fun ArtistDetailScreen(
     LaunchedEffect(Unit) {
         artistDetailViewModel.getArtist(artistId)
     }
-    Design(artistDetailViewModel)
+    val state by artistDetailViewModel.state.collectAsState()
+    Design(state)
     ReadEvents(artistDetailViewModel)
 }
 
 @Composable
-private fun Design(artistDetailViewModel: ArtistDetailViewModel) {
+private fun Design(state: ArtistDetailViewModel.State) {
     Column(
         modifier =
             Modifier
                 .fillMaxSize(),
     ) {
-        val state by artistDetailViewModel.state.collectAsState()
         SpotifyToolbar(state.artist?.name ?: "")
         Header(state.artist)
     }
@@ -97,6 +97,15 @@ fun ReadEvents(artistDetailViewModel: ArtistDetailViewModel) {
 @Composable
 fun ArtistDetailScreenPreview() {
     SpotifyTheme {
-        ArtistDetailScreen("artistId")
+        Design(
+            ArtistDetailViewModel.State(
+                artist = ArtistModel(
+                    id = "1",
+                    name = "Name",
+                    urlPicture = "",
+                    popularity = 1,
+                )
+            )
+        )
     }
 }

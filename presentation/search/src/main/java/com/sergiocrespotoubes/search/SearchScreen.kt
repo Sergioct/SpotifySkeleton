@@ -64,6 +64,7 @@ private fun Design(searchViewModel: SearchViewModel) {
         SpotifyTextField(
             modifier =
                 Modifier
+                    .padding(top = SpotifyDimen.spaceBig())
                     .padding(horizontal = SpotifyDimen.spaceBig()),
             label = stringResource(R.string.search_filter_label),
             leadingIcon = Icons.Default.Search,

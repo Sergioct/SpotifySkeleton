@@ -19,7 +19,15 @@ object SpotifyTextStyle {
     @ReadOnlyComposable
     fun subtitleBold() =
         TextStyle(
-            fontSize = 28.sp,
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+        )
+
+    @Composable
+    @ReadOnlyComposable
+    fun big() =
+        TextStyle(
+            fontSize = 16.sp,
             fontWeight = FontWeight.Bold,
         )
 

@@ -4,10 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.navigation.compose.rememberNavController
 import com.sergiocrespotoubes.spotify.navigation.SpotifyNavHost
-import com.sergiocrespotoubes.spotify.ui.theme.SpotifySkeletonTheme
 import com.sergiocrespotoubes.ui.theme.SpotifyTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,8 +17,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            SpotifySkeletonTheme {
-                Surface(color = SpotifyTheme().color.white) {
+            SpotifyTheme {
+                Surface(color = MaterialTheme.colorScheme.background) {
                     val navController = rememberNavController()
                     SpotifyNavHost(
                         mainNavController = navController,
