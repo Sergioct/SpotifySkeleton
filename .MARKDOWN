@@ -79,6 +79,7 @@ he utilizado `GsonConverterFactory` para posteriormente mapearlo a `Either` con 
 #### Feb-2025
 - Mejorar CI/CD
 - Mejorar conventions
+- Accesibilidad
 
 ### Problemas
 

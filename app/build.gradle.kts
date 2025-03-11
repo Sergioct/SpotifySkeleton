@@ -7,6 +7,7 @@ plugins {
     id("com.spotifyskeleton.android.application")
     id("com.spotifyskeleton.android.library")
     id("com.spotifyskeleton.android.test")
+
 }
 
 android {
@@ -16,7 +17,6 @@ android {
     defaultConfig {
         applicationId = "com.sergiocrespotoubes.spotify"
         minSdk = 28
-        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
