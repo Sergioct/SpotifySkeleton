@@ -34,6 +34,20 @@ fun SpotifyTextSubtitleBold(
 }
 
 @Composable
+fun SpotifyTextBig(
+    modifier: Modifier = Modifier,
+    text: String,
+    maxLines: Int = Int.MAX_VALUE,
+) {
+    Text(
+        modifier = modifier,
+        text = text,
+        style = SpotifyTextStyle.big(),
+        maxLines = maxLines,
+    )
+}
+
+@Composable
 fun SpotifyTextMedium(
     modifier: Modifier = Modifier,
     text: String,

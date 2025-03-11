@@ -3,31 +3,29 @@ activityCompose = "1.9.2"
 agp = "8.5.2"
 appcompat = "1.7.0"
 coilCompose = "2.4.0"
-composeBom = "2024.09.01"
+composeBom = "2025.02.00"
 coreKtx = "1.13.1"
 dependencyCheck = "12.0.1"
-espressoCore = "3.6.1"
-hiltAndroid = "2.48.1"
-hiltNavigationCompose = "1.0.0"
-junit = "1.2.1"
+hiltAndroid = "2.49"
+hiltNavigationCompose = "1.2.0"
 junit4 = "4.13.2"
 kotlin = "1.9.21"
 kotlinTest = "1.9.0"
-kotlinxCoroutines = "1.7.2"
+kotlinxCoroutines = "1.8.1"
 kotlinxSerializationJson = "1.6.3"
 ksp = "1.9.21-1.0.16"
-lifecycleRuntimeKtx = "2.8.5"
+lifecycleRuntimeKtx = "2.8.7"
 material = "1.12.0"
 mockk = "1.13.12"
-navigationCompose = "2.8.1"
+navigationCompose = "2.8.8"
 okhttp = "4.12.0"
 retrofit = "2.11.0"
 retrofit2KotlinxSerializationConverter = "1.0.0"
 retrofitAdaptersResult = "1.0.12"
 room = "2.6.1"
-runtime = "1.7.2"
+runtime = "1.7.8"
 turbine = "1.1.0"
-uiToolingPreview = "1.7.2"
+uiToolingPreview = "1.7.8"
 spotless = "6.25.0"
 
 [libraries]
@@ -35,9 +33,7 @@ androidx-activity-compose = { group = "androidx.activity", name = "activity-comp
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }

@@ -32,27 +32,27 @@ he utilizado `GsonConverterFactory` para posteriormente mapearlo a `Either` con 
 ### Objetivos
 
 #### Oct-2024
-- Splash Screen - ✅
-- Compose navigation - ✅
-- Compose - ✅
-- Retrofit - ✅
-- Guardar token en shared preferences - ✅
-- Inyección de dependencias - ✅
-- Mock build - ✅
+- Splash Screen ✅
+- Compose navigation ✅
+- Compose ✅
+- Retrofit ✅
+- Guardar token en shared preferences ✅
+- Inyección de dependencias ✅
+- Mock build ✅
 - Lint
-- Spotless - ✅
-- CI/CD all commits  - ✅
+- Spotless ✅
+- CI/CD all commits  ✅
 - Guardar datos de manera local (Room) ✅
 - Remove native splash
-- Search Screen - ✅
-- Artist Detail Screen - ✅
+- Search Screen ✅
+- Artist Detail Screen ✅
 - Track Detail Screen
 - Tests - ✅
 - Tests de UI ?
 - SwipeRefreshLayout
 - Ordenar .toml - Usado AS para la ordenación(Edit > Sort lines) ✅
 - Regla orden alfabético .toml ✅
-- Modo claro y oscuro.
+- Modo claro y oscuro ✅
 - Utilizar DataStore
 - Buen convenio de commits ✅
 - Conventions ✅
