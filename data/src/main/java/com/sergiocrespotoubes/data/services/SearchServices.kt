@@ -16,6 +16,6 @@ interface SearchServices {
     suspend fun getSearchTracks(
         @Query("type") type: String = "track",
         @Query("limit") limit: Int = 20,
-        @Query("q") artistName: String,
+        @Query("q") trackName: String,
     ): Result<SearchDto>
 }

@@ -2,6 +2,7 @@ package com.sergiocrespotoubes.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.sergiocrespotoubes.common.SpotifyLog
 import com.sergiocrespotoubes.domain.model.ArtistModel
 import com.sergiocrespotoubes.domain.model.TrackModel
 import com.sergiocrespotoubes.domain.usecase.artist.GetArtistsFromDbUseCase
@@ -9,6 +10,7 @@ import com.sergiocrespotoubes.domain.usecase.search.GetSearchByArtistUseCase
 import com.sergiocrespotoubes.domain.usecase.search.GetSearchByTrackUseCase
 import com.sergiocrespotoubes.domain.usecase.tracks.GetTracksFromDbUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -45,8 +47,11 @@ class SearchViewModel
         fun onInputTextUpdate(inputText: String) =
             viewModelScope.launch {
                 _state.emit(_state.value.copy(inputText = inputText))
-                getSearchByArtist(artistName = inputText)
-                getSearchByTrack(trackName = inputText)
+                SpotifyLog.i("onInputTextUpdate")
+                async {
+                    getSearchByTrack(trackName = inputText)
+                    getSearchByArtist(artistName = inputText)
+                }
             }
 
         private suspend fun getArtistsFromDb() {
@@ -97,6 +102,7 @@ class SearchViewModel
                 _state.value.copy(
                     trackLoading = true,
                 )
+            SpotifyLog.i("getSearchByTrack")
             getSearchByTrackUseCase.execute(trackName).collect { searchResult ->
                 searchResult.onSuccess { tracks ->
                     _state.value =

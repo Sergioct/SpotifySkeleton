@@ -23,6 +23,7 @@ class SearchNetworkDataSourceImpl
         }
 
         override suspend fun getSearchTracks(trackName: String): Result<SearchDto> {
-            return searchServices.getSearchArtists(artistName = trackName)
+            val result = searchServices.getSearchTracks(trackName = trackName)
+            return result
         }
     }

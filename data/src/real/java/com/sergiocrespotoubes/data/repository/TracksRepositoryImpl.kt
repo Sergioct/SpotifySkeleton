@@ -1,7 +1,7 @@
 package com.sergiocrespotoubes.data.repository
 
 import com.sergiocrespotoubes.data.db.datasource.TracksDbDataSource
-import com.sergiocrespotoubes.data.mapper.toArtistModel
+import com.sergiocrespotoubes.data.mapper.toTrackModel
 import com.sergiocrespotoubes.data.services.TracksServices
 import com.sergiocrespotoubes.domain.model.TrackModel
 import com.sergiocrespotoubes.domain.repository.TracksRepository
@@ -23,7 +23,7 @@ class TracksRepositoryImpl
             flow {
                 emit(
                     tracksServices.getTracksByArtistId(artistId).map { tracksDto ->
-                        tracksDto.map { it.toArtistModel() }
+                        tracksDto.map { it.toTrackModel() }
                     },
                 )
             }
@@ -32,7 +32,7 @@ class TracksRepositoryImpl
             flow {
                 emit(
                     tracksServices.getTrackById(trackId).map { trackDto ->
-                        trackDto.toArtistModel()
+                        trackDto.toTrackModel()
                     },
                 )
             }
@@ -41,7 +41,7 @@ class TracksRepositoryImpl
             flow {
                 val tracksFlow =
                     tracksDbDatasource.getTracks().map { artists ->
-                        Result.success(artists.map { it.toArtistModel() })
+                        Result.success(artists.map { it.toTrackModel() })
                     }
                 emitAll(tracksFlow)
             }

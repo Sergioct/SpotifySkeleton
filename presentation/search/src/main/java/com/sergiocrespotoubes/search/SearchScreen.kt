@@ -1,9 +1,12 @@
 package com.sergiocrespotoubes.search
 
 import android.content.Context
+import android.widget.Space
 import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -11,12 +14,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -73,11 +78,13 @@ private fun Design(searchViewModel: SearchViewModel) {
                 searchViewModel.onInputTextUpdate(it)
             },
         )
+        val listState = rememberLazyListState()
         LazyColumn(
             modifier =
                 Modifier
                     .fillMaxWidth()
                     .padding(vertical = SpotifyDimen.spaceMedium()),
+            state = listState,
         ) {
             item {
                 SpotifySpinnerLoading(state.artistLoading)
@@ -93,6 +100,9 @@ private fun Design(searchViewModel: SearchViewModel) {
             }
             item {
                 TracksList(state.tracks)
+            }
+            item {
+                Spacer(modifier = Modifier.height(SpotifyDimen.spaceBig()))
             }
         }
     }
@@ -146,34 +156,7 @@ fun ArtistsList(
         LazyRow {
             artists.forEach { artist ->
                 item {
-                    Column(
-                        modifier =
-                            Modifier
-                                .padding(horizontal = SpotifyDimen.spaceMedium())
-                                .clickable {
-                                    searchViewModel.onArtistClick(artist.id)
-                                },
-                    ) {
-                        AsyncImage(
-                            modifier =
-                                Modifier
-                                    .width(96.dp)
-                                    .height(96.dp),
-                            model = artist.urlPicture,
-                            placeholder = painterResource(R.drawable.placeholder),
-                            contentDescription = null,
-                            contentScale = ContentScale.Crop,
-                            error = painterResource(R.drawable.placeholder),
-                        )
-                        SpotifyTextSmall(
-                            modifier =
-                                Modifier
-                                    .width(96.dp)
-                                    .padding(top = SpotifyDimen.spaceSmall()),
-                            text = artist.name,
-                            maxLines = 1,
-                        )
-                    }
+                    ArtistItem(searchViewModel, artist)
                 }
             }
         }
@@ -181,20 +164,93 @@ fun ArtistsList(
 }
 
 @Composable
-fun TracksList(tracks: List<TrackModel>) {
-    if (tracks.isNotEmpty()) {
-        Text(
+private fun ArtistItem(
+    searchViewModel: SearchViewModel,
+    artist: ArtistModel
+) {
+    Column(
+        modifier =
+            Modifier
+                .padding(horizontal = SpotifyDimen.spaceMedium())
+                .clickable {
+                    searchViewModel.onArtistClick(artist.id)
+                },
+    ) {
+        AsyncImage(
             modifier =
                 Modifier
-                    .fillMaxWidth(),
+                    .width(96.dp)
+                    .height(96.dp),
+            model = artist.urlPicture,
+            placeholder = painterResource(R.drawable.placeholder),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            error = painterResource(R.drawable.placeholder),
+        )
+        SpotifyTextSmall(
+            modifier =
+                Modifier
+                    .width(96.dp)
+                    .padding(top = SpotifyDimen.spaceSmall()),
+            text = artist.name,
+            maxLines = 1,
+        )
+    }
+}
+
+@Composable
+fun TracksList(tracks: List<TrackModel>) {
+    if (tracks.isNotEmpty()) {
+        SpotifyTextMedium(
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(all = SpotifyDimen.spaceMedium()),
             text = stringResource(R.string.search_subtitle_tracks),
         )
         tracks.forEach { track ->
-            Text(
-                modifier =
-                    Modifier
-                        .fillMaxWidth(),
+            TrackItem(track)
+        }
+    }
+}
+
+@Composable
+private fun TrackItem(track: TrackModel) {
+    Row (
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = SpotifyDimen.spaceMedium())
+            .padding(bottom = SpotifyDimen.spaceMedium())
+    ){
+        AsyncImage(
+            modifier =
+                Modifier
+                    .width(48.dp)
+                    .height(48.dp),
+            model = track.urlPicture,
+            placeholder = painterResource(R.drawable.placeholder),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            error = painterResource(R.drawable.placeholder),
+        )
+        Column(
+            modifier = Modifier
+                .padding(start = SpotifyDimen.spaceMedium())
+                .fillMaxWidth()
+                .align(Alignment.CenterVertically)
+        ) {
+            SpotifyTextMedium(
+                modifier = Modifier
+                    .fillMaxWidth(),
                 text = track.name,
+                maxLines = 1,
+            )
+            SpotifyTextSmall(
+                modifier = Modifier
+                    .padding(top = SpotifyDimen.spaceSmall())
+                    .fillMaxWidth(),
+                text = track.name,
+                maxLines = 1,
             )
         }
     }

@@ -3,7 +3,7 @@ package com.sergiocrespotoubes.data.repository
 import com.sergiocrespotoubes.data.db.datasource.ArtistsDbDatasource
 import com.sergiocrespotoubes.data.db.datasource.TracksDbDataSource
 import com.sergiocrespotoubes.data.mapper.toArtistEntity
-import com.sergiocrespotoubes.data.mapper.toArtistModel
+import com.sergiocrespotoubes.data.mapper.toTrackModel
 import com.sergiocrespotoubes.data.mapper.toTrackEntity
 import com.sergiocrespotoubes.data.network.datasource.SearchNetworkDataSource
 import com.sergiocrespotoubes.domain.model.ArtistModel
@@ -59,7 +59,7 @@ class SearchRepositoryImpl
                     artistsDbDatasource.getArtists().map {
                         Result.success(
                             it.map { artistsEntity ->
-                                artistsEntity.toArtistModel()
+                                artistsEntity.toTrackModel()
                             },
                         )
                     }
@@ -85,8 +85,8 @@ class SearchRepositoryImpl
                         }
                     }.map { tracksEntity ->
                         tracksEntity?.let {
-                            tracksDbDatasource.saveTracks(tracksEntity)
                             tracksDbDatasource.clearAll()
+                            tracksDbDatasource.saveTracks(tracksEntity)
                         }
                         emitAll(readTracksFromDb())
                     }
@@ -94,14 +94,14 @@ class SearchRepositoryImpl
 
         private fun readTracksFromDb() =
             flow {
-                val artistsFlow =
+                val tracksFlow =
                     tracksDbDatasource.getTracks().map {
                         Result.success(
-                            it.map { artistsEntity ->
-                                artistsEntity.toArtistModel()
+                            it.map { tracksEntity ->
+                                tracksEntity.toTrackModel()
                             },
                         )
                     }
-                emitAll(artistsFlow)
+                emitAll(tracksFlow)
             }.flowOn(Dispatchers.IO)
     }

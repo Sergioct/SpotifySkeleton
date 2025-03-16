@@ -2,7 +2,7 @@ package com.sergiocrespotoubes.data.repository
 
 import com.sergiocrespotoubes.data.db.datasource.ArtistsDbDatasource
 import com.sergiocrespotoubes.data.mapper.toArtistEntity
-import com.sergiocrespotoubes.data.mapper.toArtistModel
+import com.sergiocrespotoubes.data.mapper.toTrackModel
 import com.sergiocrespotoubes.data.network.datasource.ArtistNetworkDataSource
 import com.sergiocrespotoubes.domain.model.ArtistModel
 import com.sergiocrespotoubes.domain.repository.ArtistRepository
@@ -26,7 +26,7 @@ class ArtistRepositoryImpl
             flow {
                 val artistsFlow =
                     artistsDbDatasource.getArtists().map { artists ->
-                        Result.success(artists.map { it.toArtistModel() })
+                        Result.success(artists.map { it.toTrackModel() })
                     }
                 emitAll(artistsFlow)
             }
@@ -38,7 +38,7 @@ class ArtistRepositoryImpl
                         artistDto.toArtistEntity()
                     }.map { artistsEntity ->
                         artistsDbDatasource.insertArtist(artistsEntity)
-                        emit(Result.success(artistsEntity.toArtistModel()))
+                        emit(Result.success(artistsEntity.toTrackModel()))
                     }
             }.flowOn(Dispatchers.IO)
     }
