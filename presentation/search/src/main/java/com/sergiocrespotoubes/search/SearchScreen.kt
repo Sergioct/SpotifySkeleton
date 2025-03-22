@@ -1,8 +1,5 @@
 package com.sergiocrespotoubes.search
 
-import android.content.Context
-import android.widget.Space
-import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -17,7 +14,6 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -27,18 +23,21 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.invisibleToUser
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import coil.compose.AsyncImage
 import com.sergiocrespotoubes.domain.model.ArtistModel
 import com.sergiocrespotoubes.domain.model.TrackModel
 import com.sergiocrespotoubes.ui.R
-import com.sergiocrespotoubes.ui.components.SpotifySpinnerLoading
 import com.sergiocrespotoubes.ui.components.SpotifyTextField
 import com.sergiocrespotoubes.ui.components.SpotifyTextMedium
 import com.sergiocrespotoubes.ui.components.SpotifyTextSmall
 import com.sergiocrespotoubes.ui.components.SpotifyToolbar
+import com.sergiocrespotoubes.ui.components.async.SpotifyAsyncImage
+import com.sergiocrespotoubes.ui.components.loading.SpotifySpinnerLoading
+import com.sergiocrespotoubes.ui.components.showToastError
 import com.sergiocrespotoubes.ui.theme.SpotifyDimen
 import com.sergiocrespotoubes.ui.theme.SpotifyTheme
 
@@ -132,14 +131,6 @@ fun ReadEvents(
     }
 }
 
-private fun showToastError(context: Context) {
-    Toast.makeText(
-        context,
-        context.getString(R.string.splash_error_message),
-        Toast.LENGTH_LONG,
-    ).show()
-}
-
 @Composable
 fun ArtistsList(
     searchViewModel: SearchViewModel,
@@ -166,7 +157,7 @@ fun ArtistsList(
 @Composable
 private fun ArtistItem(
     searchViewModel: SearchViewModel,
-    artist: ArtistModel
+    artist: ArtistModel,
 ) {
     Column(
         modifier =
@@ -176,14 +167,17 @@ private fun ArtistItem(
                     searchViewModel.onArtistClick(artist.id)
                 },
     ) {
-        AsyncImage(
+        SpotifyAsyncImage(
             modifier =
                 Modifier
                     .width(96.dp)
-                    .height(96.dp),
+                    .height(96.dp)
+                    .semantics {
+                        invisibleToUser()
+                    },
             model = artist.urlPicture,
             placeholder = painterResource(R.drawable.placeholder),
-            contentDescription = null,
+            contentDescription = "",
             contentScale = ContentScale.Crop,
             error = painterResource(R.drawable.placeholder),
         )
@@ -216,39 +210,46 @@ fun TracksList(tracks: List<TrackModel>) {
 
 @Composable
 private fun TrackItem(track: TrackModel) {
-    Row (
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = SpotifyDimen.spaceMedium())
-            .padding(bottom = SpotifyDimen.spaceMedium())
-    ){
-        AsyncImage(
+    Row(
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .padding(horizontal = SpotifyDimen.spaceMedium())
+                .padding(bottom = SpotifyDimen.spaceMedium()),
+    ) {
+        SpotifyAsyncImage(
             modifier =
                 Modifier
                     .width(48.dp)
-                    .height(48.dp),
+                    .height(48.dp)
+                    .semantics {
+                        invisibleToUser()
+                    },
             model = track.urlPicture,
             placeholder = painterResource(R.drawable.placeholder),
-            contentDescription = null,
+            contentDescription = "",
             contentScale = ContentScale.Crop,
             error = painterResource(R.drawable.placeholder),
         )
         Column(
-            modifier = Modifier
-                .padding(start = SpotifyDimen.spaceMedium())
-                .fillMaxWidth()
-                .align(Alignment.CenterVertically)
+            modifier =
+                Modifier
+                    .padding(start = SpotifyDimen.spaceMedium())
+                    .fillMaxWidth()
+                    .align(Alignment.CenterVertically),
         ) {
             SpotifyTextMedium(
-                modifier = Modifier
-                    .fillMaxWidth(),
+                modifier =
+                    Modifier
+                        .fillMaxWidth(),
                 text = track.name,
                 maxLines = 1,
             )
             SpotifyTextSmall(
-                modifier = Modifier
-                    .padding(top = SpotifyDimen.spaceSmall())
-                    .fillMaxWidth(),
+                modifier =
+                    Modifier
+                        .padding(top = SpotifyDimen.spaceSmall())
+                        .fillMaxWidth(),
                 text = track.name,
                 maxLines = 1,
             )

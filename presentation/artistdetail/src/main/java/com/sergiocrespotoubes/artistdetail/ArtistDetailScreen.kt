@@ -13,14 +13,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.invisibleToUser
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import coil.compose.AsyncImage
 import com.sergiocrespotoubes.domain.model.ArtistModel
+import com.sergiocrespotoubes.domain.model.TrackModel
 import com.sergiocrespotoubes.ui.R
 import com.sergiocrespotoubes.ui.components.SpotifyTextTitleBold
 import com.sergiocrespotoubes.ui.components.SpotifyToolbar
+import com.sergiocrespotoubes.ui.components.async.SpotifyAsyncImage
+import com.sergiocrespotoubes.ui.components.loading.ShowSpotifyEmptyList
+import com.sergiocrespotoubes.ui.components.showToastError
 import com.sergiocrespotoubes.ui.theme.SpotifyDimen
 import com.sergiocrespotoubes.ui.theme.SpotifyTheme
 
@@ -31,6 +36,7 @@ fun ArtistDetailScreen(
 ) {
     LaunchedEffect(Unit) {
         artistDetailViewModel.getArtist(artistId)
+        artistDetailViewModel.getArtistTracks(artistId)
     }
     val state by artistDetailViewModel.state.collectAsState()
     Design(state)
@@ -46,6 +52,7 @@ private fun Design(state: ArtistDetailViewModel.State) {
     ) {
         SpotifyToolbar(state.artist?.name ?: "")
         Header(state.artist)
+        Tracks(state.tracks)
     }
 }
 
@@ -56,14 +63,17 @@ private fun Header(artist: ArtistModel?) {
             Modifier
                 .padding(horizontal = SpotifyDimen.spaceMedium()),
     ) {
-        AsyncImage(
+        SpotifyAsyncImage(
             modifier =
                 Modifier
                     .fillMaxWidth()
-                    .height(128.dp),
+                    .height(128.dp)
+                    .semantics {
+                        invisibleToUser()
+                    },
             model = artist?.urlPicture,
             placeholder = painterResource(R.drawable.placeholder),
-            contentDescription = null,
+            contentDescription = "",
             contentScale = ContentScale.Crop,
             error = painterResource(R.drawable.placeholder),
         )
@@ -79,18 +89,51 @@ private fun Header(artist: ArtistModel?) {
 }
 
 @Composable
+fun Tracks(tracks: List<TrackModel>?) {
+    when {
+        tracks.isNullOrEmpty() -> {
+            ShowTracksEmpty()
+        }
+        tracks == null -> {
+            ShowTracksLoading()
+        }
+        tracks.isNotEmpty() -> {
+            TracksList(tracks)
+        }
+    }
+}
+
+@Composable
+fun ShowTracksEmpty()  {
+    ShowSpotifyEmptyList()
+}
+
+@Composable
+fun ShowTracksLoading() {
+    ShowSpotifyEmptyList()
+}
+
+@Composable
+fun TracksList(tracks: List<TrackModel>) {
+    tracks.forEach { track ->
+        // TrackItem(track)
+    }
+}
+
+@Composable
+fun TrackItem(track: TrackModel) {
+}
+
+@Composable
 fun ReadEvents(artistDetailViewModel: ArtistDetailViewModel) {
     val context = LocalContext.current
-    // LaunchedEffect(Unit) {
-    //    searchViewModel.event.collect { event ->
-    //        when(event) {
-    //            is SearchViewModel.Event.NavigateToArtistSearch -> {}
-    //            is SearchViewModel.Event.ShowError -> {
-    //                showToastError(context)
-    //            }
-    //        }
-    //    }
-    // }
+    LaunchedEffect(Unit) {
+        artistDetailViewModel.event.collect { event ->
+            when (event) {
+                ArtistDetailViewModel.Event.ShowError -> showToastError(context)
+            }
+        }
+    }
 }
 
 @Preview(showBackground = true)
@@ -99,13 +142,14 @@ fun ArtistDetailScreenPreview() {
     SpotifyTheme {
         Design(
             ArtistDetailViewModel.State(
-                artist = ArtistModel(
-                    id = "1",
-                    name = "Name",
-                    urlPicture = "",
-                    popularity = 1,
-                )
-            )
+                artist =
+                    ArtistModel(
+                        id = "1",
+                        name = "Name",
+                        urlPicture = "",
+                        popularity = 1,
+                    ),
+            ),
         )
     }
 }

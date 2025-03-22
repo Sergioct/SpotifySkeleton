@@ -6,6 +6,6 @@ import org.gradle.api.Project
 class AndroidLibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         println("*** AndroidLibraryConventionPlugin invoked ***")
-        //configureAndroid()
+        // configureAndroid()
     }
 }

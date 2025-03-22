@@ -11,8 +11,8 @@ sealed class SpotifyThemeColors(
     val secondary: Color,
     val textPrimary: Color,
     val textSecondary: Color,
-){
-    data object Light: SpotifyThemeColors(
+) {
+    data object Light : SpotifyThemeColors(
         background = backgroundLight,
         surface = surfaceLight,
         primary = primaryLight,
@@ -20,7 +20,8 @@ sealed class SpotifyThemeColors(
         textPrimary = textPrimaryLight,
         textSecondary = textSecondaryLight,
     )
-    data object Dark: SpotifyThemeColors(
+
+    data object Dark : SpotifyThemeColors(
         background = backgroundDark,
         surface = surfaceDark,
         primary = primaryDark,

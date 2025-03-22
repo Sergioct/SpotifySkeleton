@@ -1,4 +1,4 @@
-package com.sergiocrespotoubes.ui.components
+package com.sergiocrespotoubes.ui.components.loading
 
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable

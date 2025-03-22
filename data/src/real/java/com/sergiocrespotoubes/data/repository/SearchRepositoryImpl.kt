@@ -3,8 +3,8 @@ package com.sergiocrespotoubes.data.repository
 import com.sergiocrespotoubes.data.db.datasource.ArtistsDbDatasource
 import com.sergiocrespotoubes.data.db.datasource.TracksDbDataSource
 import com.sergiocrespotoubes.data.mapper.toArtistEntity
-import com.sergiocrespotoubes.data.mapper.toTrackModel
 import com.sergiocrespotoubes.data.mapper.toTrackEntity
+import com.sergiocrespotoubes.data.mapper.toTrackModel
 import com.sergiocrespotoubes.data.network.datasource.SearchNetworkDataSource
 import com.sergiocrespotoubes.domain.model.ArtistModel
 import com.sergiocrespotoubes.domain.model.TrackModel

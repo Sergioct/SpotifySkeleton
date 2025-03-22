@@ -19,7 +19,7 @@ git flow
 ### Pasos
 
 #### Oct-2024
-Se intentó incluid un módulo `includeBuild("build-logic")` que gestionara la base del proyecto o `convenciones`.
+Se intentó incluir un módulo `includeBuild("build-logic")` que gestionara la base del proyecto o `convenciones`.
 Al complicarse la configuración de los módulos, se optó por no incluirlo.
 
 - Inclusión de com.android.tools.build:gradle:8.2.2, mirar en que consiste.
@@ -28,6 +28,13 @@ Al complicarse la configuración de los módulos, se optó por no incluirlo.
 he utilizado `GsonConverterFactory` para posteriormente mapearlo a `Either` con la librería `arrow`.
 
 - Se empieza a utiliza commit lint para los commits - `20-Oct-2024`
+
+#### Mar-2025
+
+- Se crea customs previews para empezar a meter previews en las pantallas de compose y 
+poder visualizarlas en tiempo de diseño.
+
+- Se agregan distintos tipos de previews en los diseños para poder analizar temas de accesibilidad.
 
 ### Objetivos
 
@@ -117,16 +124,20 @@ Execution failed for task ':app:validateSigningMockDebug'.
 
 #### Nov-2024
 - ¿Cuando utilizar los datasources?¿Hacen falta? ✅
-❓ gradlePlugin-spotless y gradlePlugin-kotlin del fichero toml se encuentran
-en [libraries] y no en [plugins]
-❓ debounce
+gradlePlugin-spotless y gradlePlugin-kotlin del fichero toml se encuentran ❓
+en [libraries] y no en [plugins] ❓
+debounce ❓
 
 #### Dic-2024 
-❓ ¿Se puede migrar todo de kapt a ksp?
-❓ ¿Mostrar Toolbar desde setContent o por pantalla?
+¿Se puede migrar todo de kapt a ksp? ❓
+¿Mostrar Toolbar desde setContent o por pantalla? ❓
 
 #### Feb-2025
-❓ Github actions, se ejecutan dos pipelines pero quiero un pipeline con dos acciones
+Github actions, se ejecutan dos pipelines pero quiero un pipeline con dos acciones ✅
+
+####  Mar-2025
+- ¿Es buena idea pasar el spotless o detekt en el pipeline y haga un commit automático? ❓
+
 
 ### Información
 
