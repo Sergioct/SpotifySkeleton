@@ -137,7 +137,9 @@ Github actions, se ejecutan dos pipelines pero quiero un pipeline con dos accion
 
 ####  Mar-2025
 - ¿Es buena idea pasar el spotless o detekt en el pipeline y haga un commit automático? ❓
-
+- Si quieres hacer dos llamadas en paralelo que es mejor:
+  - viewModelScope con un launch cada servicio
+  - viewModelScope por cada llamada al servicio
 
 ### Información
 

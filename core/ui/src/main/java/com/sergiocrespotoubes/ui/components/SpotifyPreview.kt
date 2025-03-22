@@ -3,10 +3,12 @@ package com.sergiocrespotoubes.ui.components
 import android.content.res.Configuration
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 
 @SpotifyBasePreview
 @SpotifyUiPreview
 @SpotifyScalePreviews
+@SpotifyFullPreview
 annotation class SpotifyPreview
 
 @Preview(
@@ -15,14 +17,18 @@ annotation class SpotifyPreview
 )
 annotation class SpotifyBasePreview
 
-@LightModePreview
-@DarkModePreview
+@PreviewLightDark
 annotation class SpotifyUiPreview
+
+@Preview(name = "Full Preview", showSystemUi = true)
+annotation class SpotifyFullPreview
 
 @Preview(
     showBackground = true,
     device = Devices.PIXEL_4,
     uiMode = Configuration.UI_MODE_NIGHT_NO,
+    name = "Light",
+    group = "Ui mode",
 )
 annotation class LightModePreview
 
@@ -30,7 +36,7 @@ annotation class LightModePreview
     showBackground = true,
     device = Devices.PIXEL_4,
     uiMode = Configuration.UI_MODE_NIGHT_YES,
-    name = "Dark ui mode",
+    name = "Dark",
     group = "Ui mode",
 )
 annotation class DarkModePreview
@@ -38,14 +44,14 @@ annotation class DarkModePreview
 @Preview(
     showBackground = true,
     device = Devices.PIXEL_4,
-    name = "Normal font",
+    name = "Normal",
     group = "Font scales",
     fontScale = 1f,
 )
 @Preview(
     showBackground = true,
     device = Devices.PIXEL_4,
-    name = "Large font",
+    name = "Large",
     group = "Font scales",
     fontScale = 2f,
 )

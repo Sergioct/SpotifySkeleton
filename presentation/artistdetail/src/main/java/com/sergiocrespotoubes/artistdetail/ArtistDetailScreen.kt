@@ -59,9 +59,7 @@ private fun Design(state: ArtistDetailViewModel.State) {
 @Composable
 private fun Header(artist: ArtistModel?) {
     Column(
-        modifier =
-            Modifier
-                .padding(horizontal = SpotifyDimen.spaceMedium()),
+        modifier = Modifier.fillMaxWidth(),
     ) {
         SpotifyAsyncImage(
             modifier =
@@ -81,6 +79,7 @@ private fun Header(artist: ArtistModel?) {
             modifier =
                 Modifier
                     .fillMaxWidth()
+                    .padding(horizontal = SpotifyDimen.spaceMedium())
                     .padding(top = SpotifyDimen.spaceMedium()),
             text = artist?.name ?: "",
             maxLines = 1,
@@ -91,15 +90,9 @@ private fun Header(artist: ArtistModel?) {
 @Composable
 fun Tracks(tracks: List<TrackModel>?) {
     when {
-        tracks.isNullOrEmpty() -> {
-            ShowTracksEmpty()
-        }
-        tracks == null -> {
-            ShowTracksLoading()
-        }
-        tracks.isNotEmpty() -> {
-            TracksList(tracks)
-        }
+        tracks == null -> ShowTracksLoading()
+        tracks.isEmpty() -> ShowTracksEmpty()
+        else -> TracksList(tracks)
     }
 }
 

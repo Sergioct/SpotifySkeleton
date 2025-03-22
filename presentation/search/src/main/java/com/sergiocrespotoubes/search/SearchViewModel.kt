@@ -5,12 +5,9 @@ import androidx.lifecycle.viewModelScope
 import com.sergiocrespotoubes.common.SpotifyLog
 import com.sergiocrespotoubes.domain.model.ArtistModel
 import com.sergiocrespotoubes.domain.model.TrackModel
-import com.sergiocrespotoubes.domain.usecase.artist.GetArtistsFromDbUseCase
 import com.sergiocrespotoubes.domain.usecase.search.GetSearchByArtistUseCase
 import com.sergiocrespotoubes.domain.usecase.search.GetSearchByTrackUseCase
-import com.sergiocrespotoubes.domain.usecase.tracks.GetTracksFromDbUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -26,8 +23,6 @@ class SearchViewModel
     constructor(
         private val getSearchByArtistUseCase: GetSearchByArtistUseCase,
         private val getSearchByTrackUseCase: GetSearchByTrackUseCase,
-        private val getArtistsFromDbUseCase: GetArtistsFromDbUseCase,
-        private val getTracksFromDbUseCase: GetTracksFromDbUseCase,
     ) : ViewModel() {
         private val _state: MutableStateFlow<State> = MutableStateFlow(State())
         val state: StateFlow<State>
@@ -38,43 +33,15 @@ class SearchViewModel
             get() = _event.asSharedFlow()
 
         init {
-            viewModelScope.launch {
-                getArtistsFromDb()
-                getTracksFromDb()
-            }
+            onInputTextUpdate(" ")
         }
 
         fun onInputTextUpdate(inputText: String) =
             viewModelScope.launch {
                 _state.emit(_state.value.copy(inputText = inputText))
-                SpotifyLog.i("onInputTextUpdate")
-                async {
-                    getSearchByTrack(trackName = inputText)
-                    getSearchByArtist(artistName = inputText)
-                }
+                launch { getSearchByTrack(trackName = inputText) }
+                launch { getSearchByArtist(artistName = inputText) }
             }
-
-        private suspend fun getArtistsFromDb() {
-            getArtistsFromDbUseCase.execute().collect { searchResult ->
-                searchResult.onSuccess { artists ->
-                    _state.value =
-                        _state.value.copy(
-                            artists = artists.sortedByDescending { it.popularity },
-                        )
-                }
-            }
-        }
-
-        private suspend fun getTracksFromDb() {
-            getTracksFromDbUseCase.execute().collect { searchResult ->
-                searchResult.onSuccess { tracks ->
-                    _state.value =
-                        _state.value.copy(
-                            tracks = tracks.sortedByDescending { it.popularity },
-                        )
-                }
-            }
-        }
 
         private suspend fun getSearchByArtist(artistName: String) {
             _state.value =
@@ -102,7 +69,6 @@ class SearchViewModel
                 _state.value.copy(
                     trackLoading = true,
                 )
-            SpotifyLog.i("getSearchByTrack")
             getSearchByTrackUseCase.execute(trackName).collect { searchResult ->
                 searchResult.onSuccess { tracks ->
                     _state.value =

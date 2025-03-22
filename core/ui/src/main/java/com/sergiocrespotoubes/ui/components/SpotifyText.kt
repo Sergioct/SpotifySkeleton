@@ -3,6 +3,7 @@ package com.sergiocrespotoubes.ui.components
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import com.sergiocrespotoubes.ui.theme.SpotifyTextStyle
 
 @Composable
@@ -38,12 +39,14 @@ fun SpotifyTextBig(
     modifier: Modifier = Modifier,
     text: String,
     maxLines: Int = Int.MAX_VALUE,
+    textAlign: TextAlign = TextAlign.Start,
 ) {
     Text(
         modifier = modifier,
         text = text,
         style = SpotifyTextStyle.big(),
         maxLines = maxLines,
+        textAlign = textAlign,
     )
 }
 
@@ -52,12 +55,14 @@ fun SpotifyTextMedium(
     modifier: Modifier = Modifier,
     text: String,
     maxLines: Int = Int.MAX_VALUE,
+    textAlign: TextAlign = TextAlign.Start,
 ) {
     Text(
         modifier = modifier,
         text = text,
         style = SpotifyTextStyle.medium(),
         maxLines = maxLines,
+        textAlign = textAlign,
     )
 }
 
