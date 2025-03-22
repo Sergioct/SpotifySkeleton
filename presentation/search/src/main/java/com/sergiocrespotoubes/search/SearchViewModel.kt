@@ -2,7 +2,6 @@ package com.sergiocrespotoubes.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.sergiocrespotoubes.common.SpotifyLog
 import com.sergiocrespotoubes.domain.model.ArtistModel
 import com.sergiocrespotoubes.domain.model.TrackModel
 import com.sergiocrespotoubes.domain.usecase.search.GetSearchByArtistUseCase

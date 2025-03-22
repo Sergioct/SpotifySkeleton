@@ -97,7 +97,7 @@ fun Tracks(tracks: List<TrackModel>?) {
 }
 
 @Composable
-fun ShowTracksEmpty()  {
+fun ShowTracksEmpty() {
     ShowSpotifyEmptyList()
 }
 
