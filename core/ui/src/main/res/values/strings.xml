@@ -2,8 +2,9 @@
     <string name="app_name">Spotify Skeleton</string>
 
     <!-- Common -->
-    <string name="search_error_message">Error</string>
-    <string name="empty_list">Lista vacía, no se ha podido encontrar nada.</string>
+    <string name="common_error">Error, no se han podido oir las notas !</string>
+    <string name="common_empty_list">Lista vacía, no se ha podido encontrar nada.</string>
+    <string name="common_back">Volver</string>
 
     <!-- Splash -->
     <string name="splash_name">Splash</string>
@@ -11,6 +12,7 @@
     <string name="splash_error_message">Error</string>
 
     <!-- Search -->
+    <string name="search_error_message">Error</string>
     <string name="search_filter_label">Search for an artist</string>
     <string name="search_subtitle_artists">Artists</string>
     <string name="search_subtitle_tracks">Tracks</string>

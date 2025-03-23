@@ -30,7 +30,9 @@ fun SpotifyNavHost(mainNavController: NavHostController) {
                 mainNavController.navigate(Routes.TrackDetail(trackId = trackId))
             },
         )
-        artistDetailScreen()
+        artistDetailScreen(onBackClick = {
+            mainNavController.popBackStack()
+        })
         trackDetailScreen()
     }
 }

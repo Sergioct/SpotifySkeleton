@@ -22,8 +22,8 @@ class TracksRepositoryImpl
         override suspend fun getTracksByArtistId(artistId: String): Flow<Result<List<TrackModel>>> =
             flow {
                 emit(
-                    tracksServices.getTracksByArtistId(artistId).map { tracksDto ->
-                        tracksDto.map { it.toTrackModel() }
+                    tracksServices.getTracksByArtistId(artistId).map { artistTopTracksDto ->
+                        artistTopTracksDto.tracks.map { it.toTrackModel() }
                     },
                 )
             }

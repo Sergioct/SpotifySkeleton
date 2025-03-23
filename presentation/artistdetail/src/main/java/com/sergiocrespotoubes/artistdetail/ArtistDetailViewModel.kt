@@ -49,9 +49,16 @@ class ArtistDetailViewModel
             viewModelScope.launch {
                 getTracksByArtistIdUseCase.execute(artistId).collect { result ->
                     result.onSuccess { tracks ->
-                        _state.value = state.value.copy(tracks = tracks)
+                        _state.value =
+                            state.value.copy(
+                                tracksState = TracksState.Success(tracks),
+                            )
                     }.onFailure {
                         _event.emit(Event.ShowError)
+                        _state.value =
+                            state.value.copy(
+                                tracksState = TracksState.Error,
+                            )
                     }
                 }
             }
@@ -62,6 +69,16 @@ class ArtistDetailViewModel
 
         data class State(
             val artist: ArtistModel? = null,
-            val tracks: List<TrackModel>? = null,
+            val tracksState: TracksState = TracksState.Loading,
         )
+
+        sealed class TracksState {
+            data class Success(
+                val tracks: List<TrackModel>,
+            ) : TracksState()
+
+            data object Error : TracksState()
+
+            data object Loading : TracksState()
+        }
     }

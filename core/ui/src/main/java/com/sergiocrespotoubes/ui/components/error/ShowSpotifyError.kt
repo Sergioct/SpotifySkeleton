@@ -1,4 +1,4 @@
-package com.sergiocrespotoubes.ui.components.loading
+package com.sergiocrespotoubes.ui.components.error
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,7 +21,7 @@ import com.sergiocrespotoubes.ui.components.image.SpotifyIconImage
 import com.sergiocrespotoubes.ui.theme.SpotifyDimen
 
 @Composable
-fun ShowSpotifyEmptyList(modifier: Modifier = Modifier) {
+fun ShowSpotifyError(modifier: Modifier = Modifier) {
     Column(
         modifier =
             modifier
@@ -36,14 +36,14 @@ fun ShowSpotifyEmptyList(modifier: Modifier = Modifier) {
                     .width(96.dp)
                     .height(96.dp),
             imageVector = Icons.Filled.Warning,
-            contentDescription = stringResource(R.string.common_empty_list),
-            color = MaterialTheme.colorScheme.primary,
+            contentDescription = stringResource(R.string.common_error),
+            color = MaterialTheme.colorScheme.error,
         )
         SpotifyTextBig(
             Modifier
                 .padding(top = SpotifyDimen.spaceBig())
                 .align(Alignment.CenterHorizontally),
-            text = stringResource(R.string.common_empty_list),
+            text = stringResource(R.string.common_error),
             textAlign = TextAlign.Center,
         )
     }
@@ -51,6 +51,6 @@ fun ShowSpotifyEmptyList(modifier: Modifier = Modifier) {
 
 @SpotifyPreview
 @Composable
-fun ShowSpotifyEmptyListPreview() {
-    ShowSpotifyEmptyList()
+fun ShowSpotifyErrorPreview() {
+    ShowSpotifyError()
 }

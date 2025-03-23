@@ -19,9 +19,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat.getString
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.sergiocrespotoubes.ui.R
-import com.sergiocrespotoubes.ui.components.SpotifyButton
 import com.sergiocrespotoubes.ui.components.SpotifyTextTitleBold
-import com.sergiocrespotoubes.ui.components.async.SpotifyImage
+import com.sergiocrespotoubes.ui.components.buttons.SpotifyButton
+import com.sergiocrespotoubes.ui.components.image.SpotifyImage
 import com.sergiocrespotoubes.ui.theme.SpotifyDimen
 import com.sergiocrespotoubes.ui.theme.SpotifyTheme
 

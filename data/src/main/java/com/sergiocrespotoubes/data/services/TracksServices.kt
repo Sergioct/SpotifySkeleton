@@ -1,19 +1,19 @@
 package com.sergiocrespotoubes.data.services
 
+import com.sergiocrespotoubes.data.network.dto.ArtistTopTracksDto
 import com.sergiocrespotoubes.data.network.dto.TrackDto
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface TracksServices {
-    @GET(value = "/api/token")
+    @GET(value = "/v1/artists/{id}/top-tracks")
     suspend fun getTracksByArtistId(
-        @Query("artist_id") artistId: String,
-        @Query("type") type: String = "artist",
-        @Query("limit") limit: Int = 1,
-    ): Result<List<TrackDto>>
+        @Path("id") artistId: String,
+    ): Result<ArtistTopTracksDto>
 
-    @GET(value = "/api/token")
+    @GET(value = "/v1/tracks/{id}")
     suspend fun getTrackById(
-        @Query("track_id") trackId: String,
+        @Query("id") trackId: String,
     ): Result<TrackDto>
 }

@@ -48,6 +48,8 @@ android {
 
 dependencies {
     api(project(":core:common"))
+    implementation(project(":domain"))
+
     api(libs.kotlinx.coroutines.core)
     api(libs.androidx.core.ktx)
     api(libs.androidx.appcompat)

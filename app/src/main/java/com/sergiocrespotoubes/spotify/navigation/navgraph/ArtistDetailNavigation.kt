@@ -6,9 +6,12 @@ import androidx.navigation.toRoute
 import com.sergiocrespotoubes.artistdetail.ArtistDetailScreen
 import com.sergiocrespotoubes.navigation.Routes
 
-fun NavGraphBuilder.artistDetailScreen() {
+fun NavGraphBuilder.artistDetailScreen(onBackClick: () -> Unit) {
     composable<Routes.ArtistDetail> {
         val args = it.toRoute<Routes.ArtistDetail>()
-        ArtistDetailScreen(args.artistId)
+        ArtistDetailScreen(
+            args.artistId,
+            onBackClick = onBackClick,
+        )
     }
 }

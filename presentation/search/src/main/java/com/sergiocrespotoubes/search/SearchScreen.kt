@@ -2,7 +2,6 @@ package com.sergiocrespotoubes.search
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -17,7 +16,6 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -35,7 +33,8 @@ import com.sergiocrespotoubes.ui.components.SpotifyTextField
 import com.sergiocrespotoubes.ui.components.SpotifyTextMedium
 import com.sergiocrespotoubes.ui.components.SpotifyTextSmall
 import com.sergiocrespotoubes.ui.components.SpotifyToolbar
-import com.sergiocrespotoubes.ui.components.async.SpotifyAsyncImage
+import com.sergiocrespotoubes.ui.components.context.track.TrackItem
+import com.sergiocrespotoubes.ui.components.image.SpotifyAsyncImage
 import com.sergiocrespotoubes.ui.components.loading.SpotifySpinnerLoading
 import com.sergiocrespotoubes.ui.components.showToastError
 import com.sergiocrespotoubes.ui.theme.SpotifyDimen
@@ -204,55 +203,6 @@ fun TracksList(tracks: List<TrackModel>) {
         )
         tracks.forEach { track ->
             TrackItem(track)
-        }
-    }
-}
-
-@Composable
-private fun TrackItem(track: TrackModel) {
-    Row(
-        modifier =
-            Modifier
-                .fillMaxWidth()
-                .padding(horizontal = SpotifyDimen.spaceMedium())
-                .padding(bottom = SpotifyDimen.spaceMedium()),
-    ) {
-        SpotifyAsyncImage(
-            modifier =
-                Modifier
-                    .width(48.dp)
-                    .height(48.dp)
-                    .semantics {
-                        invisibleToUser()
-                    },
-            model = track.urlPicture,
-            placeholder = painterResource(R.drawable.placeholder),
-            contentDescription = "",
-            contentScale = ContentScale.Crop,
-            error = painterResource(R.drawable.placeholder),
-        )
-        Column(
-            modifier =
-                Modifier
-                    .padding(start = SpotifyDimen.spaceMedium())
-                    .fillMaxWidth()
-                    .align(Alignment.CenterVertically),
-        ) {
-            SpotifyTextMedium(
-                modifier =
-                    Modifier
-                        .fillMaxWidth(),
-                text = track.name,
-                maxLines = 1,
-            )
-            SpotifyTextSmall(
-                modifier =
-                    Modifier
-                        .padding(top = SpotifyDimen.spaceSmall())
-                        .fillMaxWidth(),
-                text = track.name,
-                maxLines = 1,
-            )
         }
     }
 }

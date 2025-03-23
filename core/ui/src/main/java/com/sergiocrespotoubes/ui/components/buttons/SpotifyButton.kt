@@ -1,8 +1,9 @@
-package com.sergiocrespotoubes.ui.components
+package com.sergiocrespotoubes.ui.components.buttons
 
 import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.sergiocrespotoubes.ui.components.SpotifyTextMedium
 
 @Composable
 fun SpotifyButton(

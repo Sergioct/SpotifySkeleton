@@ -1,4 +1,4 @@
-package com.sergiocrespotoubes.ui.components.async
+package com.sergiocrespotoubes.ui.components.image
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier

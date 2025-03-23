@@ -1,10 +1,13 @@
 package com.sergiocrespotoubes.artistdetail
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -18,13 +21,17 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.compose.rememberNavController
 import com.sergiocrespotoubes.domain.model.ArtistModel
 import com.sergiocrespotoubes.domain.model.TrackModel
 import com.sergiocrespotoubes.ui.R
 import com.sergiocrespotoubes.ui.components.SpotifyTextTitleBold
 import com.sergiocrespotoubes.ui.components.SpotifyToolbar
-import com.sergiocrespotoubes.ui.components.async.SpotifyAsyncImage
+import com.sergiocrespotoubes.ui.components.context.track.TrackItem
+import com.sergiocrespotoubes.ui.components.error.ShowSpotifyError
+import com.sergiocrespotoubes.ui.components.image.SpotifyAsyncImage
 import com.sergiocrespotoubes.ui.components.loading.ShowSpotifyEmptyList
+import com.sergiocrespotoubes.ui.components.loading.SpotifySpinnerLoading
 import com.sergiocrespotoubes.ui.components.showToastError
 import com.sergiocrespotoubes.ui.theme.SpotifyDimen
 import com.sergiocrespotoubes.ui.theme.SpotifyTheme
@@ -33,32 +40,43 @@ import com.sergiocrespotoubes.ui.theme.SpotifyTheme
 fun ArtistDetailScreen(
     artistId: String,
     artistDetailViewModel: ArtistDetailViewModel = hiltViewModel(),
+    onBackClick: () -> Unit,
 ) {
+    val navController = rememberNavController()
+
     LaunchedEffect(Unit) {
         artistDetailViewModel.getArtist(artistId)
         artistDetailViewModel.getArtistTracks(artistId)
     }
     val state by artistDetailViewModel.state.collectAsState()
-    Design(state)
+    Design(state, onBackClick)
     ReadEvents(artistDetailViewModel)
 }
 
 @Composable
-private fun Design(state: ArtistDetailViewModel.State) {
+private fun Design(
+    state: ArtistDetailViewModel.State,
+    onBackClick: () -> Unit,
+) {
     Column(
         modifier =
             Modifier
                 .fillMaxSize(),
     ) {
-        SpotifyToolbar(state.artist?.name ?: "")
+        SpotifyToolbar(
+            state.artist?.name ?: "",
+            onBackClick = {
+                onBackClick()
+            },
+        )
         Header(state.artist)
-        Tracks(state.tracks)
+        Tracks(state.tracksState)
     }
 }
 
 @Composable
 private fun Header(artist: ArtistModel?) {
-    Column(
+    Box(
         modifier = Modifier.fillMaxWidth(),
     ) {
         SpotifyAsyncImage(
@@ -88,12 +106,24 @@ private fun Header(artist: ArtistModel?) {
 }
 
 @Composable
-fun Tracks(tracks: List<TrackModel>?) {
-    when {
-        tracks == null -> ShowTracksLoading()
-        tracks.isEmpty() -> ShowTracksEmpty()
-        else -> TracksList(tracks)
+fun Tracks(tracksState: ArtistDetailViewModel.TracksState) {
+    when (tracksState) {
+        ArtistDetailViewModel.TracksState.Error -> ShowTracksError()
+        ArtistDetailViewModel.TracksState.Loading -> ShowTracksLoading()
+        is ArtistDetailViewModel.TracksState.Success -> {
+            if (tracksState.tracks.isEmpty())
+                {
+                    ShowTracksEmpty()
+                } else {
+                TracksList(tracksState.tracks)
+            }
+        }
     }
+}
+
+@Composable
+fun ShowTracksError() {
+    ShowSpotifyError()
 }
 
 @Composable
@@ -103,18 +133,23 @@ fun ShowTracksEmpty() {
 
 @Composable
 fun ShowTracksLoading() {
-    ShowSpotifyEmptyList()
+    SpotifySpinnerLoading(true)
 }
 
 @Composable
 fun TracksList(tracks: List<TrackModel>) {
-    tracks.forEach { track ->
-        // TrackItem(track)
+    LazyColumn(
+        modifier = Modifier.padding(vertical = SpotifyDimen.spaceMedium()),
+    ) {
+        tracks.forEach { track ->
+            item {
+                TrackItem(track)
+            }
+        }
+        item {
+            Spacer(modifier = Modifier.height(SpotifyDimen.spaceBig()))
+        }
     }
-}
-
-@Composable
-fun TrackItem(track: TrackModel) {
 }
 
 @Composable
@@ -143,6 +178,7 @@ fun ArtistDetailScreenPreview() {
                         popularity = 1,
                     ),
             ),
+            onBackClick = {},
         )
     }
 }
