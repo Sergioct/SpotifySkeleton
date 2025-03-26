@@ -124,22 +124,22 @@ Execution failed for task ':app:validateSigningMockDebug'.
 
 #### Nov-2024
 - ¿Cuando utilizar los datasources?¿Hacen falta? ✅
-gradlePlugin-spotless y gradlePlugin-kotlin del fichero toml se encuentran ❓
-en [libraries] y no en [plugins] ❓
-debounce ❓
+- gradlePlugin-spotless y gradlePlugin-kotlin del fichero toml se encuentran ❓ en [libraries] y no en [plugins] 
+- debounce ❓
 
 #### Dic-2024 
-¿Se puede migrar todo de kapt a ksp? ❓
-¿Mostrar Toolbar desde setContent o por pantalla? ❓
+- ¿Se puede migrar todo de kapt a ksp? ✅ Mejor utilizar ksp por temas de rendimiento generalmente.
+- ¿Mostrar Toolbar desde setContent o por pantalla? ❓
 
 #### Feb-2025
-Github actions, se ejecutan dos pipelines pero quiero un pipeline con dos acciones ✅
+- Github actions, se ejecutan dos pipelines pero quiero un pipeline con dos acciones ✅
 
 ####  Mar-2025
 - ¿Es buena idea pasar el spotless o detekt en el pipeline y haga un commit automático? ❓
-- Si quieres hacer dos llamadas en paralelo que es mejor:
+- Si quieres hacer dos llamadas en paralelo que es mejor: ❓
   - viewModelScope con un launch cada servicio
   - viewModelScope por cada llamada al servicio
+- Evitar spotless en el pipeline al realizar el build, ¿cómo? ❓
 
 ### Información
 

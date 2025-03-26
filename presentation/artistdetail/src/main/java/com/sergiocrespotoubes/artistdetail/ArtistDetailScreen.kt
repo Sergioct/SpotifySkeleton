@@ -21,7 +21,6 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.compose.rememberNavController
 import com.sergiocrespotoubes.domain.model.ArtistModel
 import com.sergiocrespotoubes.domain.model.TrackModel
 import com.sergiocrespotoubes.ui.R
@@ -42,8 +41,6 @@ fun ArtistDetailScreen(
     artistDetailViewModel: ArtistDetailViewModel = hiltViewModel(),
     onBackClick: () -> Unit,
 ) {
-    val navController = rememberNavController()
-
     LaunchedEffect(Unit) {
         artistDetailViewModel.getArtist(artistId)
         artistDetailViewModel.getArtistTracks(artistId)
@@ -111,10 +108,9 @@ fun Tracks(tracksState: ArtistDetailViewModel.TracksState) {
         ArtistDetailViewModel.TracksState.Error -> ShowTracksError()
         ArtistDetailViewModel.TracksState.Loading -> ShowTracksLoading()
         is ArtistDetailViewModel.TracksState.Success -> {
-            if (tracksState.tracks.isEmpty())
-                {
-                    ShowTracksEmpty()
-                } else {
+            if (tracksState.tracks.isEmpty()) {
+                ShowTracksEmpty()
+            } else {
                 TracksList(tracksState.tracks)
             }
         }
