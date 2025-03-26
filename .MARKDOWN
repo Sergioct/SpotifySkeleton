@@ -141,6 +141,7 @@ Execution failed for task ':app:validateSigningMockDebug'.
   - viewModelScope con un launch cada servicio
   - viewModelScope por cada llamada al servicio
 - Evitar spotless en el pipeline al realizar el build, ¿cómo? ❓
+- ¿Debo añadir lint, teniendo ktlint en spotless? ❓
 
 ### Información
 
