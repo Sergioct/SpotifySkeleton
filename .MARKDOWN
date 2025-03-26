@@ -46,21 +46,21 @@ poder visualizarlas en tiempo de diseño.
 - Guardar token en shared preferences ✅
 - Inyección de dependencias ✅
 - Mock build ✅
-- Lint
+- Lint ❓
 - Spotless ✅
 - CI/CD all commits  ✅
 - Guardar datos de manera local (Room) ✅
-- Remove native splash
+- Remove native splash ❓
 - Search Screen ✅
 - Artist Detail Screen ✅
-- Track Detail Screen
+- Track Detail Screen ❓
 - Tests - ✅
-- Tests de UI ?
-- SwipeRefreshLayout
+- Tests de UI ? ❓
+- SwipeRefreshLayout ❓
 - Ordenar .toml - Usado AS para la ordenación(Edit > Sort lines) ✅
 - Regla orden alfabético .toml ✅
 - Modo claro y oscuro ✅
-- Utilizar DataStore
+- Utilizar DataStore ❓
 - Buen convenio de commits ✅
 - Conventions ✅
 - Plugin api o implementation ✅
@@ -87,6 +87,7 @@ poder visualizarlas en tiempo de diseño.
 - Mejorar CI/CD
 - Mejorar conventions
 - Accesibilidad
+- UI Testing
 
 ### Problemas
 
