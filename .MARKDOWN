@@ -46,7 +46,7 @@ poder visualizarlas en tiempo de diseño.
 - Guardar token en shared preferences ✅
 - Inyección de dependencias ✅
 - Mock build ✅
-- Lint ❓
+- Lint ✅
 - Spotless ✅
 - CI/CD all commits  ✅
 - Guardar datos de manera local (Room) ✅
@@ -76,7 +76,7 @@ poder visualizarlas en tiempo de diseño.
   - Convention plugin
 - Ordenar múltiples .toml
 - READ_TIMEOUT to READ_TIMEOUT_SEC
-- Rendimiento (Perfetto)
+- Rendimiento (Perfetto) ✅
 - Seguridad (OWASP, Dependency check)
   - https://jeremylong.github.io/DependencyCheck/dependency-check-gradle/index.html
 
@@ -84,10 +84,15 @@ poder visualizarlas en tiempo de diseño.
 - Dar prioridad resultado de network
 
 #### Feb-2025
-- Mejorar CI/CD
+- Mejorar CI/CD ✅
 - Mejorar conventions
-- Accesibilidad
+- Accesibilidad ✅
 - UI Testing
+- Kover
+
+#### Mar-2025
+- Implementar accesibilidad
+- Splash android 12
 
 ### Problemas
 
@@ -142,6 +147,8 @@ Execution failed for task ':app:validateSigningMockDebug'.
   - viewModelScope por cada llamada al servicio
 - Evitar spotless en el pipeline al realizar el build, ¿cómo? ❓
 - ¿Debo añadir lint, teniendo ktlint en spotless? ❓
+- build.gradle.kts(SpotifySkeleton/build.gradle.kts)❓
+- Kover ❓
 
 ### Información
 
