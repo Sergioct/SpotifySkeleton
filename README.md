@@ -1,4 +1,3 @@
-```markdown
 # Spotify Skeleton
 
 Este es un proyecto de ejemplo para una aplicación de Spotify utilizando Kotlin y Jetpack Compose.
@@ -13,7 +12,7 @@ El proyecto está dividido en varios módulos:
 
 ## Requisitos
 
-- Android Studio Koala | 2024.1.1 Patch 2
+- Android Studio Meerkat | 2024.3.1 Patch 1
 - JDK 11 o superior
 
 ## Configuración del Proyecto
@@ -72,10 +71,24 @@ El proyecto utiliza varias dependencias, incluyendo:
 - `com.google.android.material:material`
 - `androidx.core:core-ktx`
 - `androidx.appcompat:appcompat`
+- `arrow-kt:arrow-core`
+- `org.jetbrains.kotlinx:kotlinx-coroutines-core`
+- `com.squareup.retrofit2:retrofit`
+- `com.squareup.retrofit2:converter-gson`
+
+## Características
+
+- **Pantalla de Splash**: Implementada con soporte para Android 12.
+- **Navegación con Compose**: Utiliza Jetpack Compose Navigation.
+- **Inyección de Dependencias**: Configurada con Hilt.
+- **Persistencia Local**: Utiliza Room para almacenamiento local.
+- **Manejo de Tokens**: Guardado en SharedPreferences.
+- **CI/CD**: Configurado para todos los commits.
+- **Lint y Formateo**: Configurado con Detekt y Spotless.
+- **Accesibilidad**: Mejoras en accesibilidad y soporte para modo claro y oscuro.
+- **Previews en Compose**: Custom previews para diseño y accesibilidad.
 
 ## Licencia
 
 Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
 ```
-
-Este `README.md` proporciona una visión general de tu proyecto, incluyendo la estructura, requisitos, configuración, uso y dependencias.
