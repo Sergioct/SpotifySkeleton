@@ -50,7 +50,7 @@ poder visualizarlas en tiempo de diseño.
 - Spotless ✅
 - CI/CD all commits  ✅
 - Guardar datos de manera local (Room) ✅
-- Remove native splash ❓
+- Remove native splash or use it❓
 - Search Screen ✅
 - Artist Detail Screen ✅
 - Track Detail Screen ❓
@@ -67,13 +67,13 @@ poder visualizarlas en tiempo de diseño.
 
 #### Nov-2024
 - GitHook (Huski)
-- Workflow
-- Github Actions
-  - Spotless
-  - Tests
+- Workflow ✅
+- Github Actions ✅
+  - Spotless ✅
+  - Tests ✅
 - Plugins cambiarlo de `id` a `alias` llevarlo al toml
-- Convenciones
-  - Convention plugin
+- Convenciones ✅
+  - Convention plugin ✅
 - Ordenar múltiples .toml
 - READ_TIMEOUT to READ_TIMEOUT_SEC
 - Rendimiento (Perfetto) ✅
@@ -96,6 +96,9 @@ poder visualizarlas en tiempo de diseño.
 - Detekt ✅
   - ./gradlew detekt
   - ./gradlew detektGenerateConfig
+- Mejorar android conventions
+- Mejorar accesibilidad
+- Investigar más en profiling
 
 ### Problemas
 
@@ -153,13 +156,11 @@ Execution failed for task ':app:validateSigningMockDebug'.
 - build.gradle.kts(SpotifySkeleton/build.gradle.kts)❓
 - Kover ❓
 - Creo que solo pasa detekt en el módulo app ❓
+- windowSplashScreenBackground requires API level 31 (current min is 28) ❓
+- Preview de accesiblidad modo oscuro y claro
+- Los proyectos van a usar el splash de android 12 (native splash) ❓
 
 ### Información
-
-Github GPG
-Convenciones gradle
-Moshi o kotlin serialization
-DataStore
 
 ##### Commits - Lint android
 Huski o commit lint
@@ -171,17 +172,24 @@ https://commitlint.js.org/
 ##### Flow
 https://flowmarbles.com/
 
-git hook
-
-https://git-scm.com/book/ms/v2/Customizing-Git-Git-Hooks
-
-----
+##### Analizadores
 Ktlint, ktfmt (formateo puro de código)
 detekt (tira más a analizar el código)
 Spotless
-----
+
+##### Profiling
+https://perfetto.dev/ - Rendimiento
+
+##### Detekt
+  - ./gradlew detekt
+  - ./gradlew detektGenerateConfig
+
+##### Otros
 
 Trunk Based Development - https://trunkbaseddevelopment.com/
 Github flow - https://githubflow.github.io/
-
-https://perfetto.dev/ - Rendimiento
+git hook - https://git-scm.com/book/ms/v2/Customizing-Git-Git-Hooks
+Github GPG
+Convenciones gradle
+Moshi o kotlin serialization
+DataStore
