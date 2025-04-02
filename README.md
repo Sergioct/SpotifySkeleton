@@ -8,7 +8,10 @@ El proyecto está dividido en varios módulos:
 
 - **app**: Contiene la actividad principal y la configuración de la aplicación.
 - **domain**: Contiene la lógica de negocio y las entidades del dominio.
-- **presentation/songs**: Contiene la lógica de presentación y las vistas relacionadas con las canciones.
+- **presentation/artistdetail**: Contiene la lógica de presentación y las vistas relacionadas con los detalles de los artistas.
+- **presentation/search**: Contiene la lógica de presentación y las vistas relacionadas con la búsqueda de canciones y artistas.
+- **presentation/splash**: Contiene la lógica de presentación y las vistas relacionadas con la pantalla de inicio.
+- **presentation/trackdetail**: Contiene la lógica de presentación y las vistas relacionadas con los detalles de las canciones.
 
 ## Requisitos
 
