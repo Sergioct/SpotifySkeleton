@@ -4,5 +4,192 @@ Este es un proyecto de ejemplo para una aplicación de Spotify utilizando Kotlin
 
 ## Toma de decisiones
 
-### Arquitectura
+### Herramientas
 
+- Android Studio
+- Copilot
+
+### Arquitectura
+MVI (Model-View-Intent) es una arquitectura que se basa en la separación de las capas de la aplicación en tres partes: Model, View y Intent.
+Clean architecture es una arquitectura que se basa en la separación de las capas de la aplicación en tres partes: Domain, Data y Presentation.
+
+### Metodología de trabajo
+git flow
+
+### Pasos
+
+#### Oct-2024
+Se intentó incluir un módulo `includeBuild("build-logic")` que gestionara la base del proyecto o `convenciones`.
+Al complicarse la configuración de los módulos, se optó por no incluirlo.
+
+- Inclusión de com.android.tools.build:gradle:8.2.2, mirar en que consiste.
+
+- Utilización de la librería de `Retrofit Adapters` de `skydoves` para la obtención de un Result. En otros proyectos
+he utilizado `GsonConverterFactory` para posteriormente mapearlo a `Either` con la librería `arrow`.
+
+- Se empieza a utiliza commit lint para los commits - `20-Oct-2024`
+
+#### Mar-2025
+
+- Se crea customs previews para empezar a meter previews en las pantallas de compose y 
+poder visualizarlas en tiempo de diseño.
+
+- Se agregan distintos tipos de previews en los diseños para poder analizar temas de accesibilidad.
+
+### Objetivos
+
+#### Oct-2024
+- Splash Screen ✅
+- Compose navigation ✅
+- Compose ✅
+- Retrofit ✅
+- Guardar token en shared preferences ✅
+- Inyección de dependencias ✅
+- Mock build ✅
+- Lint ✅
+- Spotless ✅
+- CI/CD all commits  ✅
+- Guardar datos de manera local (Room) ✅
+- Remove native splash or use it❓
+- Search Screen ✅
+- Artist Detail Screen ✅
+- Track Detail Screen ❓
+- Tests - ✅
+- Tests de UI ? ❓
+- SwipeRefreshLayout ❓
+- Ordenar .toml - Usado AS para la ordenación(Edit > Sort lines) ✅
+- Regla orden alfabético .toml ✅
+- Modo claro y oscuro ✅
+- Utilizar DataStore ❓
+- Buen convenio de commits ✅
+- Conventions ✅
+- Plugin api o implementation ✅
+
+#### Nov-2024
+- GitHook (Huski)
+- Workflow ✅
+- Github Actions ✅
+  - Spotless ✅
+  - Tests ✅
+- Plugins cambiarlo de `id` a `alias` llevarlo al toml
+- Convenciones ✅
+  - Convention plugin ✅
+- Ordenar múltiples .toml
+- READ_TIMEOUT to READ_TIMEOUT_SEC
+- Rendimiento (Perfetto) ✅
+- Seguridad (OWASP, Dependency check)
+  - https://jeremylong.github.io/DependencyCheck/dependency-check-gradle/index.html
+
+#### Ene-2025
+- Dar prioridad resultado de network
+
+#### Feb-2025
+- Mejorar CI/CD ✅
+- Mejorar conventions
+- Accesibilidad ✅
+- UI Testing
+- Kover
+
+#### Mar-2025
+- Implementar accesibilidad
+- Splash android 12
+- Detekt ✅
+  - ./gradlew detekt
+  - ./gradlew detektGenerateConfig
+- Mejorar android conventions
+- Mejorar accesibilidad
+- Investigar más en profiling
+
+### Problemas
+
+#### Oct-2024
+✅ Implementación de módulos desde cero
+  - Fueron creados como modulos de tipo proyecto y no como android library. La solución fue sustituyendo
+  el plugin de `com.android.application` por `com.android.library` en el archivo `build.gradle.kts`.
+✅ He intentado utilizar `Kotest` que me gusta utilizarla para con el spec style `BehaviorSpec`(Given, When, Then), por no dedicarle mucho tiempo a solucionarlo he optado por utilizar `JUnit`.
+❓ Github GPG, me decía que era incorrecta mi clave pública. ¿Puede ser porque el correo de git no coincide con la clave generada?
+
+#### Nov-2024
+❓ Tuve que actualizar Kotlin y composeCompiler para solucionar un error de kapt3
+    superclass access check failed: class org.jetbrains.kotlin.kapt3
+
+#### Dic-2024
+✅ Problema en la generación de la base de datos, no podía encontrarla en tiempo de ejecución
+
+#### Feb-2025
+Execution failed for task ':app:validateSigningMockDebug'.
+> org/bouncycastle/asn1/edec/EdECObjectIdentifiers
+
+### Dudas
+
+#### Oct-2024
+- ¿Qué tema es el recomendado para un proyecto android de tema claro y oscuro? Theme.Material3 ✅
+- ¿Grafos de navegación? No hacen falta. ✅
+- ¿Encrypted shared preference? DataStore ✅
+- ¿implementation o api? - Plugin que te dice dependencia api o implementation ✅
+- Conventions ✅
+- ¿Qué era `isMinifyEnabled`? minifica el código isEnabled -> a ✅
+- Flow or Result - ✅
+- Donde guardar las keys de las APIs -- Local.properties ✅
+- ¿Instalar `npm` para meter `commitlint`? ❓
+- ratchetFrom("origin/develop") - Spotless - ¿Qué hace?  ❓
+
+#### Nov-2024
+- ¿Cuando utilizar los datasources?¿Hacen falta? ✅
+- gradlePlugin-spotless y gradlePlugin-kotlin del fichero toml se encuentran ❓ en [libraries] y no en [plugins] 
+- debounce ❓
+
+#### Dic-2024 
+- ¿Se puede migrar todo de kapt a ksp? ✅ Mejor utilizar ksp por temas de rendimiento generalmente.
+- ¿Mostrar Toolbar desde setContent o por pantalla? ❓
+
+#### Feb-2025
+- Github actions, se ejecutan dos pipelines pero quiero un pipeline con dos acciones ✅
+
+####  Mar-2025
+- ¿Es buena idea pasar el spotless o detekt en el pipeline y haga un commit automático? ❓
+- Si quieres hacer dos llamadas en paralelo que es mejor: ❓
+  - viewModelScope con un launch cada servicio
+  - viewModelScope por cada llamada al servicio
+- Evitar spotless en el pipeline al realizar el build, ¿cómo? ❓
+- ¿Debo añadir lint, teniendo ktlint en spotless? ❓
+- build.gradle.kts(SpotifySkeleton/build.gradle.kts)❓
+- Kover ❓
+- Creo que solo pasa detekt en el módulo app ❓
+- windowSplashScreenBackground requires API level 31 (current min is 28) ❓
+- Preview de accesiblidad modo oscuro y claro
+- Los proyectos van a usar el splash de android 12 (native splash) ❓
+
+### Información
+
+##### Commits - Lint android
+Huski o commit lint
+https://cbea.ms/git-commit/
+https://www.conventionalcommits.org/en/v1.0.0/
+https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits
+https://commitlint.js.org/
+
+##### Flow
+https://flowmarbles.com/
+
+##### Analizadores
+Ktlint, ktfmt (formateo puro de código)
+detekt (tira más a analizar el código)
+Spotless
+
+##### Profiling
+https://perfetto.dev/ - Rendimiento
+
+##### Detekt
+  - ./gradlew detekt
+  - ./gradlew detektGenerateConfig
+
+##### Otros
+
+Trunk Based Development - https://trunkbaseddevelopment.com/
+Github flow - https://githubflow.github.io/
+git hook - https://git-scm.com/book/ms/v2/Customizing-Git-Git-Hooks
+Github GPG
+Convenciones gradle
+Moshi o kotlin serialization
+DataStore

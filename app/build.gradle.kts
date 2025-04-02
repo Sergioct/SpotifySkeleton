@@ -1,6 +1,13 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
+    id("com.spotifyskeleton.root")
+    id("com.spotifyskeleton.android.application")
+    id("com.spotifyskeleton.android.library")
+    id("com.spotifyskeleton.android.test")
+    id("io.gitlab.arturbosch.detekt")
 }
 
 android {
@@ -10,7 +17,6 @@ android {
     defaultConfig {
         applicationId = "com.sergiocrespotoubes.spotify"
         minSdk = 28
-        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -19,28 +25,38 @@ android {
             useSupportLibrary = true
         }
     }
-
     buildTypes {
         release {
+            isDebuggable = false
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
+    flavorDimensions.add("version")
+    productFlavors {
+        create("real") {
+            dimension = "version"
+        }
+        create("mock") {
+            dimension = "version"
+        }
+    }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
     buildFeatures {
+        buildConfig = true
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.6"
     }
     packaging {
         resources {
@@ -50,26 +66,24 @@ android {
 }
 
 dependencies {
-    //implementation(project(":presentation:songs"))
-
-    // androidx
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
-
-    // Tests
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
+    api(project(":core:ui"))
+    api(project(":core:navigation"))
+    api(project(":core:preferences"))
+    api(project(":core:common"))
+    api(project(":core:testing"))
+    api(project(":data"))
+    api(project(":domain"))
+    api(project(":presentation:trackdetail"))
+    api(project(":presentation:artistdetail"))
+    api(project(":presentation:search"))
+    api(project(":presentation:splash"))
 
     // Debug
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // DI - Hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
 }

@@ -1,4 +1,5 @@
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         google {
             content {
@@ -22,10 +23,16 @@ dependencyResolutionManagement {
 rootProject.name = "SpotifySkeleton"
 include(":app")
 include(":presentation")
-include(":presentation:songs")
-include(":app:domain")
+include(":presentation:splash")
 include(":domain")
 include(":data")
 include(":core")
-include(":core:ui")
 include(":core:navigation")
+include(":core:ui")
+include(":core:preferences")
+include(":presentation:search")
+include(":presentation:trackdetail")
+include(":presentation:artistdetail")
+include(":core:common")
+include(":core:testing")
+include(":presentation:artistdetail")
