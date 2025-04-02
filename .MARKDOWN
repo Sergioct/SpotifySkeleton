@@ -93,6 +93,9 @@ poder visualizarlas en tiempo de diseño.
 #### Mar-2025
 - Implementar accesibilidad
 - Splash android 12
+- Detekt ✅
+  - ./gradlew detekt
+  - ./gradlew detektGenerateConfig
 
 ### Problemas
 
@@ -149,6 +152,7 @@ Execution failed for task ':app:validateSigningMockDebug'.
 - ¿Debo añadir lint, teniendo ktlint en spotless? ❓
 - build.gradle.kts(SpotifySkeleton/build.gradle.kts)❓
 - Kover ❓
+- Creo que solo pasa detekt en el módulo app ❓
 
 ### Información
 

@@ -7,6 +7,7 @@ plugins {
     id("com.spotifyskeleton.android.application")
     id("com.spotifyskeleton.android.library")
     id("com.spotifyskeleton.android.test")
+    id("io.gitlab.arturbosch.detekt")
 }
 
 android {
