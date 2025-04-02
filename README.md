@@ -12,6 +12,9 @@ El proyecto está dividido en varios módulos:
 - **presentation/search**: Contiene la lógica de presentación y las vistas relacionadas con la búsqueda de canciones y artistas.
 - **presentation/splash**: Contiene la lógica de presentación y las vistas relacionadas con la pantalla de inicio.
 - **presentation/trackdetail**: Contiene la lógica de presentación y las vistas relacionadas con los detalles de las canciones.
+- **data**: Contiene la capa de acceso a datos, incluyendo repositorios y fuentes de datos remotas y locales.
+- **network**: Contiene la configuración y las implementaciones relacionadas con las llamadas a la API y la comunicación de red.
+- **utils**: Contiene utilidades y clases de ayuda que se utilizan en todo el proyecto.
 
 ## Requisitos
 
