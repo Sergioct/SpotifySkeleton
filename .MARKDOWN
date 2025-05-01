@@ -99,6 +99,11 @@ poder visualizarlas en tiempo de diseño.
 - Mejorar android conventions
 - Mejorar accesibilidad
 - Investigar más en profiling
+- Meter Dependency check en DependenciesTools.kt como convention plugin
+- Convention de root, llama a detekt, spotless, kover y dependencies tools
+- Meter detekt como convention plugin
+- Kover
+- Generar reporte de detekt
 
 ### Problemas
 
@@ -131,7 +136,7 @@ Execution failed for task ':app:validateSigningMockDebug'.
 - ¿Qué era `isMinifyEnabled`? minifica el código isEnabled -> a ✅
 - Flow or Result - ✅
 - Donde guardar las keys de las APIs -- Local.properties ✅
-- ¿Instalar `npm` para meter `commitlint`? ❓
+- ¿Instalar `npm`` para meter `commitlint? ❓
 - ratchetFrom("origin/develop") - Spotless - ¿Qué hace?  ❓
 
 #### Nov-2024
@@ -147,18 +152,25 @@ Execution failed for task ':app:validateSigningMockDebug'.
 - Github actions, se ejecutan dos pipelines pero quiero un pipeline con dos acciones ✅
 
 ####  Mar-2025
-- ¿Es buena idea pasar el spotless o detekt en el pipeline y haga un commit automático? ❓
+- ¿Es buena idea pasar el spotless o detekt en el pipeline y haga un commit automático? ✅
+  - Es indiferente
 - Si quieres hacer dos llamadas en paralelo que es mejor: ❓
   - viewModelScope con un launch cada servicio
   - viewModelScope por cada llamada al servicio
-- Evitar spotless en el pipeline al realizar el build, ¿cómo? ❓
-- ¿Debo añadir lint, teniendo ktlint en spotless? ❓
-- build.gradle.kts(SpotifySkeleton/build.gradle.kts)❓
-- Kover ❓
-- Creo que solo pasa detekt en el módulo app ❓
-- windowSplashScreenBackground requires API level 31 (current min is 28) ❓
-- Preview de accesiblidad modo oscuro y claro
-- Los proyectos van a usar el splash de android 12 (native splash) ❓
+- Cancelar el pipeline al fallar un job ✅
+  - https://github.com/andymckay/cancel-action
+  - needs: [job_id]
+  - No es recomendable detener los pipelines al fallar un job, ya que puede dar información sobre el resto de jobs
+- ¿Debo añadir lint, teniendo ktlint en spotless? ✅
+  - Tambén se puede añadir https://github.com/facebook/ktfmt en vez de ktlint
+  - Otro linter es https://github.com/LemonAppDev/konsist
+- build.gradle.kts(SpotifySkeleton/build.gradle.kts) ✅
+  - `plugin apply false`, impide que se aplique el plugin a este módulo, pero si a los módulos que lo importen.
+- Kover ✅
+- Creo que solo pasa detekt en el módulo app ✅
+- windowSplashScreenBackground requires API level 31 (current min is 28) ✅
+- Preview de accesiblidad modo oscuro y claro ❓
+- Los proyectos van a usar el splash de android 12 (native splash) ✅
 
 ### Información
 

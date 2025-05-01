@@ -12,18 +12,7 @@ plugins {
     alias(libs.plugins.spotless) apply false
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.room) apply false
-    alias(libs.plugins.dependency.check)
-    alias(libs.plugins.detekt)
+    alias(libs.plugins.dependency.check) apply false
+    alias(libs.plugins.detekt) apply false
     id("com.spotifyskeleton.root")
-}
-
-val prop =
-    Properties().apply {
-        load(FileInputStream(rootProject.file("gradle.properties")))
-    }
-
-dependencyCheck {
-    nvd {
-        apiKey = prop.getProperty("nvdApiKey")
-    }
 }
