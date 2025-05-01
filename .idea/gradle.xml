@@ -40,7 +40,6 @@
             <option value="$PROJECT_DIR$/presentation/trackdetail" />
           </set>
         </option>
-        <option name="resolveExternalAnnotations" value="false" />
       </GradleProjectSettings>
     </option>
   </component>

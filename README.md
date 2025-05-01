@@ -30,45 +30,6 @@ El proyecto está dividido en varios módulos:
 2. Abre el proyecto en Android Studio.
 3. Sincroniza el proyecto con Gradle.
 
-## Uso
-
-### MainActivity
-
-La `MainActivity` es el punto de entrada de la aplicación. Utiliza Jetpack Compose para definir la interfaz de usuario.
-
-```kotlin
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            SpotifySkeletonTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
-        }
-    }
-}
-```
-
-### Composable Functions
-
-Ejemplo de una función composable:
-
-```kotlin
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-```
-
 ## Dependencias
 
 El proyecto utiliza varias dependencias, incluyendo:
@@ -77,10 +38,13 @@ El proyecto utiliza varias dependencias, incluyendo:
 - `com.google.android.material:material`
 - `androidx.core:core-ktx`
 - `androidx.appcompat:appcompat`
-- `arrow-kt:arrow-core`
 - `org.jetbrains.kotlinx:kotlinx-coroutines-core`
 - `com.squareup.retrofit2:retrofit`
 - `com.squareup.retrofit2:converter-gson`
+
+## Herramientas
+
+Kover: Cobertura de código `./gradlew koverHtmlReport`
 
 ## Características
 

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.kover)
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
     id("com.spotifyskeleton.root")
@@ -12,7 +13,7 @@ plugins {
 
 android {
     namespace = "com.sergiocrespotoubes.spotify"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.sergiocrespotoubes.spotify"

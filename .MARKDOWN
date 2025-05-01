@@ -26,6 +26,7 @@ Al complicarse la configuración de los módulos, se optó por no incluirlo.
 
 - Utilización de la librería de `Retrofit Adapters` de `skydoves` para la obtención de un Result. En otros proyectos
 he utilizado `GsonConverterFactory` para posteriormente mapearlo a `Either` con la librería `arrow`.
+- Eliminación de arrow para poder utilizar `Result`
 
 - Se empieza a utiliza commit lint para los commits - `20-Oct-2024`
 
@@ -97,12 +98,11 @@ poder visualizarlas en tiempo de diseño.
   - ./gradlew detekt
   - ./gradlew detektGenerateConfig
 - Mejorar android conventions
-- Mejorar accesibilidad
 - Investigar más en profiling
 - Meter Dependency check en DependenciesTools.kt como convention plugin
 - Convention de root, llama a detekt, spotless, kover y dependencies tools
 - Meter detekt como convention plugin
-- Kover
+- Kover ✅
 - Generar reporte de detekt
 
 ### Problemas
@@ -171,6 +171,9 @@ Execution failed for task ':app:validateSigningMockDebug'.
 - windowSplashScreenBackground requires API level 31 (current min is 28) ✅
 - Preview de accesiblidad modo oscuro y claro ❓
 - Los proyectos van a usar el splash de android 12 (native splash) ✅
+
+####  Apr-2025
+- Inconsistent JVM-target compatibility detected for tasks 'compileJava' (24) and 'compileKotlin' (21)
 
 ### Información
 
