@@ -36,6 +36,9 @@ poder visualizarlas en tiempo de diseño.
 
 - Se agregan distintos tipos de previews en los diseños para poder analizar temas de accesibilidad.
 
+#### May-2025
+- Uso de ./gradlew app:dependencies para limpiar el toml
+
 ### Objetivos
 
 #### Oct-2024
@@ -124,6 +127,9 @@ poder visualizarlas en tiempo de diseño.
 #### Feb-2025
 Execution failed for task ':app:validateSigningMockDebug'.
 > org/bouncycastle/asn1/edec/EdECObjectIdentifiers
+
+#### May-2025
+Inconsistent JVM-target compatibility detected for tasks 'compileJava' (24) and 'compileKotlin' (21).
 
 ### Dudas
 
