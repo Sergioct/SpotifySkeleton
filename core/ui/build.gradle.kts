@@ -1,12 +1,13 @@
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.compose.compiler)
     id("com.spotifyskeleton.android.compose")
 }
 
 android {
     namespace = "com.sergiocrespotoubes.ui"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 28

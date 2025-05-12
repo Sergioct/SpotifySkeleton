@@ -1,11 +1,12 @@
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
     namespace = "com.sergiocrespotoubes.common"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 28

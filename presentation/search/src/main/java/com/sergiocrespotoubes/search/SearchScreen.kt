@@ -60,11 +60,11 @@ private fun Design(searchViewModel: SearchViewModel) {
         modifier =
             Modifier
                 .fillMaxSize()
-                .sharedElement(
-                    state = rememberSharedContentState(key = album.id),
-                    animatedVisibilityScope = this,
-                    boundsTransform = albumBoundsTransform
-                ),
+                //.sharedElement(
+                //    state = rememberSharedContentState(key = album.id),
+                //    animatedVisibilityScope = this,
+                //    boundsTransform = albumBoundsTransform
+                //),
     ) {
         SpotifyToolbar(stringResource(R.string.app_name))
 

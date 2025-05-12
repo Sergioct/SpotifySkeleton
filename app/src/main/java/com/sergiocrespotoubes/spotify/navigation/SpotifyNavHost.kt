@@ -1,8 +1,6 @@
 package com.sergiocrespotoubes.spotify.navigation
 
-import androidx.compose.animation.SharedTransitionLayout
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.sergiocrespotoubes.navigation.Routes
@@ -15,32 +13,28 @@ import com.sergiocrespotoubes.spotify.navigation.navgraph.trackDetailScreen
 fun SpotifyNavHost(
     mainNavController: NavHostController
 ) {
-    SharedTransitionLayout(
-        modifier = Modifier
+    NavHost(
+        navController = mainNavController,
+        startDestination = Routes.Splash,
     ) {
-        NavHost(
-            navController = mainNavController,
-            startDestination = Routes.Splash,
-        ) {
-            splashScreen(
-                navigateToArtistSearch = {
-                    mainNavController.navigate(Routes.ArtistSearch) {
-                        popUpTo(Routes.Splash) { inclusive = true }
-                    }
-                },
-            )
-            artistSearchScreen(
-                navigateToArtistDetail = { artistId ->
-                    mainNavController.navigate(Routes.ArtistDetail(artistId = artistId))
-                },
-                navigateToTrackDetail = { trackId ->
-                    mainNavController.navigate(Routes.TrackDetail(trackId = trackId))
-                },
-            )
-            artistDetailScreen(onBackClick = {
-                mainNavController.popBackStack()
-            })
-            trackDetailScreen()
-        }
+        splashScreen(
+            navigateToArtistSearch = {
+                mainNavController.navigate(Routes.ArtistSearch) {
+                    popUpTo(Routes.Splash) { inclusive = true }
+                }
+            },
+        )
+        artistSearchScreen(
+            navigateToArtistDetail = { artistId ->
+                mainNavController.navigate(Routes.ArtistDetail(artistId = artistId))
+            },
+            navigateToTrackDetail = { trackId ->
+                mainNavController.navigate(Routes.TrackDetail(trackId = trackId))
+            },
+        )
+        artistDetailScreen(onBackClick = {
+            mainNavController.popBackStack()
+        })
+        trackDetailScreen()
     }
 }

@@ -1,13 +1,15 @@
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.compose.compiler)
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
 }
 
 android {
     namespace = "com.sergiocrespotoubes.artistsearch"
-    compileSdk = 34
+    compileSdk = 35
+
     defaultConfig {
         minSdk = 28
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
