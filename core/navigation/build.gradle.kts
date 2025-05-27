@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.sergiocrespotoubes.navigation"
-    compileSdk = 34
+    compileSdk = 35
     defaultConfig {
         minSdk = 28
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
