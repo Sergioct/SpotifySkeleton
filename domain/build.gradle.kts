@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.sergiocrespotoubes.domain"
-    compileSdk = 34
+    compileSdk = 35
     defaultConfig {
         minSdk = 28
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

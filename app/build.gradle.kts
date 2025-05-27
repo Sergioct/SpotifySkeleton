@@ -12,7 +12,7 @@ plugins {
 
 android {
     namespace = "com.sergiocrespotoubes.spotify"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.sergiocrespotoubes.spotify"
