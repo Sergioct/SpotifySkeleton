@@ -1,0 +1,17 @@
+# Spotify Skeleton
+
+Este es un proyecto de ejemplo para una aplicación de Spotify utilizando Kotlin y Jetpack Compose.
+
+## Toma de decisiones
+
+### Herramientas
+
+- Android Studio
+- Copilot
+
+### Arquitectura
+MVI (Model-View-Intent) es una arquitectura que se basa en la separación de las capas de la aplicación en tres partes: Model, View y Intent.
+Clean architecture es una arquitectura que se basa en la separación de las capas de la aplicación en tres partes: Domain, Data y Presentation.
+
+### Metodología de trabajo
+git flow

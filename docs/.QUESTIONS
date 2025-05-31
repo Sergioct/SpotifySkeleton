@@ -1,0 +1,41 @@
+# Spotify Skeleton
+
+### Dudas
+
+#### Oct-2024
+- ¿Qué tema es el recomendado para un proyecto android de tema claro y oscuro? Theme.Material3 ✅
+- ¿Grafos de navegación? No hacen falta. ✅
+- ¿Encrypted shared preference? DataStore ✅
+- ¿implementation o api? - Plugin que te dice dependencia api o implementation ✅
+- Conventions ✅
+- ¿Qué era `isMinifyEnabled`? minifica el código isEnabled -> a ✅
+- Flow or Result - ✅
+- Donde guardar las keys de las APIs -- Local.properties ✅
+- ¿Instalar `npm` para meter `commitlint`? ❓
+- ratchetFrom("origin/develop") - Spotless - ¿Qué hace?  ❓
+
+#### Nov-2024
+- ¿Cuando utilizar los datasources?¿Hacen falta? ✅
+- gradlePlugin-spotless y gradlePlugin-kotlin del fichero toml se encuentran ❓ en [libraries] y no en [plugins]
+- debounce ❓
+
+#### Dic-2024
+- ¿Se puede migrar todo de kapt a ksp? ✅ Mejor utilizar ksp por temas de rendimiento generalmente.
+- ¿Mostrar Toolbar desde setContent o por pantalla? ❓
+
+#### Feb-2025
+- Github actions, se ejecutan dos pipelines pero quiero un pipeline con dos acciones ✅
+
+####  Mar-2025
+- ¿Es buena idea pasar el spotless o detekt en el pipeline y haga un commit automático? ❓
+- Si quieres hacer dos llamadas en paralelo que es mejor: ❓
+    - viewModelScope con un launch cada servicio
+    - viewModelScope por cada llamada al servicio
+- Evitar spotless en el pipeline al realizar el build, ¿cómo? ❓
+- ¿Debo añadir lint, teniendo ktlint en spotless? ❓
+- build.gradle.kts(SpotifySkeleton/build.gradle.kts)❓
+- Kover ❓
+- Creo que solo pasa detekt en el módulo app ❓
+- windowSplashScreenBackground requires API level 31 (current min is 28) ❓
+- Preview de accesiblidad modo oscuro y claro
+- Los proyectos van a usar el splash de android 12 (native splash) ❓

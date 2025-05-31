@@ -1,0 +1,66 @@
+# Spotify Skeleton
+
+### Objetivos
+
+#### Oct-2024
+- Splash Screen ✅
+- Compose navigation ✅
+- Compose ✅
+- Retrofit ✅
+- Guardar token en shared preferences ✅
+- Inyección de dependencias ✅
+- Mock build ✅
+- Lint ✅
+- Spotless ✅
+- CI/CD all commits  ✅
+- Guardar datos de manera local (Room) ✅
+- Remove native splash or use it❓
+- Search Screen ✅
+- Artist Detail Screen ✅
+- Track Detail Screen ❓
+- Tests - ✅
+- Tests de UI ? ❓
+- SwipeRefreshLayout ❓
+- Ordenar .toml - Usado AS para la ordenación(Edit > Sort lines) ✅
+- Regla orden alfabético .toml ✅
+- Modo claro y oscuro ✅
+- Utilizar DataStore ❓
+- Buen convenio de commits ✅
+- Conventions ✅
+- Plugin api o implementation ✅
+
+#### Nov-2024
+- GitHook (Huski)
+- Workflow ✅
+- Github Actions ✅
+  - Spotless ✅
+  - Tests ✅
+- Plugins cambiarlo de `id` a `alias` llevarlo al toml
+- Convenciones ✅
+  - Convention plugin ✅
+- Ordenar múltiples .toml
+- READ_TIMEOUT to READ_TIMEOUT_SEC
+- Rendimiento (Perfetto) ✅
+- Seguridad (OWASP, Dependency check)
+  - https://jeremylong.github.io/DependencyCheck/dependency-check-gradle/index.html
+
+#### Ene-2025
+- Dar prioridad resultado de network
+
+#### Feb-2025
+- Mejorar CI/CD ✅
+- Mejorar conventions
+- Accesibilidad ✅
+- UI Testing
+- Kover
+
+#### Mar-2025
+- Implementar accesibilidad
+- Splash android 12
+- Detekt ✅
+  - ./gradlew detekt
+  - ./gradlew detektGenerateConfig
+- Mejorar android conventions
+- Mejorar accesibilidad
+- Investigar más en profiling
+

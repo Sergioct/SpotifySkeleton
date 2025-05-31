@@ -1,0 +1,22 @@
+# Spotify Skeleton
+
+### Pasos
+
+#### Oct-2024
+Se intentó incluir un módulo `includeBuild("build-logic")` que gestionara la base del proyecto o `convenciones`.
+Al complicarse la configuración de los módulos, se optó por no incluirlo.
+
+- Inclusión de com.android.tools.build:gradle:8.2.2, mirar en que consiste.
+
+- Utilización de la librería de `Retrofit Adapters` de `skydoves` para la obtención de un Result. En otros proyectos
+he utilizado `GsonConverterFactory` para posteriormente mapearlo a `Either` con la librería `arrow`.
+
+- Se empieza a utiliza commit lint para los commits - `20-Oct-2024`
+
+#### Mar-2025
+
+- Se crea customs previews para empezar a meter previews en las pantallas de compose y 
+poder visualizarlas en tiempo de diseño.
+
+- Se agregan distintos tipos de previews en los diseños para poder analizar temas de accesibilidad.
+
