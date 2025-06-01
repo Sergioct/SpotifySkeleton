@@ -7,7 +7,6 @@ import org.gradle.api.Project
 internal fun Project.configureAndroid(commonExtension: CommonExtension<*, *, *, *, *, *>) {
     commonExtension.apply {
         compileSdk = 35
-
         defaultConfig {
             minSdk = 28
             testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

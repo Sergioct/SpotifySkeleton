@@ -6,11 +6,6 @@ plugins {
 
 android {
     namespace = "com.sergiocrespotoubes.artistsearch"
-    compileSdk = 35
-    defaultConfig {
-        minSdk = 28
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -19,22 +14,6 @@ android {
                 "proguard-rules.pro",
             )
         }
-    }
-    flavorDimensions.add("version")
-    productFlavors {
-        create("real") {
-            dimension = "version"
-        }
-        create("mock") {
-            dimension = "version"
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
     }
     buildFeatures {
         compose = true

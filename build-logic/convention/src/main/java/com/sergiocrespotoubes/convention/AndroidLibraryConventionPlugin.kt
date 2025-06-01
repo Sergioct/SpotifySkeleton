@@ -3,6 +3,7 @@ package com.sergiocrespotoubes.convention
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.LibraryExtension
 import com.sergiocrespotoubes.convention.settings.configureAndroid
+import com.sergiocrespotoubes.convention.settings.configureFlavors
 import com.sergiocrespotoubes.convention.settings.configureKotlin
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -19,6 +20,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             extensions.configure<LibraryExtension> {
                 configureAndroid(this)
                 configureKotlin()
+                configureFlavors(this)
             }
         }
     }

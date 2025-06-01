@@ -3,7 +3,6 @@ plugins {
     id("com.google.dagger.hilt.android")
     id("com.spotifyskeleton.root")
     id("com.spotifyskeleton.android.application")
-    id("com.spotifyskeleton.android.flavors")
     id("com.spotifyskeleton.android.test")
     id("io.gitlab.arturbosch.detekt")
 }
@@ -16,7 +15,6 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }

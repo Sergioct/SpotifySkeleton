@@ -30,9 +30,5 @@ gradlePlugin {
             id = "com.spotifyskeleton.root"
             implementationClass = "com.sergiocrespotoubes.convention.RootConventionPlugin"
         }
-        register("flavors") {
-            id = "com.spotifyskeleton.android.flavors"
-            implementationClass = "com.sergiocrespotoubes.convention.AndroidFlavorsConventionPlugin"
-        }
     }
 }

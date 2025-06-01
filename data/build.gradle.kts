@@ -8,11 +8,6 @@ plugins {
 
 android {
     namespace = "com.sergiocrespotoubes.data"
-    compileSdk = 35
-    defaultConfig {
-        minSdk = 28
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -44,24 +39,8 @@ android {
             )
         }
     }
-    flavorDimensions.add("version")
-    productFlavors {
-        create("real") {
-            dimension = "version"
-        }
-        create("mock") {
-            dimension = "version"
-        }
-    }
     buildFeatures {
         buildConfig = true
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 }
 

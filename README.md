@@ -88,6 +88,13 @@ El proyecto utiliza varias dependencias, incluyendo:
 - **Accesibilidad**: Mejoras en accesibilidad y soporte para modo claro y oscuro.
 - **Previews en Compose**: Custom previews para diseño y accesibilidad.
 
+## Conventions
+[AndroidApplicationConventionPlugin.kt](build-logic/convention/src/main/java/com/sergiocrespotoubes/convention/AndroidApplicationConventionPlugin.kt)
+[AndroidComposeConventionPlugin.kt](build-logic/convention/src/main/java/com/sergiocrespotoubes/convention/AndroidComposeConventionPlugin.kt)
+[AndroidLibraryConventionPlugin.kt](build-logic/convention/src/main/java/com/sergiocrespotoubes/convention/AndroidLibraryConventionPlugin.kt)
+[AndroidTestConventionPlugin.kt](build-logic/convention/src/main/java/com/sergiocrespotoubes/convention/AndroidTestConventionPlugin.kt)
+[RootConventionPlugin.kt](build-logic/convention/src/main/java/com/sergiocrespotoubes/convention/RootConventionPlugin.kt)
+
 ## Licencia
 
 Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
