@@ -16,6 +16,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 apply("org.jetbrains.kotlin.android") // Ensure project build.gradle declared this plugin
             }
             extensions.configure<ApplicationExtension> {
+                defaultConfig.targetSdk = 35
                 configureAndroid(this)
                 configureKotlin()
             }

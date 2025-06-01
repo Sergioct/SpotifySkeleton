@@ -1,17 +1,16 @@
 package com.sergiocrespotoubes.convention
 
 import com.android.build.api.dsl.ApplicationExtension
-import com.sergiocrespotoubes.convention.settings.configureAndroidCompose
+import com.sergiocrespotoubes.convention.settings.configureFlavors
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 
-class AndroidComposeConventionPlugin : Plugin<Project> {
+class AndroidApplicationFlavorsConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
-        println("*** AndroidComposeConventionPlugin invoked ***")
         with(target) {
             extensions.configure<ApplicationExtension> {
-                configureAndroidCompose(this)
+                configureFlavors(this)
             }
         }
     }
