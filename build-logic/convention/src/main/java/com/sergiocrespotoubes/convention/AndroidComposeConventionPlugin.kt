@@ -1,6 +1,7 @@
 package com.sergiocrespotoubes.convention
 
 import com.android.build.api.dsl.ApplicationExtension
+import com.android.build.api.dsl.LibraryExtension
 import com.sergiocrespotoubes.convention.settings.configureAndroidCompose
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -10,7 +11,7 @@ class AndroidComposeConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         println("*** AndroidComposeConventionPlugin invoked ***")
         with(target) {
-            extensions.configure<ApplicationExtension> {
+            extensions.configure<LibraryExtension> {
                 configureAndroidCompose(this)
             }
         }
