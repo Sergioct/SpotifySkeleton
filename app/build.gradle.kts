@@ -1,10 +1,9 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.jetbrains.kotlin.android)
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
     id("com.spotifyskeleton.root")
     id("com.spotifyskeleton.android.application")
+    id("com.spotifyskeleton.android.flavors")
     id("com.spotifyskeleton.android.library")
     id("com.spotifyskeleton.android.test")
     id("io.gitlab.arturbosch.detekt")
@@ -12,11 +11,9 @@ plugins {
 
 android {
     namespace = "com.sergiocrespotoubes.spotify"
-    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.sergiocrespotoubes.spotify"
-        minSdk = 28
         versionCode = 1
         versionName = "1.0"
 
@@ -34,22 +31,6 @@ android {
                 "proguard-rules.pro",
             )
         }
-    }
-    flavorDimensions.add("version")
-    productFlavors {
-        create("real") {
-            dimension = "version"
-        }
-        create("mock") {
-            dimension = "version"
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
     }
     buildFeatures {
         buildConfig = true
