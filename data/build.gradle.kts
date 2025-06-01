@@ -1,6 +1,5 @@
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.spotifyskeleton.android.library")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
     alias(libs.plugins.kotlin.serialization)

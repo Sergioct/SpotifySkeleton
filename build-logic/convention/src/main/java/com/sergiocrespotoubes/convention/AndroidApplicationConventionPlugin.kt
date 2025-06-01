@@ -12,11 +12,10 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
         println("*** AndroidApplicationConventionPlugin invoked ***")
         with(target) {
             with(pluginManager) {
-                apply("com.android.application") // Include android application plugin
-                apply("org.jetbrains.kotlin.android") // Ensure project build.gradle declared this plugin
+                apply("com.android.application")
+                apply("org.jetbrains.kotlin.android")
             }
             extensions.configure<ApplicationExtension> {
-                defaultConfig.targetSdk = 35
                 configureAndroid(this)
                 configureKotlin()
             }
