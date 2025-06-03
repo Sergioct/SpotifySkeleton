@@ -1,6 +1,6 @@
 plugins {
     id("com.spotifyskeleton.android.library")
-    //id("com.spotifyskeleton.android.compose")
+    id("com.spotifyskeleton.android.compose")
 }
 
 android {
@@ -26,7 +26,6 @@ dependencies {
     api(libs.material)
     api(libs.androidx.lifecycle.runtime.ktx)
     api(libs.androidx.activity.compose)
-    api(platform(libs.androidx.compose.bom))
     api(libs.androidx.ui)
     api(libs.androidx.ui.graphics)
     api(libs.ui.tooling.preview)

@@ -1,5 +1,6 @@
 plugins {
     id("com.spotifyskeleton.android.library")
+    id("com.spotifyskeleton.android.compose")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
 }
